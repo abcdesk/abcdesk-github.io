@@ -1,1 +1,142 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Personal Knowledge Base">
+    <meta name="author" content="Johnny.Zhang">
+    <link rel="icon" href="./assets/favicon.ico">
+    <title>ABCDESK</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="./assets/app.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ABCDESK</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation">
+                        <a href="#laravel" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> Laravel<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+                        <ul id="laravel" class="nav nav-list collapse in">
+                            <li><a href="#" data-id="laravel/getstart">开工准备</a></li>
+                            <li><a href="#" data-id="">Child Bar 2</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation">
+                        <a href="#bootstrap" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> Bootstrap<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+                        <ul id="bootstrap" class="nav nav-list collapse in">
+                            <li><a href="#" data-id="">Child Bar 1</a></li>
+                            <li><a href="#" data-id="">Child Bar 2</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation">
+                        <a href="#jquery" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> jQuery<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+                        <ul id="jquery" class="nav nav-list collapse in">
+                            <li><a href="#" data-id="jquery/attr">获取标签属性</a></li>
+                            <li><a href="#" data-id="">Child Bar 2</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation">
+                        <a href="#mysql" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> MySQL<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+                        <ul id="mysql" class="nav nav-list collapse in">
+                            <li><a href="#" data-id="">Child Bar 1</a></li>
+                            <li><a href="#" data-id="">Child Bar 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation">
+                        <a href="#git" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> Git<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+                        <ul id="git" class="nav nav-list collapse in">
+                            <li><a href="#" data-id="">Child Bar 1</a></li>
+                            <li><a href="#" data-id="">Child Bar 2</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation" id="bar-3"><a href="bar-3">Bar 3</a></li>
+                </ul>
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation">
+                        <a href="#html" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> Html<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+                        <ul id="html" class="nav nav-list collapse in">
+                            <li><a href="#" data-id="">Child Bar 1</a></li>
+                            <li><a href="#" data-id="">Child Bar 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+           </div>
+            <!--/.sidebar-offcanvas-->
+            <div class="col-xs-12 col-sm-9" id="content">
+            </div>
+            <!--/.col-xs-12.col-sm-9-->
+        </div>
+        <!--/row-->
+        <hr>
+        <footer>
+            <p>&copy; 2016 Company, Inc.</p>
+        </footer>
+    </div>
+    <!--/.container-fluid-->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script>
+    window.jQuery || document.write('<script src="./assets/jquery/1.12.4/jquery.min.js"><\/script>')
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('[data-toggle="offcanvas"]').click(function() {
+            $('.row-offcanvas').toggleClass('active')
+        });
+
+        $(".nav-pills").on("click","a",function() {
+            $(this).find("span").toggleClass("glyphicon-chevron-left");
+            $(this).find("span").toggleClass("glyphicon-chevron-down");
+        });
+
+        $(".nav-list").on("click","a",function() {
+            var id = $(this).data("id");
+            // var href=$(this).attr('href');
+            console.log(id);
+            // if ($.trim(id) != "#") {
+            if ($.trim(id).length > 1) {
+                $("#content").load(id + ".html"); //加载相对应的内容
+                $(this).addClass("active").siblings().removeClass("active");
+            }
+            return false;
+        });
+        $("#content").load("laravel/getstart.html"); //加载相对应的内容
+    });
+
+    </script>
+</body>
+
+</html>
