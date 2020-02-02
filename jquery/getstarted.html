@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="Personal Knowledge Base">
+    <meta name="author" content="Johnny.Zhang">
+    <meta name="email" content="szhang7@qq.com">
+    <link rel="icon" href="../assets/favicon.ico">
+    <title>ABCDesk jQuery Template</title>
+</head>
+
+<body>
+<ol class="breadcrumb">
+    <li>jQuery</li>
+    <li class="active">开工准备</li>
+</ol>
+<h3>jQuery <span>开工准备</span> </h3>
+    <h1>你好，世界！</h1>
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script>
+    window.jQuery || document.write('<script src="../assets/jquery/1.12.4/jquery.min.js"><\/script>')
+    </script>
+    <script>
+    // A $( document ).ready() block.
+    $(document).ready(function() {
+        console.log("document loaded");
+    });
+
+    // Shorthand for $( document ).ready()
+    $(function() {
+        console.log("ready!");
+    });
+
+    // Passing a named function instead of an anonymous function.
+    function readyFn(jQuery) {
+        $("h1").text("Hello World!!");
+    }
+
+    $(document).ready(readyFn);
+    // or:
+    $(window).on("load", readyFn);
+
+    $(window).on("load", function() {
+        console.log("window loaded");
+    });
+    </script>
+</body>
+
+</html>

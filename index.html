@@ -8,6 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Personal Knowledge Base">
     <meta name="author" content="Johnny.Zhang">
+    <meta name="email" content="szhang7@qq.com">
     <link rel="icon" href="./assets/favicon.ico">
     <title>ABCDESK</title>
     <!-- Bootstrap core CSS -->
@@ -45,13 +46,14 @@
                     <li role="presentation">
                         <a href="#laravel" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> Laravel<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
                         <ul id="laravel" class="nav nav-list collapse in">
-                            <li><a href="#" data-id="laravel/getstart">开工准备</a></li>
+                            <li><a href="#" data-id="laravel/getstarted">开工准备</a></li>
                             <li><a href="#" data-id="">Child Bar 2</a></li>
                         </ul>
                     </li>
                     <li role="presentation">
                         <a href="#bootstrap" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> Bootstrap<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
                         <ul id="bootstrap" class="nav nav-list collapse in">
+                            <li><a href="#" data-id="bootstrap/getstarted">开工准备</a></li>
                             <li><a href="#" data-id="">Child Bar 1</a></li>
                             <li><a href="#" data-id="">Child Bar 2</a></li>
                         </ul>
@@ -59,13 +61,14 @@
                     <li role="presentation">
                         <a href="#jquery" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> jQuery<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
                         <ul id="jquery" class="nav nav-list collapse in">
+                            <li><a href="#" data-id="jquery/getstarted">开工准备</a></li>
                             <li><a href="#" data-id="jquery/attr">获取标签属性</a></li>
                             <li><a href="#" data-id="">Child Bar 2</a></li>
                         </ul>
                     </li>
                     <li role="presentation">
-                        <a href="#mysql" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> MySQL<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
-                        <ul id="mysql" class="nav nav-list collapse in">
+                        <a href="#mysql" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> MySQL<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
+                        <ul id="mysql" class="nav nav-list collapse">
                             <li><a href="#" data-id="">Child Bar 1</a></li>
                             <li><a href="#" data-id="">Child Bar 2</a></li>
                         </ul>
@@ -73,18 +76,18 @@
                 </ul>
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation">
-                        <a href="#git" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> Git<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
-                        <ul id="git" class="nav nav-list collapse in">
+                        <a href="#git" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> Git<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
+                        <ul id="git" class="nav nav-list collapse">
                             <li><a href="#" data-id="">Child Bar 1</a></li>
                             <li><a href="#" data-id="">Child Bar 2</a></li>
                         </ul>
                     </li>
-                    <li role="presentation" id="bar-3"><a href="bar-3">Bar 3</a></li>
                 </ul>
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation">
-                        <a href="#html" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> Html<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
-                        <ul id="html" class="nav nav-list collapse in">
+                        <a href="#html" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> Html<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
+                        <ul id="html" class="nav nav-list collapse">
+                            <li><a href="#" data-id="html/getstarted">开工准备</a></li>
                             <li><a href="#" data-id="">Child Bar 1</a></li>
                             <li><a href="#" data-id="">Child Bar 2</a></li>
                         </ul>
@@ -92,7 +95,7 @@
                 </ul>
            </div>
             <!--/.sidebar-offcanvas-->
-            <div class="col-xs-12 col-sm-9" id="content">
+            <div class="col-xs-12 col-sm-9 article" id="content">
             </div>
             <!--/.col-xs-12.col-sm-9-->
         </div>
@@ -133,7 +136,7 @@
             }
             return false;
         });
-        $("#content").load("laravel/getstart.html"); //加载相对应的内容
+        $("#content").load("laravel/getstarted.html"); //加载相对应的内容
     });
 
     </script>

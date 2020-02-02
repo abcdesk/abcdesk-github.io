@@ -2,29 +2,28 @@
     <li>Laravel</li>
     <li class="active">开工准备</li>
 </ol>
-<div class="article">
-    <h1>Laravel <span>开工准备</span> </h1>
-    <h1>0.创建项目</h1>
+<h3>Laravel <span>开工准备</span> </h3>
+<h3>0.创建项目</h3>
 <pre class="language-php">
 composer create-project laravel/laravel test --prefer-dist "5.5.*"
 </pre>
-    <p>修改.env文件，配置APP_NAME、APP_URL、DB_DATABASES</p>
-    <h1>1.安装ide-helper</h1>
-    <p></p>
-    <h1>2.语言包、时区</h1>
+<p>修改.env文件，配置APP_NAME、APP_URL、DB_DATABASES</p>
+<h3>1.安装ide-helper</h3>
+<p></p>
+<h3>2.语言包、时区</h3>
 <pre class="language-php">
 composer require overtrue/laravel-lang
 </pre>
-    <p>
-        替换config/app.php：
-        Illuminate\Translation\TranslationServiceProvider::class,
-        替换为：
-        Overtrue\LaravelLang\TranslationServiceProvider::class,
-    </p>
+<p>
+    替换config/app.php：
+    Illuminate\Translation\TranslationServiceProvider::class,
+    替换为：
+    Overtrue\LaravelLang\TranslationServiceProvider::class,
+</p>
 <pre class="language-php">
 php artisan lang:publish zh-CN
 </pre>
-    <p>config/app.php:</p>
+<p>config/app.php:</p>
 <pre class="language-php">
 -    'locale' => 'en',
 +    'locale' => 'zh-CN',
@@ -32,13 +31,13 @@ php artisan lang:publish zh-CN
 -    'timezone' => 'UTC',
 +    'timezone' => 'Asia/Shanghai',
 </pre>
-    <h1>3.执行命令</h1>
-    <pre class="language-php">
+<h3>3.执行命令</h3>
+<pre class="language-php">
 php artisan key:generate
 php artisan storage:link
 </pre>
-    <h1>5.加载自定义的函数文件</h1>
-    <p>composer.json</p>
+<h3>5.加载自定义的函数文件</h3>
+<p>composer.json</p>
 <pre class="language-php">
 "autoload": {
     "files": [
@@ -46,4 +45,3 @@ php artisan storage:link
     ]
 }
 </pre>
-</div>
