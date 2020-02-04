@@ -1,0 +1,156 @@
+<ol class="breadcrumb">
+    <li>Laravel</li>
+    <li class="active">开工准备</li>
+</ol>
+<h1>Laravel <span>开工准备</span> </h1>
+<p>
+    laravel有两种版本类型：LTS版本和一般发行版。
+    LTS 版本：长期支持版本，英文 Long Term Support 的缩写，提供两年的 Bug 修复支持，三年的安全修复支持。
+    一般发行版：只提供6个月的Bug修复支持，一年的安全修复支持。
+    如何选择呢？
+    （1）如果是商业项目开发，应该优先考虑LTS版本，因为它的安全性和稳定性，不应该 使用最新版本的Laravel 一般发行版；
+    （2）如果是自己搭建项目练手，建议优先考虑最新的发行版本，因为你可以优先体验最新的技术和扩展之类的。
+</p>
+<p>查看Laravel版本号的三种方法</p>
+<h3>1.php artisan</h3>
+<pre class="language-php">
+$ php artisan --version
+$ php artisan -V
+</pre>
+<h3>2.查看Application.php文件</h3>
+<pre class="language-php">
+$ vim vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+</pre>
+<h3>3.写在路由里</h3>
+<pre class="language-php">
+Route::get('laravel-version', function(){
+    $laravel = app();
+    return "Your Laravel version is ".$laravel::VERSION;
+});
+</pre>
+<h3>附：Laravel 版本信息</h3>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>版本</th>
+            <th>发布日期</th>
+            <th>PHP 版本要求</th>
+            <th>支持情况</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1.0</td>
+            <td>June 2011</td>
+            <td></td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>2.0</td>
+            <td>September 2011</td>
+            <td></td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>3.0</td>
+            <td>February 22, 2012</td>
+            <td></td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>3.1</td>
+            <td>March 27, 2012</td>
+            <td></td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>3.2</td>
+            <td>May 22, 2012</td>
+            <td></td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>4.0</td>
+            <td>May 28, 2013</td>
+            <td>≥ 5.3.0</td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>4.1</td>
+            <td>December 12, 2013</td>
+            <td>≥ 5.3.0</td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>4.2</td>
+            <td>June 1, 2014</td>
+            <td>≥ 5.4.0</td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>5.0</td>
+            <td>February 4, 2015</td>
+            <td>≥ 5.4.0</td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>5.1 LTS</td>
+            <td>June 9, 2015</td>
+            <td>≥ 5.5.9</td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>5.2</td>
+            <td>December 21, 2015</td>
+            <td>≥ 5.5.9</td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>5.3</td>
+            <td>August 23, 2016</td>
+            <td>≥ 5.6.4</td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>5.4</td>
+            <td>January 24, 2017</td>
+            <td>≥ 5.6.4</td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>5.5 LTS</td>
+            <td>August 30, 2017</td>
+            <td>≥ 7.0.0</td>
+            <td><span class="glyphicon glyphicon-ok text-success"></span> 老版本，给予支持</td>
+        </tr>
+        <tr>
+            <td>5.6</td>
+            <td>February 7, 2018</td>
+            <td>≥ 7.1.3</td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>5.7</td>
+            <td>September 4, 2018</td>
+            <td>≥ 7.1.3</td>
+            <td><span class="glyphicon glyphicon-remove text-danger"></span> 老版本，不予支持</td>
+        </tr>
+        <tr>
+            <td>5.8</td>
+            <td>February 26, 2019</td>
+            <td>≥ 7.1.3</td>
+            <td><span class="glyphicon glyphicon-ok text-success"></span> 老版本，给予支持</td>
+        </tr>
+        <tr>
+            <td><strong>6.0</strong></td>
+            <td>September 3, 2019</td>
+            <td>≥ 7.2.0</td>
+            <td><span class="glyphicon glyphicon-ok text-success"></span> 当前稳定版本（LTS）</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://learnku.com/laravel/wikis/25511">https://learnku.com/laravel/wikis/25511</a></li>
+</ol>

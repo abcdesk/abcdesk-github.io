@@ -1,0 +1,92 @@
+<ol class="breadcrumb">
+    <li>Git</li>
+    <li class="active">问题及解决方案</li>
+</ol>
+<h1>Git <span>问题及解决方案</span> </h1>
+
+<h3>1.创建版本库(repository)</h3>
+<pre class="language-sh">
+$ mkdir test
+$ cd test
+$ git init
+</pre>
+
+## 添加文件到Git仓库，分两步：
+$ git status    #查看仓库当前状态
+$ git diff      #查看修改内容
+$ git remote -v #查看远程仓库地址
+
+<h3>2.使用命令git add &lt;file&gt;</h3>
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+    注意，可反复多次使用，添加多个文件。
+</div>
+<pre class="language-sh">
+$ git add readme.txt    #添加readme.txt文件
+$ git add .             #add the entire directory recursively
+$ git add *             #add all files in the current directory, except for files, whose name begin with a dot.
+$ git add -A            #all files in the entire working tree are updated
+</pre>
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+    每次修改，如果不用git add到暂存区，那就不会加入到commit中。
+</div>
+
+<h3>3.使用命令git commit -m &lt;message&gt;，把文件提交到仓库。</h3>
+<pre class="language-sh">
+$ git commit -m "wrote a readme file"
+$ git commit -m "initialize project"
+</pre>
+
+<h3>4.撤销操作</h3>
+<p>如果想撤销，可以执行下面任一命令</p>
+<pre class="language-sh">
+$ git restore --staged * #撤销add操作
+$ git reset HEAD         #撤销add操作
+$ git checkout -- readme.txt #把readme.txt文件在工作区的修改全部撤销
+
+$ git diff HEAD -- readme.txt #查看工作区和版本库里面最新版本的区别
+</pre>
+
+<p>
+总结：
+场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。
+场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+</p>
+
+<h3>5.删除操作</h3>
+<pre class="language-sh">
+$ rm test.txt
+</pre>
+<p>(1)确实要从版本库中删除该文件</p>
+<pre class="language-sh">
+$ git rm test.txt   #从版本库中删除该文件
+$ git commit -m "remove test.txt"
+</pre>
+<p>(2)另一种情况是删错了，可以很轻松地把误删的文件恢复到最新版本</p>
+<pre class="language-sh">
+$ git checkout -- test.txt #恢复误删的文件
+</pre>
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+    从来没有被添加到版本库就被删除的文件，是无法恢复的！
+</div>
+
+<h3>**删除未跟踪的文件及文件夹</h3>
+<pre class="language-sh">
+$ git clean -n  #查看有哪些文件将被删除
+$ git clean -f  #删除当前工作目录下的未跟踪文件，但不删除文件夹
+$ git clean -df #删除当前工作目录及子目录下未跟踪的文件及文件夹
+</pre>
+
+<h3>**删除Git本地仓库</h3>
+<pre class="language-sh">
+$ find . -name ".git" | xargs rm -Rf
+</pre>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://git-scm.com/docs">https://git-scm.com/docs</a></li>
+    <li><a target="_blank" href="https://www.liaoxuefeng.com/wiki/896043488029600/896827951938304">https://www.liaoxuefeng.com/wiki/896043488029600/896827951938304</a></li>
+</ol>

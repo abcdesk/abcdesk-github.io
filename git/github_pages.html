@@ -1,0 +1,34 @@
+<ol class="breadcrumb">
+    <li>Git</li>
+    <li class="active">Github Pages</li>
+</ol>
+<h1>Git <span>Github Pages</span> </h1>
+
+<h3>1.Create a repository</h3>
+<p>Head over to <a href="https://github.com">GitHub</a> and <a data-proofer-ignore="true" href="https://github.com/new">create a new repository</a> named <em>username</em>.github.io, where <em>username</em> is your username (or organization name) on GitHub.</p>
+
+<h3>2.Clone the repository</h3>
+<pre class="language-sh">
+$ git clone https://github.com/username/username.github.io
+</pre>
+
+<h3>3.Hello World</h3>
+<pre class="language-sh">
+$ cd username.github.io
+$ echo "Hello World" > index.html
+</pre>
+
+<h3>4.Push it</h3>
+<pre class="language-sh">
+$ git add --all
+$ git commit -m "Initial commit"
+$ git push -u origin master
+</pre>
+
+<h3>5.and you're done!</h3>
+<p>Fire up a browser and go to https://username.github.io.</p>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://pages.github.com/">https://pages.github.com/</a></li>
+</ol>

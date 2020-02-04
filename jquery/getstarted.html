@@ -1,31 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <meta name="description" content="Personal Knowledge Base">
-    <meta name="author" content="Johnny.Zhang">
-    <meta name="email" content="szhang7@qq.com">
-    <link rel="icon" href="../assets/favicon.ico">
-    <title>ABCDesk jQuery Template</title>
-</head>
-
-<body>
 <ol class="breadcrumb">
     <li>jQuery</li>
-    <li class="active">开工准备</li>
+    <li class="active">问题及解决方案</li>
 </ol>
-<h3>jQuery <span>开工准备</span> </h3>
-    <h1>你好，世界！</h1>
-    <!-- jQuery -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <script>
-    window.jQuery || document.write('<script src="../assets/jquery/1.12.4/jquery.min.js"><\/script>')
-    </script>
-    <script>
+<h1>jQuery <span>问题及解决方案</span> </h1>
+
+<h3>jQuery基本模板</h3>
+<pre class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;
+    &lt;meta name="description" content="Personal Knowledge Base"&gt;
+    &lt;meta name="author" content="Johnny.Zhang"&gt;
+    &lt;meta name="email" content="szhang7@qq.com"&gt;
+    &lt;link rel="icon" href="../assets/favicon.ico"&gt;
+    &lt;title&gt;ABCDESK jQuery Template&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;你好，世界！&lt;/h1&gt;
+
+    &lt;!-- jQuery --&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+    window.jQuery || document.write('&lt;script src="../assets/jquery/1.12.4/jquery.min.js"&gt;&lt;\/script&gt;')
+    &lt;/script&gt;
+    &lt;script&gt;
     // A $( document ).ready() block.
     $(document).ready(function() {
         console.log("document loaded");
@@ -48,7 +53,18 @@
     $(window).on("load", function() {
         console.log("window loaded");
     });
-    </script>
-</body>
+    &lt;/script&gt;
+&lt;/body&gt;
 
-</html>
+&lt;/html&gt;
+</pre>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://learn.jquery.com/using-jquery-core/document-ready/">https://learn.jquery.com/using-jquery-core/document-ready/</a></li>
+    <li><a target="_blank" href="https://www.w3cschool.cn/jquery/">https://www.w3cschool.cn/jquery/</a></li>
+    <li><a target="_blank" href="https://www.runoob.com/jquery/jquery-tutorial.html">https://www.runoob.com/jquery/jquery-tutorial.html</a></li>
+    <li><a target="_blank" href="https://www.w3school.com.cn/jquery/index.asp">https://www.w3school.com.cn/jquery/index.asp</a></li>
+    <li><a target="_blank" href="https://github.com/jquery/jquery">https://github.com/jquery/jquery</a></li>
+    <li><a target="_blank" href="https://www.jsdelivr.com/">https://www.jsdelivr.com/</a></li>
+</ol>

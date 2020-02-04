@@ -2,15 +2,53 @@
     <li>Laravel</li>
     <li class="active">开工准备</li>
 </ol>
-<h3>Laravel <span>开工准备</span> </h3>
-<h3>0.创建项目</h3>
+<h1>Laravel <span>开工准备</span> </h1>
+
+<h3>1.创建项目</h3>
 <pre class="language-php">
 composer create-project laravel/laravel test --prefer-dist "5.5.*"
 </pre>
-<p>修改.env文件，配置APP_NAME、APP_URL、DB_DATABASES</p>
-<h3>1.安装ide-helper</h3>
-<p></p>
-<h3>2.语言包、时区</h3>
+<p>
+修改.env文件，配置APP_NAME、APP_URL、DB_DATABASES
+生成APP_KEY:
+</p>
+<pre class="language-php">
+php artisan key:generate
+</pre>
+
+<h3>2.安装开发必备插件</h3>
+<p>
+<a target="_blank" href="https://github.com/barryvdh/laravel-debugbar">Laravel Debugbar</a>是一个Laravel调试利器，强烈推荐。
+<a target="_blank" href="https://github.com/barryvdh/laravel-ide-helper">Laravel IDE Helper</a>是一个极其好用的代码提示及补全工具，可以给编写代码带来极大的便利。
+<a target="_blank" href="https://github.com/mpociot/laravel-test-factory-helper">Laravel Test Factory Generator</a>是一个工厂辅助插件，自动生成工厂文件。
+</p>
+<pre class="language-php">
+$ composer require barryvdh/laravel-debugbar
+$ composer require barryvdh/laravel-ide-helper
+$ composer require mpociot/laravel-test-factory-helper
+</pre>
+<p>然后在config/app.php文件中填上：</p>
+<pre class="language-php">
+        Barryvdh\Debugbar\ServiceProvider::class, 
+        Mpociot\LaravelTestFactoryHelper\TestFactoryHelperServiceProvider::class, 
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+</pre>
+<p>导出配置文件</p>
+<pre class="language-php">
+php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider" --tag=config
+</pre>
+<p>开始使用</p>
+<pre class="language-php">
+$ php artisan ide-helper:generate   #为 Facades 生成注释
+$ php artisan ide-helper:models     #为数据模型生成注释
+$ php artisan test-factory-helper:generate
+#database/factory/ModelFactory.php模型工厂文件会自动生成各个模型对应字段数据
+</pre>
+<p>
+其实在 Laravel 5.5 以上版本只需要装上 "larave-ide-helper" 和 "doctrine/dbal: ~2.3" 这两个包，不用做什么配置就可以愉快的玩耍了。
+</p>
+
+<h3>3.语言包、时区</h3>
 <pre class="language-php">
 composer require overtrue/laravel-lang
 </pre>
@@ -31,17 +69,11 @@ php artisan lang:publish zh-CN
 -    'timezone' => 'UTC',
 +    'timezone' => 'Asia/Shanghai',
 </pre>
-<h3>3.执行命令</h3>
-<pre class="language-php">
-php artisan key:generate
-php artisan storage:link
-</pre>
-<h3>5.加载自定义的函数文件</h3>
-<p>composer.json</p>
-<pre class="language-php">
-"autoload": {
-    "files": [
-        "app/helpers.php"
-    ]
-}
-</pre>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://laravel.com/docs/5.5">https://laravel.com/docs/5.5</a></li>
+    <li><a target="_blank" href="https://learnku.com/docs/laravel/5.5">https://learnku.com/docs/laravel/5.5</a></li>
+    <li><a target="_blank" href="https://pecl.php.net/packages.php">https://pecl.php.net/packages.php</a></li>
+    <li><a target="_blank" href="https://windows.php.net/downloads/pecl/releases/">https://windows.php.net/downloads/pecl/releases/</a></li>
+</ol>

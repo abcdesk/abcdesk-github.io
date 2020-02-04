@@ -58,13 +58,32 @@ pre[class*="language-"] {
 /*background: #353C48;*/
 
 .article p {
-    word-wrap: break-word;
-    word-break: break-all;
+    display: block;
+    /*padding: 9.5px;*/
+    /*margin: 0 0 10px;*/
     font-size: 16px;
-    line-height: 2em;
-    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, WenQuanYi Micro Hei, Arial, sans-serif;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    /*text-indent: 30px;*/
+    white-space: pre-wrap;
+    /* css-3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* Internet Explorer 5.5+ */
 }
 
+.article .reference a {
+    display: block;
+    padding: 5px 10px;
+    font-size: 16px;
+    text-align: left;
+}
 
 /*
  * Off Canvas

@@ -1,0 +1,60 @@
+<ol class="breadcrumb">
+    <li>Laravel</li>
+    <li class="active">php工具匠</li>
+</ol>
+<h1>Laravel <span>php工具匠</span> </h1>
+
+<h3>php artisan(工具匠)</h3>
+<pre class="language-php">
+  php artisan list      #查看所有的命令
+  php artisan help      #Displays help for a command
+  php artisan -V        #查看laravel版本信息php artisan --version
+  php artisan env       #Display the current framework environment
+  php artisan serve     #启动服务，浏览器http://localhost:8000
+  php artisan down      #Put the application into maintenance mode
+  php artisan up        #Bring the application out of maintenance mode
+
+  php artisan help vendor:publish
+  php artisan storage:link
+
+  key:generate         Set the application key
+  vendor:publish       Publish any publishable assets from vendor packages
+  storage:link         Create a symbolic link from "public/storage" to "storage/
+app/public"
+  view:clear           Clear all compiled view files
+
+ cache
+  cache:clear          Flush the application cache
+  cache:forget         Remove an item from the cache
+  cache:table          Create a migration for the cache database table
+
+ config
+  config:cache         Create a cache file for faster configuration loading
+  config:clear         Remove the configuration cache file
+
+ route
+  route:cache          Create a route cache file for faster route registration
+  route:clear          Remove the route cache file
+  route:list           List all registered routes
+**注意：如果创建配置/路由缓存，修改配置/路由后，一定要重新生成或清理配置/路由缓存，否则运行时无法正确读取配置信息。
+
+  make:migration       Create a new migration file
+  db:seed              Seed the database with records
+ migrate
+  migrate:fresh        Drop all tables and re-run all migrations
+  migrate:install      Create the migration repository
+  migrate:refresh      Reset and re-run all migrations
+  migrate:reset        Rollback all database migrations
+  migrate:rollback     Rollback the last database migration
+  migrate:status       Show the status of each migration
+
+  php artisan db:seed // 填充所有
+  php artisan db:seed --class=UsersTableSeeder // --class 选择指定需要填充的类
+  php artisan migrate:refresh --seed // refresh + migrate + seed
+  重置并重新执行所有的数据迁移，然后对数据库填充种子数据。
+</pre>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://laravel.com/docs/5.5">https://laravel.com/docs/5.5</a></li>
+</ol>
