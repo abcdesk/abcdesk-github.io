@@ -11,12 +11,13 @@ $ cd test
 $ git init
 </pre>
 
-## 添加文件到Git仓库，分两步：
+<h3>2.添加文件到Git仓库，分两步：</h3>
+<pre class="language-sh">
 $ git status    #查看仓库当前状态
 $ git diff      #查看修改内容
 $ git remote -v #查看远程仓库地址
-
-<h3>2.使用命令git add &lt;file&gt;</h3>
+</pre>
+<h4>2.1使用命令git add &lt;file&gt;</h4>
 <div class="alert alert-danger" role="alert">
     <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
     注意，可反复多次使用，添加多个文件。
@@ -32,13 +33,13 @@ $ git add -A            #all files in the entire working tree are updated
     每次修改，如果不用git add到暂存区，那就不会加入到commit中。
 </div>
 
-<h3>3.使用命令git commit -m &lt;message&gt;，把文件提交到仓库。</h3>
+<h4>2.2使用命令git commit -m &lt;message&gt;，把文件提交到仓库。</h4>
 <pre class="language-sh">
 $ git commit -m "wrote a readme file"
 $ git commit -m "initialize project"
 </pre>
 
-<h3>4.撤销操作</h3>
+<h3>3.撤销操作</h3>
 <p>如果想撤销，可以执行下面任一命令</p>
 <pre class="language-sh">
 $ git restore --staged * #撤销add操作
@@ -55,7 +56,7 @@ $ git diff HEAD -- readme.txt #查看工作区和版本库里面最新版本的�
 场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
 </p>
 
-<h3>5.删除操作</h3>
+<h3>4.删除操作</h3>
 <pre class="language-sh">
 $ rm test.txt
 </pre>

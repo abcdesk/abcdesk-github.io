@@ -29,13 +29,20 @@ $ composer require mpociot/laravel-test-factory-helper
 </pre>
 <p>然后在config/app.php文件中填上：</p>
 <pre class="language-php">
+    'providers' => [
         Barryvdh\Debugbar\ServiceProvider::class, 
         Mpociot\LaravelTestFactoryHelper\TestFactoryHelperServiceProvider::class, 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+    ]
+
+    'aliases' => [
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+    ]
 </pre>
 <p>导出配置文件</p>
 <pre class="language-php">
 php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider" --tag=config
+php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
 </pre>
 <p>开始使用</p>
 <pre class="language-php">

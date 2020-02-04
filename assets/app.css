@@ -78,6 +78,11 @@ pre[class*="language-"] {
     /* Internet Explorer 5.5+ */
 }
 
+.article .alert {
+    font-size: 16px;
+    line-height: 1.42857143;
+}
+
 .article .reference a {
     display: block;
     padding: 5px 10px;
