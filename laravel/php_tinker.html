@@ -1,0 +1,47 @@
+<ol class="breadcrumb">
+    <li>Laravel</li>
+    <li class="active">php artisan tinker</li>
+</ol>
+<h1>Laravel <span>php artisan tinker</span> </h1>
+
+<<h3>查阅数据库数据</h3>
+<pre class="language-php">
+// see the count of all users
+App\User::count();
+
+// find a specific user and see their attributes
+App\User::where('name', 'samuel')->first();
+
+// find the relationships of a user
+$user = App\User::with('posts')->first();
+$user->posts;
+</pre>
+
+<h3>填充数据库</h3>
+<pre class="language-php">
+$ php artisan tinker
+
+>>>factory(App\User::class, 10)->create();
+>>>App\User::all();
+>>>App\User::count();
+</pre>
+
+<h3>新建一个用户</h3>
+<pre class="language-php">
+$user = new App\User;
+$user->name = "Wruce Bayne";
+$user->password = bcrypt('abcdesk');
+$user->email = "iambatman@savegotham.com";
+$user->save();
+</pre>
+
+<h3>删除一个用户</h3>
+<pre class="language-php">
+$user = App\User::find(10);
+$user->delete();
+</pre>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://xueyuanjun.com/post/4935.html">https://xueyuanjun.com/post/4935.html</a></li>
+</ol>

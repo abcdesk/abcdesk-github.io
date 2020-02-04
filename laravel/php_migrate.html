@@ -1,0 +1,198 @@
+<ol class="breadcrumb">
+    <li>Laravel</li>
+    <li class="active">php artisan migrate</li>
+</ol>
+<h1>Laravel <span>php artisan migrate</span> </h1>
+
+<h3>Laravel数据库迁移与数据填充</h3>
+<p>
+数据库迁移实际上就是对数据库库表的结构变化做版本控制，Laravel对数据库的版本管理主要包括两部门:数据库结构的管理和数据的管理.
+</p>
+
+<div class="alert alert-success" role="alert">
+    数据库结构管理
+</div>
+
+<h3>1.创建一个数据库</h3>
+<pre class="language-php">
+DROP DATABASE IF EXISTS `learn_laravel5`;
+CREATE DATABASE `learn_laravel5` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+</pre>
+
+<h3>2.配置数据库连接信息(.env)</h3>
+<pre class="language-php">
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=test
+DB_USERNAME=admin
+DB_PASSWORD=admin
+</pre>
+
+<h3>3.安装Laravel的Migrations</h3>
+<pre class="language-php">
+$ php artisan migrate:install
+</pre>
+<p>
+这句话执行了以后,Laravel会在数据库新建一张migrations表,用这张表来记录我们每次对数据库做的更改
+</p>
+
+<h3>4.创建迁移文件</h3>
+<pre class="language-php">
+$ php artisan make:migration create_goods_table --create=goods
+</pre>
+<p>
+这句话解释一下, make:migration 是迁移命令,create_goods_table 是迁移文件的文件名,--create=goods是该命令携带的参数,意思是创建一张表,并且表名是goods
+</p>
+
+<h3>5.编辑迁移文件</h3>
+<pre class="language-php">
+class CreateGoodsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('goods', function (Blueprint $table) {
+            $table->increments('id');//创建一个自增长的字段,字段名默认叫id
+            $table->integer('goods_sn'); //商品货号
+            $table->string('goods_name');//商品名
+            $table->decimal('prize', 10, 2); //价格
+            $table->timestamps();//创建created_at 和 updated_at 字段
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('goods');
+    }
+}
+</pre>
+<p>
+该文件包括两个函数,up和down,up方法是当执行迁移动作时要执行的方法,down方法是在进行数据库回滚的时候执行的方法
+</p>
+
+<h3>6.执行迁移</h3>
+<p>
+在执行迁移之前,还需要执行一个命令composer dump-autoload,这个命令的主要作用是让 composer 更新 autoload_classmap 的内容,包含到我们新建的文件
+</p>
+<pre class="language-php">
+$ composer dump-autoload
+$ php artisan migrate
+</pre>
+
+<h3>7.数据库回滚</h3>
+<pre class="language-php">
+$ php artisan migrate:rollback
+$ php artisan migrate:reset
+</pre>
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+rollback命令并不是回滚所有的migrate操作,而是回滚你上一次的操作,如果你想执行所有的回滚,可以使用reset命令,执行后会按照迁移文件的时间排序执行所有文件的down方法;
+</div>
+
+<h3>8.重建整个数据库</h3>
+<pre class="language-php">
+$ php artisan migrate:refresh   #reset + migrate
+</pre>
+
+<div class="alert alert-success" role="alert">
+    数据填充
+</div>
+
+<h3>1.生成Seeder文件</h3>
+<pre class="language-php">
+php artisan make:seeder GoodsTableSeeder
+</pre>
+
+<h3>2.编辑Seeder文件</h3>
+
+<h4>2.1简单的数据填充</h4>
+<pre class="language-php">
+    public function run()
+    {
+        DB::table('goods')->insert([
+            'goods_sn' => 10001,
+            'goods_name' => '加多宝凉茶',
+            'prize' => 3.5
+        ]);
+    }
+$ php artisan db:seed --class=GoodsTableSeeder
+</pre>
+
+<h4>2.2使用模型工厂进行批量填充</h4>
+<p>使用模型工厂之前,必须要有个对应于goods表的一个Model类,让我们执行命令生成一个:</p>
+<pre class="language-php">
+$ php artisan make:model Models/Good
+
+class Good extends Model
+{
+    //表示对应于表goods
+    protected $table = 'goods';
+}
+
+$ php artisan make:factory GoodFactory
+</pre>
+<p>新增一段代码:</p>
+<pre class="language-php">
+$factory->define(App\Models\Good::class, function (Faker $faker) {
+    return [
+        'goods_sn' => $faker->numberBetween(10001,20000),
+        'goods_name' =>$faker->name, 
+        'prize' => $faker->numberBetween(20,50)
+    ];
+});
+</pre>
+<p>然后回到GoodsTableSeeder.php文件,编辑run方法:</p>
+<pre class="language-php">
+use App\Models\Good;
+
+    public function run()
+    {
+        factory(Good::class)->times(10)->create(); //create()表示插入数据库中
+        //factory(Good::class)->times(10)->make(); //make()表示只生成对象,不插入库表中
+    }
+</pre>
+<p>这里调用factory方法,times表示要执行的次数.之后执行命令:</p>
+<pre class="language-php">
+$ php artisan db:seed --class=GoodsTableSeeder
+</pre>
+
+<h4>2.3 单次执行全部seeder</h4>
+<p>
+database\seeds目录下有个DatabaseSeeder.php文件,这个文件的作用就是对多个seeder进行管理的,在这里可以调用其他的字Seeder类,指定他们的执行顺序:
+</p>
+<pre class="language-php">
+    public function run()
+    {
+        Model::unguard(); //解除模型的批量填充限制
+        $this->call(UsersTableSeeder::class);
+        $this->call(GoodsTableSeeder::class);
+        Model::reguard();
+
+    }
+
+$ php artisan db:seed
+</pre>
+<pre class="language-php">
+$ php artisan migrate:refresh --seed
+</pre>
+<p>
+这个命令主要做了三件事:
+1)执行所有的回滚,也就是migrations目录下所有文件的down方法,执行的时候按照时间顺序.
+2)所有回滚执行完毕后,执行所有的迁移,也就是按照时间顺序执行所有的up方法.
+3)执行所有的数据填充,也就是执行DatabaseSeeder 中的run方法.如果在run方法中没有调用其他的seeder,则这个seeder的run方法不会被执行.
+</p>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://segmentfault.com/a/1190000008577865">https://segmentfault.com/a/1190000008577865</a></li>
+</ol>

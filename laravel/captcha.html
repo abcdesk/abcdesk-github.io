@@ -1,0 +1,84 @@
+<ol class="breadcrumb">
+    <li>Laravel</li>
+    <li class="active">Captcha验证码</li>
+</ol>
+<h1>Laravel <span>Captcha验证码</span> </h1>
+
+<h3>1.安装扩展包：</h3>
+<pre class="language-php">
+$ composer require mews/captcha
+</pre>
+
+<h3>2.生成配置文件config/captcha.php</h3>
+<p>方法一：</p>
+<pre class="language-php">
+php artisan vendor:publish --provider="Mews\Captcha\CaptchaServiceProvider"
+</pre>
+<p>方法二：
+配置/config/app.php
+</p>
+<pre class="language-php">
+'providers' =&gt; [
+    // ...
+    Mews\Captcha\CaptchaServiceProvider::class,
+]
+'aliases' =&gt; [
+    // ...
+    'Captcha' =&gt; Mews\Captcha\Facades\Captcha::class,
+]
+
+自定义配置
+$ php artisan vendor:publish
+</pre>
+
+<h3>3.使用captcha为 auth 组件添加验证码功能</h3>
+<p>
+在登录视图中增加验证码的选项，可以加到密码和 remember me 之间
+
+/resources/views/auth/login.blade.php
+</p>
+<pre class="language-php">
+&lt;div class="form-group"&gt;
+    &lt;label for="captcha" class="col-md-4 control-label"&gt;验证码&lt;/label&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-3"&gt;
+            &lt;input id="captcha"  class="form-control" type="captcha" name="captcha" value="{{ old('captcha')  }}" required&gt;
+            @if($errors-&gt;has('captcha'))
+                &lt;div class="col-md-12"&gt;
+                    &lt;p class="text-danger text-left"&gt;&lt;strong&gt;{{$errors-&gt;first('captcha')}}&lt;/strong&gt;&lt;/p&gt;
+                &lt;/div&gt;
+            @endif
+        &lt;/div&gt;
+        &lt;div class="col-md-4"&gt;
+            &lt;img src="{{captcha_src()}}" style="cursor: pointer" onclick="this.src='{{captcha_src()}}'+Math.random()"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<h3>4.重写AuthController 登录验证方法，并自定义提示信息：</h3>
+
+<p>修改 App\Http\Controllers\Auth\LoginController</p>
+<pre class="language-php">
+首先要引入如下代码：
+use Illuminate\Http\Request;
+
+重写validateLogin方法：
+
+在验证里面加入验证码的规则验证即可
+/**
+ * DESC: 重写 AuthenticatesUsers 登录验证方法，并自定义提示信息;
+ * 原验证方法 Illuminate\Foundation\Auth\AuthenticatesUsers
+ * @param Request $request
+ */
+protected function validateLogin(Request $request){
+    $this-&gt;validate($request, [
+        $this-&gt;username() =&gt; 'required|string',
+        'password' =&gt; 'required|string',
+        'captcha' =&gt; 'required|captcha',
+    ],[
+        'captcha.required' =&gt; '请填写验证码',
+        'captcha.captcha' =&gt; '验证码错误',
+    ]);
+}
+</pre>

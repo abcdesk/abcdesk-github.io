@@ -1,0 +1,63 @@
+<ol class="breadcrumb">
+    <li>Laravel</li>
+    <li class="active">Auth登录模块</li>
+</ol>
+<h1>Laravel <span>Auth登录模块</span> </h1>
+
+<h3>在 Laravel 中执行</h3>
+<pre class="language-php">
+$ git checkout -b auth #创建并切换到auth分支
+$ php artisan make:auth
+$ php artisan migrate
+</pre>
+<p>命令后，我们就能拥有一个完整的登录、注册认证系统。</p>
+<pre class="language-php">
+On branch auth
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   routes/web.php
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        app/Http/Controllers/HomeController.php
+        resources/views/auth/
+        resources/views/home.blade.php
+        resources/views/layouts/
+</pre>
+<p>
+视图
+resources/views/创建了下面的 6 个 Blade 视图文件。
+</p>
+<pre class="language-php">
+    home.blade.php。
+    layouts/app.blade.php。
+    auth/login.blade.php。
+    auth/register.blade.php。
+    auth/passwords/email.blade.php。
+    auth/passwords/reset.blade.php。
+</pre>
+<p>
+控制器
+app/Http/Controllers/创建了 1 个控制器
+</p>
+<pre class="language-php">
+  HomeController
+</pre>
+<p>
+路由
+在 routes/web.php 中注册了认证系统使用的路由。
+</p>
+<pre class="language-php">
+Auth::routes(); //调用vendor\laravel\framework\src\Illuminate\Routing\Router.php 文件中的 auth() 方法。
+
+Route::get('/home', 'HomeController@home')->('name');
+
+Auth::routes()也可以写成
+App::make('router')->auth();
+这里路由定义文件在
+/vendor/laravel/framework/src/Illuminate/Support/Facades
+
+static::$app->make('router')->auth();
+实例化路由router调用auth方法
+</pre>

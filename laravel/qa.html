@@ -6,16 +6,199 @@
 
 <div class="alert alert-danger" role="alert">
     <span class="glyphicon glyphicon-question-sign"></span>
-    ddd
+    访问首页出现如下提示：Please provide a valid cache path.
 </div>
 <h3 class="text-success">
     解决方案:
 </h3>
-<p></p>
+<p>
+1、确保storage目录下有如app，framework，logs三个目录。
+2、确保storage/framework目录下也有cache，sessions，views三个目录。
+</p>
 
 <div class="alert alert-danger" role="alert">
-    <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+    <span class="glyphicon glyphicon-question-sign"></span>
+    Dotenv values containing spaces must be surrounded by quotes.
 </div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>.env文件中的语法问题，中文或者空格必须加引号。</p>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    The only supported ciphers are AES-128-CBC and AES-256-CBC with the correct key lengths.
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<pre class="language-php">
+php artisan key:generate
+</pre>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    访问域名报 500 的错误
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>
+确保启用了 mod_rewrite 模块，这样 .htaccess 文件才能被服务器解析。
+/public/.htaccess
+</p>
+<pre class="language-php">
+Options +FollowSymLinks -Indexes
+RewriteEngine On
+
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+</pre>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    [BadMethodCallException]
+    This cache store does not support tagging.
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>
+把.env 里的 CACHE_DRIVER=file 改成 CACHE_DRIVER=array
+</p>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    laravel 5.5 composer update: Carbon 1 is deprecated, see how to migrate to Carbon 2.
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>在 composer.json 文件 require 部分，添加以下两行：</p>
+<pre class="language-php">
+"kylekatarnls/laravel-carbon-2": "^1.0.0",
+"nesbot/carbon": "2.16.3 as 1.34.0"
+</pre>
+<p>修改完之后，再次执行composer update就可以了。</p>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    Package phpunit/phpunit-mock-objects is abandoned, you should avoid using it. No replacement was suggested.
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>
+phpunit/phpunit-mock-objects 弃用。在composer.json中没有直接使用phpunit/phpunit-mock-objects组件，于是查找依赖它的组件：
+</p>
+<pre class="language-php">
+$ composer depends phpunit/phpunit-mock-objects
+</pre>
+<p>
+phpunit/phpunit  6.5.14  requires  phpunit/phpunit-mock-objects (^5.0.9)
+
+于是将phpunit/phpunit版本升级^3.0，编辑composer.json:
+</p>
+<pre class="language-php">
+    "require-dev": {
+        ...
+       "phpunit/phpunit": "^7.0",
+        ...
+    }
+</pre>
+<p>然后执行升级即可解决问题。</p>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    could not fetch https://api.github.com/graphql. Create a GitHub OAuth token to go over the API rate limit.
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>
+Head to https://github.com/settings/tokens/new?scopes=repo&description=Composer+on+Think+2020-01-11+0840
+to retrieve a token. It will be stored in "C:/Users/admin/AppData/Roaming/Composer/auth.json" for future use by Composer.
+只要粘贴上面的URL到浏览器中打开，然后生成一个token，然后复制这个新的token，在命令行中需要token的地方输入该token即可，该token会存储在用户家目录/.composer/auth.json中：
+</p>
+<pre class="language-">
+    "github-oauth": {
+        "github.com": "f491f330a3b3cca0563ede74d5484c7c4ce0c2fe"
+    },
+</pre>
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    laravel 中出现SQLSTATE[HY000] [2002] 如何解决?
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>
+1.检查数据库配置信息(端口号、用户名、密码等信息是否配置正确)
+2.尝试在本地用数据库软件能否连接
+  情况一:无法连接! 则修改mysql远程连接权限
+  情况二:数据库软件能连接,但权限也未开启,而导致本地连接线上数据库也无法访问!则按照情况一修改
+3.更快的将项目运行:
+  将数据库连接更改问本地127.0.0.1 
+</p>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    php artisan 时有乱码
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>
+这些类似于 [37;41m 的玩意是 Unix Console Color Codes，用于在控制台里显示颜色的代码
+然而你用的是不支持这种颜色代码的 cmd，自然就会这样。
+推荐使用 git bash 或者 babun 等终端替换 cmd。
+</p> 
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    在使用laravel5.1进行项目开发的时候，出现了“No supported encrypter found. The cipher and / or key length are invalid.”的报错信息，导致页面无法显示。
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>
+网上的绝大多数答案都是直接执行php artisan key:generate即可。有些人发现可行，也有些并没有解决。
+首先解决这个问题的第一步是要看config/app.php中的cipher值：
+1. 如果cipher的值是AES-256-CBC，那么通过生成新的key，然后再重启nginx和php-fpm就可以解决。这时生成的新key就会直接写入到.env文件内。
+2. 但如果cipher是其他值，例如rijndael-256，就需要安装和启动mcrypt模块。AES-256-CBC不需要的原因是因为AES-256-CBC算法对应的底层是用openssl实现的，而与mcrypt无关。rijndael-256则是依赖于mcrypt模块。
+
+检查mcrypt是否安装。方法可以是执行php -r "print_r(mcrypt_list_algorithms());"有无输出结果，还有一种是查看phpinfo()信息。
+如果已经安装了就启动mcrypt模块。方法是执行：php5enmod mcrypt
+最后重启nginx和php-fpm即可
+</p>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    Cannot find module 'laravel-elixir'
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>
+原因是在用npm安装扩展包的时候，有些module没有安装上，一些被墙，这里需要开启VPN重新安装npm扩展包：
+</p>
+<pre class="language-php">
+$ rm -rf node_modules/
+$ npm install
+$ gulp
+</pre>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
 
 <h3>参考</h3>
 <ol class="reference">

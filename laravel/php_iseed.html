@@ -1,0 +1,28 @@
+<ol class="breadcrumb">
+    <li>Laravel</li>
+    <li class="active">php artisan iseed</li>
+</ol>
+<h1>Laravel <span>php artisan iseed</span> </h1>
+
+<h3>Inverse seed generator (iSeed) </h3>
+<p>generate a new seed file based on data from the existing database table.</p>
+<pre class="language-php">
+$ composer require orangehill/iseed
+$ composer require orangehill/iseed:2.2 # Laravel 5.3.7 and below
+$ composer require orangehill/iseed:1.1 # Laravel 4
+
+$ php artisan iseed users
+# outputs /database/seeds/UsersTableSeeder.php
+
+$ php artisan iseed password_resets
+# outputs /database/seeds/PasswordResetsTableSeeder.php
+
+$ php artisan iseed users,password_resets 
+# outputs UsersTableSeeder.php PasswordResetsTableSeeder.php
+
+$ php artisan iseed password_resets --classnameprefix=Abc
+# outputs AbcPasswordResetsTableSeeder.php
+
+$ php artisan iseed users --classnamesuffix=Desk
+# outputs UsersTableDeskSeeder.php
+</pre>
