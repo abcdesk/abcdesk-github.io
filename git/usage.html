@@ -49,8 +49,7 @@ $ git checkout -- readme.txt #把readme.txt文件在工作区的修改全部撤�
 $ git diff HEAD -- readme.txt #查看工作区和版本库里面最新版本的区别
 </pre>
 
-<p>
-总结：
+<p>总结：
 场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
 场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。
 场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
@@ -74,16 +73,26 @@ $ git checkout -- test.txt #恢复误删的文件
     从来没有被添加到版本库就被删除的文件，是无法恢复的！
 </div>
 
-<h3>**删除未跟踪的文件及文件夹</h3>
+<h4>**删除未跟踪的文件及文件夹</h4>
 <pre class="language-sh">
 $ git clean -n  #查看有哪些文件将被删除
 $ git clean -f  #删除当前工作目录下的未跟踪文件，但不删除文件夹
 $ git clean -df #删除当前工作目录及子目录下未跟踪的文件及文件夹
 </pre>
 
-<h3>**删除Git本地仓库</h3>
+<h4>**删除Git本地仓库</h4>
 <pre class="language-sh">
 $ find . -name ".git" | xargs rm -Rf
+</pre>
+
+<h3>5.推送最新修改</h3>
+<pre class="language-sh">
+git push origin master
+</pre>
+
+<h3>6.获取远程分支</h3>
+<pre class="language-sh">
+git pull origin master
 </pre>
 
 <h3>参考</h3>

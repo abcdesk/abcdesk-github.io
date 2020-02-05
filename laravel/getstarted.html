@@ -8,17 +8,15 @@
 <pre class="language-php">
 composer create-project laravel/laravel test --prefer-dist "5.5.*"
 </pre>
-<p>
-修改.env文件，配置APP_NAME、APP_URL、DB_DATABASES
+<p>修改.env文件，配置APP_NAME、APP_URL、DB_DATABASES
 生成APP_KEY:
 </p>
 <pre class="language-php">
 php artisan key:generate
 </pre>
 
-<h3>2.安装开发必备插件</h3>
-<p>
-<a target="_blank" href="https://github.com/barryvdh/laravel-debugbar">Laravel Debugbar</a>是一个Laravel调试利器，强烈推荐。
+<h3>2.开发插件三件套</h3>
+<p><a target="_blank" href="https://github.com/barryvdh/laravel-debugbar">Laravel Debugbar</a>是一个Laravel调试利器，强烈推荐。
 <a target="_blank" href="https://github.com/barryvdh/laravel-ide-helper">Laravel IDE Helper</a>是一个极其好用的代码提示及补全工具，可以给编写代码带来极大的便利。
 <a target="_blank" href="https://github.com/mpociot/laravel-test-factory-helper">Laravel Test Factory Generator</a>是一个工厂辅助插件，自动生成工厂文件。
 </p>
@@ -60,11 +58,10 @@ $ php artisan test-factory-helper:generate
 <pre class="language-php">
 composer require overtrue/laravel-lang
 </pre>
-<p>
-    替换config/app.php：
-    Illuminate\Translation\TranslationServiceProvider::class,
-    替换为：
-    Overtrue\LaravelLang\TranslationServiceProvider::class,
+<p>替换config/app.php：
+Illuminate\Translation\TranslationServiceProvider::class,
+替换为：
+Overtrue\LaravelLang\TranslationServiceProvider::class,
 </p>
 <pre class="language-php">
 php artisan lang:publish zh-CN

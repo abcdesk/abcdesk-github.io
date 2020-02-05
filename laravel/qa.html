@@ -11,9 +11,8 @@
 <h3 class="text-success">
     解决方案:
 </h3>
-<p>
-1、确保storage目录下有如app，framework，logs三个目录。
-2、确保storage/framework目录下也有cache，sessions，views三个目录。
+<p>1.确保storage目录下有如app，framework，logs三个目录。
+2.确保storage/framework目录下也有cache，sessions，views三个目录。
 </p>
 
 <div class="alert alert-danger" role="alert">
@@ -43,8 +42,7 @@ php artisan key:generate
 <h3 class="text-success">
     解决方案:
 </h3>
-<p>
-确保启用了 mod_rewrite 模块，这样 .htaccess 文件才能被服务器解析。
+<p>确保启用了 mod_rewrite 模块，这样 .htaccess 文件才能被服务器解析。
 /public/.htaccess
 </p>
 <pre class="language-php">
@@ -67,9 +65,7 @@ RewriteRule ^ index.php [L]
 <h3 class="text-success">
     解决方案:
 </h3>
-<p>
-把.env 里的 CACHE_DRIVER=file 改成 CACHE_DRIVER=array
-</p>
+<p>把.env 里的 CACHE_DRIVER=file 改成 CACHE_DRIVER=array</p>
 
 <div class="alert alert-danger" role="alert">
     <span class="glyphicon glyphicon-question-sign"></span>
@@ -92,15 +88,12 @@ RewriteRule ^ index.php [L]
 <h3 class="text-success">
     解决方案:
 </h3>
-<p>
-phpunit/phpunit-mock-objects 弃用。在composer.json中没有直接使用phpunit/phpunit-mock-objects组件，于是查找依赖它的组件：
+<p>phpunit/phpunit-mock-objects 弃用。在composer.json中没有直接使用phpunit/phpunit-mock-objects组件，于是查找依赖它的组件：
 </p>
 <pre class="language-php">
 $ composer depends phpunit/phpunit-mock-objects
 </pre>
-<p>
-phpunit/phpunit  6.5.14  requires  phpunit/phpunit-mock-objects (^5.0.9)
-
+<p>phpunit/phpunit  6.5.14  requires  phpunit/phpunit-mock-objects (^5.0.9)
 于是将phpunit/phpunit版本升级^3.0，编辑composer.json:
 </p>
 <pre class="language-php">
@@ -119,8 +112,7 @@ phpunit/phpunit  6.5.14  requires  phpunit/phpunit-mock-objects (^5.0.9)
 <h3 class="text-success">
     解决方案:
 </h3>
-<p>
-Head to https://github.com/settings/tokens/new?scopes=repo&description=Composer+on+Think+2020-01-11+0840
+<p>Head to https://github.com/settings/tokens/new?scopes=repo&description=Composer+on+Think+2020-01-11+0840
 to retrieve a token. It will be stored in "C:/Users/admin/AppData/Roaming/Composer/auth.json" for future use by Composer.
 只要粘贴上面的URL到浏览器中打开，然后生成一个token，然后复制这个新的token，在命令行中需要token的地方输入该token即可，该token会存储在用户家目录/.composer/auth.json中：
 </p>
@@ -136,8 +128,7 @@ to retrieve a token. It will be stored in "C:/Users/admin/AppData/Roaming/Compos
 <h3 class="text-success">
     解决方案:
 </h3>
-<p>
-1.检查数据库配置信息(端口号、用户名、密码等信息是否配置正确)
+<p>1.检查数据库配置信息(端口号、用户名、密码等信息是否配置正确)
 2.尝试在本地用数据库软件能否连接
   情况一:无法连接! 则修改mysql远程连接权限
   情况二:数据库软件能连接,但权限也未开启,而导致本地连接线上数据库也无法访问!则按照情况一修改
@@ -152,8 +143,7 @@ to retrieve a token. It will be stored in "C:/Users/admin/AppData/Roaming/Compos
 <h3 class="text-success">
     解决方案:
 </h3>
-<p>
-这些类似于 [37;41m 的玩意是 Unix Console Color Codes，用于在控制台里显示颜色的代码
+<p>这些类似于 [37;41m 的玩意是 Unix Console Color Codes，用于在控制台里显示颜色的代码
 然而你用的是不支持这种颜色代码的 cmd，自然就会这样。
 推荐使用 git bash 或者 babun 等终端替换 cmd。
 </p> 
@@ -165,8 +155,7 @@ to retrieve a token. It will be stored in "C:/Users/admin/AppData/Roaming/Compos
 <h3 class="text-success">
     解决方案:
 </h3>
-<p>
-网上的绝大多数答案都是直接执行php artisan key:generate即可。有些人发现可行，也有些并没有解决。
+<p>网上的绝大多数答案都是直接执行php artisan key:generate即可。有些人发现可行，也有些并没有解决。
 首先解决这个问题的第一步是要看config/app.php中的cipher值：
 1. 如果cipher的值是AES-256-CBC，那么通过生成新的key，然后再重启nginx和php-fpm就可以解决。这时生成的新key就会直接写入到.env文件内。
 2. 但如果cipher是其他值，例如rijndael-256，就需要安装和启动mcrypt模块。AES-256-CBC不需要的原因是因为AES-256-CBC算法对应的底层是用openssl实现的，而与mcrypt无关。rijndael-256则是依赖于mcrypt模块。
@@ -183,8 +172,7 @@ to retrieve a token. It will be stored in "C:/Users/admin/AppData/Roaming/Compos
 <h3 class="text-success">
     解决方案:
 </h3>
-<p>
-原因是在用npm安装扩展包的时候，有些module没有安装上，一些被墙，这里需要开启VPN重新安装npm扩展包：
+<p>原因是在用npm安装扩展包的时候，有些module没有安装上，一些被墙，这里需要开启VPN重新安装npm扩展包：
 </p>
 <pre class="language-php">
 $ rm -rf node_modules/

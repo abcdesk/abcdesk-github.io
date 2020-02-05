@@ -5,8 +5,7 @@
 <h1>Laravel <span>php artisan migrate</span> </h1>
 
 <h3>Laravel数据库迁移与数据填充</h3>
-<p>
-数据库迁移实际上就是对数据库库表的结构变化做版本控制，Laravel对数据库的版本管理主要包括两部门:数据库结构的管理和数据的管理.
+<p>数据库迁移实际上就是对数据库库表的结构变化做版本控制，Laravel对数据库的版本管理主要包括两部门:数据库结构的管理和数据的管理.
 </p>
 
 <div class="alert alert-success" role="alert">
@@ -33,16 +32,14 @@ DB_PASSWORD=admin
 <pre class="language-php">
 $ php artisan migrate:install
 </pre>
-<p>
-这句话执行了以后,Laravel会在数据库新建一张migrations表,用这张表来记录我们每次对数据库做的更改
+<p>这句话执行了以后,Laravel会在数据库新建一张migrations表,用这张表来记录我们每次对数据库做的更改
 </p>
 
 <h3>4.创建迁移文件</h3>
 <pre class="language-php">
 $ php artisan make:migration create_goods_table --create=goods
 </pre>
-<p>
-这句话解释一下, make:migration 是迁移命令,create_goods_table 是迁移文件的文件名,--create=goods是该命令携带的参数,意思是创建一张表,并且表名是goods
+<p>这句话解释一下, make:migration 是迁移命令,create_goods_table 是迁移文件的文件名,--create=goods是该命令携带的参数,意思是创建一张表,并且表名是goods
 </p>
 
 <h3>5.编辑迁移文件</h3>
@@ -76,13 +73,11 @@ class CreateGoodsTable extends Migration
     }
 }
 </pre>
-<p>
-该文件包括两个函数,up和down,up方法是当执行迁移动作时要执行的方法,down方法是在进行数据库回滚的时候执行的方法
+<p>该文件包括两个函数,up和down,up方法是当执行迁移动作时要执行的方法,down方法是在进行数据库回滚的时候执行的方法
 </p>
 
 <h3>6.执行迁移</h3>
-<p>
-在执行迁移之前,还需要执行一个命令composer dump-autoload,这个命令的主要作用是让 composer 更新 autoload_classmap 的内容,包含到我们新建的文件
+<p>在执行迁移之前,还需要执行一个命令composer dump-autoload,这个命令的主要作用是让 composer 更新 autoload_classmap 的内容,包含到我们新建的文件
 </p>
 <pre class="language-php">
 $ composer dump-autoload
