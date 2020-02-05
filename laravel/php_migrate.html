@@ -167,8 +167,7 @@ $ php artisan db:seed --class=GoodsTableSeeder
 </pre>
 
 <h4>2.3 单次执行全部seeder</h4>
-<p>
-database\seeds目录下有个DatabaseSeeder.php文件,这个文件的作用就是对多个seeder进行管理的,在这里可以调用其他的字Seeder类,指定他们的执行顺序:
+<p>database\seeds目录下有个DatabaseSeeder.php文件,这个文件的作用就是对多个seeder进行管理的,在这里可以调用其他的字Seeder类,指定他们的执行顺序:
 </p>
 <pre class="language-php">
     public function run()
@@ -185,8 +184,7 @@ $ php artisan db:seed
 <pre class="language-php">
 $ php artisan migrate:refresh --seed
 </pre>
-<p>
-这个命令主要做了三件事:
+<p>这个命令主要做了三件事:
 1)执行所有的回滚,也就是migrations目录下所有文件的down方法,执行的时候按照时间顺序.
 2)所有回滚执行完毕后,执行所有的迁移,也就是按照时间顺序执行所有的up方法.
 3)执行所有的数据填充,也就是执行DatabaseSeeder 中的run方法.如果在run方法中没有调用其他的seeder,则这个seeder的run方法不会被执行.

@@ -1,0 +1,128 @@
+<ol class="breadcrumb">
+    <li>Laravel</li>
+    <li class="active">mail发送邮件</li>
+</ol>
+<h1>Laravel <span>mail发送邮件</span> </h1>
+
+<h3>Laravel 5.5 自带SMTP邮件组件实现发送邮件</h3>
+<h3>1.邮箱配置</h3>
+<p>需登录QQ邮箱开启POP3和SMTP服务，以及生成授权密码。</p>
+
+<h3>2.配置env</h3>
+<pre class="language-php">
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.qq.com
+MAIL_PORT=465
+MAIL_USERNAME=abcsmalldesk@qq.com
+MAIL_PASSWORD="填写授权码"
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=abcsmalldesk@qq.com
+MAIL_FROM_NAME="ABCDESK"
+</pre>
+
+<h3>3.开始编码</h3>
+<h4>3.1.生成控制器</h4>
+<pre class="language-php">
+php artisan make::controller MailController
+</pre>
+
+<h4>3.2.配置路由</h4>
+<pre class="language-php">
+Route::any('mail/send','MailController@send');
+</pre>
+
+<h4>3.3.编辑上面控制器，加入以下的逻辑处理：</h4>
+<pre class="language-php">
+use Mail;
+use Storage;
+
+class MailController extends Controller
+{
+    public function send() {
+        $view = 'mail'; //resouces/views/mail.blade.php
+        $content = '我发的第一份邮件';
+        $to = 'szhang7@qq.com';
+        $subject = 'Laravel测试邮件';
+        // Mail::send()的返回值为空，所以可以其他方法进行判断
+        Mail::send($view,['content'=>$content],function($message) use($to, $subject){
+            $message->to($to)->subject($subject);
+        });
+        // 返回的一个错误数组，利用此可以判断是否发送成功
+        // dd(Mail::failures());
+        if(count(Mail::failures()) < 1){
+            return redirect('/')->with('message','发送邮件成功，请查收！');
+            // return view('welcome')->with('message','发送邮件成功，请查收！');
+        }else{
+            return redirect('/')->with('message','发送邮件失败，请重试！');
+            // return view('welcome')->with('message','发送邮件失败，请重试！');
+        }
+    }
+
+    public function sendRaw() {
+        $content = '您好，我是ABC小课桌！';
+        $to = 'szhang7@qq.com';
+        $subject = 'Laravel纯文本测试邮件';
+        Mail::raw($content,function($message) use($to, $subject){
+            $message->to($to)->subject($subject);
+        });
+        if(count(Mail::failures()) < 1){
+            return redirect('/')->with('message','发送纯文本邮件成功，请查收！');
+        }else{
+            return redirect('/')->with('message','发送纯文本邮件失败，请重试！');
+        }
+    }
+
+    public function sendImage() {
+        $view = 'mail';
+        $image = Storage::get('images/Penguins.jpg'); //本地文件
+        //$image = 'http://www.baidu.com/sousuo/pic/sdaadar24545ssqq22.jpg';//网上图片
+        $to = 'szhang7@qq.com';
+        $subject = 'Laravel发送图片邮件';
+        // Mail::send()的返回值为空，所以可以其他方法进行判断
+        Mail::send($view,['image'=>$image],function($message) use($to, $subject){
+            $message->to($to)->subject($subject);
+        });
+        if(count(Mail::failures()) < 1){
+            return redirect('/')->with('message','发送图片邮件成功，请查收！');
+        }else{
+            return redirect('/')->with('message','发送图片邮件失败，请重试！');
+        }
+    }
+
+    public function sendFile() {
+        $view = 'mail';
+        $content = '我发的第一份邮件';
+        $to = 'szhang7@qq.com';
+        $subject = 'Laravel发送附件邮件';
+        // Mail::send()的返回值为空，所以可以其他方法进行判断
+        Mail::send($view,['content'=>$content],function($message) use($to, $subject){
+            $message->to($to)->subject($subject);
+            $attachment = storage_path('files/test.xlsx');
+             // 在邮件中上传附件 
+            $message->attach($attachment,['as'=>'中文文档.xlsx']); 
+        });
+        if(count(Mail::failures()) < 1){
+            return redirect('/')->with('message','发送附件邮件成功，请查收！');
+        }else{
+            return redirect('/')->with('message','发送附件邮件失败，请重试！');
+        }
+    }
+}
+</pre>
+
+<h4>3.4.创建resources/mail.blade.php模板文件。</h4>
+<pre class="language-php">
+    &lt;h1&gt;Laravel测试邮件&lt;/h1&gt;
+    @isset($content)
+        {{$content}}
+    @endisset
+    @isset($image)
+        &lt;img src="{{$message-&gt;embedData($image,'Penguins.jpg')}}"&gt;
+    @endisset
+</pre>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://blog.csdn.net/woqianduo/article/details/81024244">https://blog.csdn.net/woqianduo/article/details/81024244</a></li>
+    <li><a target="_blank" href="https://blog.csdn.net/xiaobinqt/article/details/87778830">https://blog.csdn.net/xiaobinqt/article/details/87778830</a></li>
+</ol>

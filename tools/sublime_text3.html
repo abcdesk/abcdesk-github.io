@@ -1,0 +1,162 @@
+<ol class="breadcrumb">
+    <li>Tool</li>
+    <li class="active">Sublime Text 3</li>
+</ol>
+<h1>Tool <span>Sublime Text 3</span> </h1>
+<h3>1.安装Sublime Text 3</h3>
+<p><a target="_blank" href="https://download.sublimetext.com/Sublime%20Text%20Build%203114%20x64.zip">下载Sublime Text Build 3114</a>
+解压到指定目录即可完成安装。
+</p>
+<p class="lead">基本配置，单击菜单栏Preferences-&gt;Setting-User</p>
+<pre class="language-st">
+{
+    "default_line_ending": "unix",
+    "expand_tabs_on_save": true,
+    "font_size": 16,
+    "ignored_packages":
+    [
+        "Vintage"
+    ],
+    "show_encoding": true,
+    "show_line_endings": true,
+    "tab_size": 4,
+    "translate_tabs_to_spaces": true,
+    "update_check": false,
+    "word_wrap": false
+}
+</pre>
+<h3>2.安装Package Control</h3>
+<p>The simplest method of installation is through the Sublime Text console. The console is accessed via the ctrl+` shortcut or the View > Show Console menu. Once open, paste the appropriate Python code for your version of Sublime Text into the console.
+</p>
+<pre class="language-st">
+import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+</pre>
+<p>使用Ctrl+Shift+P打开命令行模式，在里面输入Install Package即可搜索需要的Package。</p>
+<h3>3.安装插件</h3>
+<table class="table table-striped table-bordered table-hover">
+    <caption class="text-center"><h3>常用插件</h3></caption>
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>插件名称</th>
+            <th>功能</th>
+            <th>快捷键</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Emmet</td>
+            <td>生成HTML5标准的HTML结构</td>
+            <td>Ctrl + E / Tab</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>HTML-CSS-JS Prettify</td>
+            <td>格式化HTML-CSS-JS代码</td>
+            <td>Ctrl + Shift + H</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Sidebar Enhancements</td>
+            <td>侧边栏增强</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>Bracket Highlighter</td>
+            <td>括号高亮显示</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>ConvertToUTF8</td>
+            <td>解决中文乱码</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>Insert Nums</td>
+            <td>生成序号</td>
+            <td>Ctrl + Alt + N</td>
+        </tr>
+        <tr>
+            <th scope="row">7</th>
+            <td>phpfmt</td>
+            <td>格式化php代码</td>
+            <td>Ctrl + F11</td>
+        </tr>
+        <tr>
+            <th scope="row">8</th>
+            <td>Diffy</td>
+            <td>对比两个文件</td>
+            <td>CTRL + k -> CTRL + d</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Sublime常用快捷键</h3>
+<p class="lead">多行编辑快捷键</p>
+<pre class="language-st">
+鼠标选中多行，按下 Ctrl+Shift+L或Command+Shift+L 即可同时编辑这些行；
+鼠标选中文本，反复按 Ctrl+D或Command+D 即可继续向下同时选中下一个相同的文本进行同时编辑；
+鼠标选中文本，按下 Alt+F3 或 Ctrl+Command+G 即可一次性选择全部的相同文本进行同时编辑；
+Shift+鼠标右键或Option+鼠标左键或鼠标中键可以用鼠标进行竖向多行选择；
+Ctrl+鼠标左键或Command+鼠标左键可以手动选择同时要编辑的多处文本。
+</pre>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    sublime text无法安装插件
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>Preferences-&gt;Package Settings-&gt;Package Control-&gt;Settings - User</p>
+<pre class="language-st">
+"channels":
+[
+"http://static.bolin.site/channel_v3.json",
+//"https://packagecontrol.io/channel_v3.json",
+//"https://web.archive.org/web/20160103232808/https://packagecontrol.io/channel_v3.json",
+//"https://gist.githubusercontent.com/nick1m/660ed046a096dae0b0ab/raw/e6e9e23a0bb48b44537f61025fbc359f8d586eb4/channel_v3.json"
+],
+</pre>
+
+<h3>sublime Text 3 官方版 3114 注册码</h3>
+<p>输入注册码，单击菜单栏【Help】→【Enter license】</p>
+<pre class="language-st">
+sublime Text 3 官方版 3114 注册码
+
+—– BEGIN LICENSE —–
+Anthony Sansone
+Single User License
+EA7E-878563
+28B9A648 42B99D8A F2E3E9E0 16DE076E
+E218B3DC F3606379 C33C1526 E8B58964
+B2CB3F63 BDF901BE D31424D2 082891B5
+F7058694 55FA46D8 EFC11878 0868F093
+B17CAFE7 63A78881 86B78E38 0F146238
+BAE22DBB D4EC71A1 0EC2E701 C7F9C648
+5CF29CA3 1CB14285 19A46991 E9A98676
+14FD4777 2D8A0AB6 A444EE0D CA009B54
+—— END LICENSE ——
+ 
+—– BEGIN LICENSE —–
+Alexey Plutalov
+Single User License
+EA7E-860776
+3DC19CC1 134CDF23 504DC871 2DE5CE55
+585DC8A6 253BB0D9 637C87A2 D8D0BA85
+AAE574AD BA7D6DA9 2B9773F2 324C5DEF
+17830A4E FBCF9D1D 182406E9 F883EA87
+E585BBA1 2538C270 E2E857C2 194283CA
+7234FF9E D0392F93 1D16E021 F1914917
+63909E12 203C0169 3F08FFC8 86D06EA8
+73DDAEF0 AC559F30 A6A67947 B60104C6
+—— END LICENSE ——
+</pre>
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https">https</a></li>
+</ol>
