@@ -46,8 +46,21 @@ php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
 <pre class="language-php">
 $ php artisan ide-helper:generate   #为 Facades 生成注释
 $ php artisan ide-helper:models     #为数据模型生成注释
+$ php artisan ide-helper:meta       #生成 .phpStorm.meta.php
 $ php artisan test-factory-helper:generate
 #database/factory/ModelFactory.php模型工厂文件会自动生成各个模型对应字段数据
+</pre>
+
+<h4>自动运行 generate</h4>
+<p>想在依赖包更新是自动更新注释，可以在 composer.json 文件中做如下配置：</p>
+<pre class="language-php">
+"scripts":{
+    "post-update-cmd": [
+        "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+        "php artisan ide-helper:generate",
+        "php artisan ide-helper:models"
+    ]
+}
 </pre>
 <div class="alert alert-success" role="alert">
     <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
@@ -81,4 +94,5 @@ php artisan lang:publish zh-CN
     <li><a target="_blank" href="https://learnku.com/docs/laravel/5.5">https://learnku.com/docs/laravel/5.5</a></li>
     <li><a target="_blank" href="https://pecl.php.net/packages.php">https://pecl.php.net/packages.php</a></li>
     <li><a target="_blank" href="https://windows.php.net/downloads/pecl/releases/">https://windows.php.net/downloads/pecl/releases/</a></li>
+    <li><a target="_blank" href="https://www.jianshu.com/p/41d2c126e56b">https://www.jianshu.com/p/41d2c126e56b</a></li>
 </ol>

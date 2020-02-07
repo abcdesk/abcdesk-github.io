@@ -7,7 +7,7 @@
 <p><a target="_blank" href="https://download.sublimetext.com/Sublime%20Text%20Build%203114%20x64.zip">下载Sublime Text Build 3114</a>
 解压到指定目录即可完成安装。
 </p>
-<p class="lead">基本配置，单击菜单栏Preferences-&gt;Setting-User</p>
+<p class="lead">基本配置，单击菜单栏<kbd>Preferences</kbd>→<kbd>Setting - User</kbd></p>
 <pre class="language-st">
 {
     "default_line_ending": "unix",
@@ -32,12 +32,11 @@
 import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
 </pre>
 <p>使用Ctrl+Shift+P打开命令行模式，在里面输入Install Package即可搜索需要的Package。</p>
-<h3>3.安装插件</h3>
+<h3>3.常用插件</h3>
 <table class="table table-striped table-bordered table-hover">
-    <caption class="text-center"><h3>常用插件</h3></caption>
     <thead>
         <tr>
-            <th>序号</th>
+            <th class="text-center">序号</th>
             <th>插件名称</th>
             <th>功能</th>
             <th>快捷键</th>
@@ -45,65 +44,168 @@ import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe0
     </thead>
     <tbody>
         <tr>
-            <th scope="row">1</th>
+            <td class="text-center">1</td>
             <td>Emmet</td>
             <td>生成HTML5标准的HTML结构</td>
-            <td>Ctrl + E / Tab</td>
+            <th><code>Ctrl + E / Tab</code></th>
         </tr>
         <tr>
-            <th scope="row">2</th>
+            <td class="text-center">2</td>
             <td>HTML-CSS-JS Prettify</td>
             <td>格式化HTML-CSS-JS代码</td>
-            <td>Ctrl + Shift + H</td>
+            <th><code>Ctrl + Shift + H</code></th>
         </tr>
         <tr>
-            <th scope="row">3</th>
+            <td class="text-center">3</td>
             <td>Sidebar Enhancements</td>
             <td>侧边栏增强</td>
-            <td></td>
+            <th></th>
         </tr>
         <tr>
-            <th scope="row">4</th>
+            <td class="text-center">4</td>
             <td>Bracket Highlighter</td>
             <td>括号高亮显示</td>
-            <td></td>
+            <th></th>
         </tr>
         <tr>
-            <th scope="row">5</th>
+            <td class="text-center">5</td>
             <td>ConvertToUTF8</td>
             <td>解决中文乱码</td>
-            <td></td>
+            <th></th>
         </tr>
         <tr>
-            <th scope="row">6</th>
+            <td class="text-center">6</td>
             <td>Insert Nums</td>
             <td>生成序号</td>
-            <td>Ctrl + Alt + N</td>
+            <th><code>Ctrl + Alt + N</code></th>
         </tr>
         <tr>
-            <th scope="row">7</th>
+            <td class="text-center">7</td>
             <td>phpfmt</td>
             <td>格式化php代码</td>
-            <td>Ctrl + F11</td>
+            <th><code>Ctrl + F11</code></th>
         </tr>
         <tr>
-            <th scope="row">8</th>
+            <td class="text-center">8</td>
             <td>Diffy</td>
             <td>对比两个文件</td>
-            <td>CTRL + k -> CTRL + d</td>
+            <th><code>CTRL + K + D</code></th>
         </tr>
     </tbody>
 </table>
 
 <h3>Sublime常用快捷键</h3>
-<p class="lead">多行编辑快捷键</p>
-<pre class="language-st">
-鼠标选中多行，按下 Ctrl+Shift+L或Command+Shift+L 即可同时编辑这些行；
-鼠标选中文本，反复按 Ctrl+D或Command+D 即可继续向下同时选中下一个相同的文本进行同时编辑；
-鼠标选中文本，按下 Alt+F3 或 Ctrl+Command+G 即可一次性选择全部的相同文本进行同时编辑；
-Shift+鼠标右键或Option+鼠标左键或鼠标中键可以用鼠标进行竖向多行选择；
-Ctrl+鼠标左键或Command+鼠标左键可以手动选择同时要编辑的多处文本。
-</pre>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">序号</th>
+            <th>快捷键</th>
+            <th>功能</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center">1</td>
+            <th><code>Ctrl + Shift + P</code></th>
+            <td>打开命令行模式</td>
+        </tr>
+        <tr>
+            <td class="text-center">2</td>
+            <th><code>Ctrl + D</code></th>
+            <td>选中光标所占的文本，继续操作则会选中下一个相同的文本。</td>
+        </tr>
+        <tr>
+            <td class="text-center">3</td>
+            <th><code>Alt + F3</code></th>
+            <td>一次性选择全部的相同文本。</td>
+        </tr>
+        <tr>
+            <td class="text-center">4</td>
+            <th><code>Ctrl + L</code></th>
+            <td>选中整行，继续操作则继续选择下一行。</td>
+        </tr>
+        <tr>
+            <td class="text-center">5</td>
+            <th><code>Ctrl + Shift + L</code></th>
+            <td>先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</td>
+        </tr>
+        <tr>
+            <td class="text-center">6</td>
+            <th><code>Ctrl + Enter</code></th>
+            <td>在下一行插入新行。</td>
+        </tr>
+        <tr>
+            <td class="text-center">7</td>
+            <th><code>Ctrl + Shift + Enter</code></th>
+            <td>在上一行插入新行。</td>
+        </tr>
+        <tr>
+            <td class="text-center">8</td>
+            <th><code>Ctrl + M</code></th>
+            <td>光标移动至括号内结束或开始的位置。</td>
+        </tr>
+        <tr>
+            <td class="text-center">9</td>
+            <th><code>Ctrl + J</code></th>
+            <td>合并选中的多行代码为一行。</td>
+        </tr>
+        <tr>
+            <td class="text-center">10</td>
+            <th><code>Ctrl + Shift + D</code></th>
+            <td>复制光标所在整行，插入到下一行。</td>
+        </tr>
+        <tr>
+            <td class="text-center">11</td>
+            <th><code>Ctrl + K + K</code></th>
+            <td>从光标处开始删除代码至行尾。</td>
+        </tr>
+        <tr>
+            <td class="text-center">12</td>
+            <th><code>Ctrl + Shift + K</code></th>
+            <td>删除整行。</td>
+        </tr>
+        <tr>
+            <td class="text-center">13</td>
+            <th><code>Tab</code></th>
+            <td>向右缩进。</td>
+        </tr>
+        <tr>
+            <td class="text-center">14</td>
+            <th><code>Shift + Tab</code></th>
+            <td>向左缩进。</td>
+        </tr>
+        <tr>
+            <td class="text-center">15</td>
+            <th><code>Ctrl + K + U</code></th>
+            <td>转换大写。</td>
+        </tr>
+        <tr>
+            <td class="text-center">16</td>
+            <th><code>Ctrl + K + L</code></th>
+            <td>转换小写。</td>
+        </tr>
+        <tr>
+            <td class="text-center">17</td>
+            <th><code>Ctrl + /</code></th>
+            <td>注释单行。</td>
+        </tr>
+        <tr>
+            <td class="text-center">18</td>
+            <th><code>Ctrl + Shift + /</code></th>
+            <td>注释多行。</td>
+        </tr>
+        <tr>
+            <td class="text-center">19</td>
+            <th><code>F11</code></th>
+            <td>全屏模式</td>
+        </tr>
+        <tr>
+            <td class="text-center">20</td>
+            <th><code>Shift + F11</code></th>
+            <td>免打扰模式</td>
+        </tr>
+    </tbody>
+</table>
 
 <div class="alert alert-danger" role="alert">
     <span class="glyphicon glyphicon-question-sign"></span>
@@ -124,7 +226,7 @@ Ctrl+鼠标左键或Command+鼠标左键可以手动选择同时要编辑的多�
 </pre>
 
 <h3>sublime Text 3 官方版 3114 注册码</h3>
-<p>输入注册码，单击菜单栏【Help】→【Enter license】</p>
+<p>输入注册码，单击菜单栏<kbd>Help</kbd>→<kbd>Enter license</kbd></p>
 <pre class="language-st">
 sublime Text 3 官方版 3114 注册码
 

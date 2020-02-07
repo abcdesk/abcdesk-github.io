@@ -1,0 +1,33 @@
+<ol class="breadcrumb">
+    <li>Laravel</li>
+    <li class="active">Code编码最佳实践</li>
+</ol>
+<h1>Laravel <span>Code编码最佳实践</span> </h1>
+<h3>这里有一些在 Laravel 开发中值得记住的简单建议：</h3>
+<ul>
+    <li>最大限度的使用你的 <code>.env</code> 文件；</li>
+    <li>不要破坏框架核心，不要编辑 <code>vendor</code> 文件夹中的文件，你可以选择继承相关函数来实现。扩展优于修改。</li>
+    <li>不要直接通过 <code>PHPMyAdmin</code> 或者其他数据库控制台创建表和索引。 请使用数据库迁移表来创建表、增加 \ 修改字段，然后提交到 <code>Git</code> 仓库。</li>
+    <li>测试的时候不要直接向数据库插入假值。 创建填充文件（Seeder 文件）来填充数据库。</li>
+    <li>更倾向于使用 <code>Artisan</code> 脚手架而不是手动创建东西，这会极大的提升你的生产力。</li>
+    <li>确保使用一些 <code>artisan</code> 命令来提升性能:
+        <pre class="language-php">
+php artisan route:cache         // 路由缓存
+php artisan config:cache        // 配置信息缓存
+php artisan optimize --- force  // 类映射加载优化
+    </pre>
+    </li>
+    <li>尽量不要将闭包写在 routes.php 文件中，而是将它们移到你的控制器中。</li>
+    <li>创建自定义的类和函数时要特别注意命名规范，尤其是对于模型。 Laravel 的工作原理是这样的，对于一个命名为 users 的表， Laravel 希望该表的模型被命名为 User 。</li>
+    <li>尽量为每一个请求创建 Validation Requests&nbsp;。</li>
+    <li>尽管 PHP 有一个能够帮助你读取、写入、比较或者计算日期的 DateTime 类，但还是建议你使用 Carbon 扩展来处理日期。</li>
+    <li>始终保持使用最新的版本， Laravel 更新得很快，所以跟上节奏。</li>
+    <li>为了更好的性能，始终使用 gulp、 Elixir 来将你的脚本和 sass 文件编译为压缩版， Laravel 已经为你做好了底层的工作。</li>
+</ul>
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://learnku.com/laravel/t/24381">https://learnku.com/laravel/t/24381</a></li>
+</ol>
+<script>
+$("#content>ul>li").css({"padding":"10px 5px","color":"#7d8688"});
+</script>
