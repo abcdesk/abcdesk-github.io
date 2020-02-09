@@ -1,0 +1,29 @@
+<ol class="breadcrumb">
+    <li>Git</li>
+    <li class="active">Tag标签</li>
+</ol>
+<h1>Git <span>Tag标签</span> </h1>
+
+<h3>标签</h3>
+<pre class="language-sh">
+$ git tag v1.0  #创建标签v1.0
+
+$ git log --pretty=oneline --abbrev-commit
+$ git tag v0.9 f52c633  #对commit id是f52c633打上标签v0.9
+
+$ git tag -a &lt;tagname&gt; -m "blablabla..."  #可以指定标签信息
+
+$ git tag               #显示所有的tag
+$ git tag -l 'v1.0.*'   #查看某个版本系列的tag
+$ git show v1.0         #查看标签的详情，可以看到你commit的内容
+
+$ git push origin v1.0  #推送标签
+$ git tag -d v1.0       #删除本地
+$ git push origin :refs/tags/v1.0 #删除远程
+</pre>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://www.jianshu.com/p/50c1b2433774">https://www.jianshu.com/p/50c1b2433774</a></li>
+    <li><a target="_blank" href="https://www.liaoxuefeng.com/wiki/896043488029600/900788941487552">https://www.liaoxuefeng.com/wiki/896043488029600/900788941487552</a></li>
+</ol>

@@ -1,0 +1,38 @@
+<ol class="breadcrumb">
+    <li>jQuery</li>
+    <li class="active">操作HTML</li>
+</ol>
+<h1>jQuery <span>操作HTML</span> </h1>
+
+<h3>attr获取a标签的href</h3>
+<pre class="language-html">
+&lt;a href="aaaaaa" id='hh'&gt;&lt;/a&gt;
+
+&lt;script&gt;
+    var p = $('#hh').attr('href');
+    console.log(p);
+&lt;/script&gt;
+</pre>
+
+<h3>addClass向被选元素添加一个或多个类</h3>
+<pre class="language-html">
+&lt;script&gt;
+    $("th,td").addClass("text-center");
+&lt;/script&gt;
+</pre>
+
+<h3>toggleClass对被选元素进行添加/删除类的切换操作</h3>
+<pre class="language-html">
+&lt;script&gt;
+    $('[data-toggle="offcanvas"]').click(function() {
+        $('.row-offcanvas').toggleClass('active')
+    });
+&lt;/script&gt;
+</pre>
+
+<h3>css设置CSS属性</h3>
+<pre class="language-html">
+&lt;script&gt;
+    $("#content>ul>li").css({"padding":"10px 5px","color":"#7d8688"});
+&lt;/script&gt;
+</pre>

@@ -1,8 +1,8 @@
 <ol class="breadcrumb">
-    <li>Laravel</li>
-    <li class="active">PHP</li>
+    <li>PHP</li>
+    <li class="active">Datetime日期时间函数</li>
 </ol>
-<h1>Laravel <span>PHP</span> </h1>
+<h1>PHP <span>Datetime日期时间函数</span> </h1>
 
 <h3>设置中国时区</h3>
 <pre class="language-php">
@@ -37,6 +37,16 @@ echo strtotime("+1 week 2 days 4 hours 2 seconds"), "\n";
 echo strtotime("next Thursday"), "\n";
 echo strtotime("last Monday"), "\n";
 </pre>
+
+<h3>计算程序运行时间</h3>
+<pre class="language-php">
+$start_time = microtime(true);
+...
+$end_time = microtime(true);
+$run_time = round(($end_time - $start_time)*1000);
+echo $run_time . "ms" . PHP_EOL;
+</pre>
+
 <h3>参考</h3>
 <ol class="reference">
     <li><a target="_blank" href="https">https</a></li>
