@@ -26,3 +26,11 @@
     <li><a target="_blank" href="https://www.w3cschool.cn/html/">https://www.w3cschool.cn/html/</a></li>
     <li><a target="_blank" href="https://www.runoob.com/html/html-tutorial.html">https://www.runoob.com/html/html-tutorial.html</a></li>
 </ol>
+<script>
+    var url = window.location.protocol+"//"+window.location.host;
+    console.log(url);
+    var str=window.location.href;
+    str =str.substring(str.lastIndexOf("/")+1);
+    console.log("href:"+str);
+    location.href = url+"/html/getstart";
+</script>

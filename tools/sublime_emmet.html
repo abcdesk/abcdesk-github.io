@@ -4,148 +4,122 @@
 </ol>
 <h1>Tool <span>Emmet插件的使用</span> </h1>
 
-<p>新建一个HTML文档，输入“!”或“html:5”，然后按Tab键</p>
+<h3>生成html5模板</h3>
+<p>新建一个HTML文档，输入“!”或“html:5”，然后按Tab键(或Ctrl+E)</p>
 
-<h3>1.生成后代元素：<code>&gt;</code> </h3>
-<p>大于号表示后面要生成的内容是当前标签的后代</p>
-<pre class="language-st prettyprint">
-nav&gt;ul&gt;li
-Press Tab to generate code:
-&lt;nav&gt;
-    &lt;ul&gt;
-        &lt;li&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/nav&gt;
-</pre>
+<h3>嵌套运算符(Nesting operators)</h3>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">运算符</th>
+            <th>名称</th>
+            <th>作用</th>
+            <th>举例</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th><code>&gt;</code></th>
+            <td>子代操作符(Child)</td>
+            <td>生成后代元素</td>
+            <td>nav&gt;ul&gt;li</td>
+        </tr>
+        <tr>
+            <th><code>+</code></th>
+            <td>兄弟操作符(Sibling)</td>
+            <td>生成兄弟元素</td>
+            <td>div+p+bq</td>
+        </tr>
+        <tr>
+            <th><code>^</code></th>
+            <td>返回上级操作符(Climb-up)</td>
+            <td>生成上级元素</td>
+            <td>div+div&gt;p&gt;span+em^bq</td>
+        </tr>
+        <tr>
+            <th><code>*</code></th>
+            <td>乘法操作符(Multiplication)</td>
+            <td>重复生成多份</td>
+            <td>ul&gt;li*5</td>
+        </tr>
+        <tr>
+            <th><code>()</code></th>
+            <td>分组操作符(Grouping)</td>
+            <td>生成分组</td>
+            <td>(header&gt;h1+div&gt;p)+(main&gt;p)+(footer&gt;ul&gt;li*3)
+</td>
+        </tr>
+    </tbody>
+</table>
 
-<h3>2.生成兄弟元素：<code>+</code> </h3>
-<p>加号表示后面的元素和前面的元素是兄弟元素</p>
-<pre class="language-st prettyprint">
-div+p+bq
-Press Tab to generate code:
-&lt;div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;blockquote&gt;&lt;/blockquote&gt;
-</pre>
-
-<h3>3.生成上级元素：<code>^</code> </h3>
-<p>表示^后面的元素与^前面的元素的父元素是平级，即兄弟元素。一个^表示提升一个层级，两个提升两级
-</p>
-<pre class="language-st prettyprint">
-div+div&gt;p&gt;span+em^bq
-Press Tab to generate code:
-&lt;div&gt;&lt;/div&gt;
-&lt;div&gt;
-    &lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;em&gt;&lt;/em&gt;&lt;/p&gt;
-    &lt;blockquote&gt;&lt;/blockquote&gt;
-&lt;/div&gt;
-</pre>
-
-<h3>4.生成类名：<code>.</code> </h3>
-<p>Emmet 默认的标签为 div，如果我们不给出标签名称的话，默认就生成 div 标签。Emmet会根据父标签进行判定。
-比如在&lt;ul&gt;中输入.item，就会生成&lt;li class="item"&gt;&lt;/li&gt;。 
-</p>
-<pre class="language-st">
-.container
-Press Tab to generate code:
-&lt;div class="container"&gt;&lt;/div&gt;
-
-.container.wrapper.more  #生成多个类名可连续写
-Press Tab to generate code:
-&lt;div class="container wrapper more"&gt;&lt;/div&gt;
-</pre>
-
-<h3>5.生成ID：<code>#</code> </h3>
-<pre class="language-st">
-#container
-Press Tab to generate code:
-&lt;div id="container"&gt;&lt;/div&gt;
-</pre>
-
-<h3>6.生成分组：<code>()</code> </h3>
-<p>用括号进行分组，这样可以更加明确要生成的结构，特别是层次关系</p>
-<pre class="language-st">
-(.foo&gt;h1)+(.bar&gt;h2)
-Press Tab to generate code:
-&lt;div class="foo"&gt;
-    &lt;h1&gt;&lt;/h1&gt;
-&lt;/div&gt;
-&lt;div class="bar"&gt;
-    &lt;h2&gt;&lt;/h2&gt;
-&lt;/div&gt;
-</pre>
-
-<h3>7.重复生成多份：<code>*</code> </h3>
-<p>*号后面是想重复生成的份数</p>
-<pre class="language-st">
-ul&gt;li*5
-Press Tab to generate code:
-&lt;ul&gt;
-    &lt;li&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-
-<h3>8.对生成内容依次编号：<code>$</code> </h3>
-<p>$就表示一位数字，只出现一个的话，就从1开始。如果出现多个，就从0开始。
-如果我想生成三位数的序号，那么要写三个$
-</p>
-<pre class="language-st">
-ul&gt;li.item$*5
-Press Tab to generate code:
-&lt;ul&gt;
-    &lt;li class="item1"&gt;&lt;/li&gt;
-    &lt;li class="item2"&gt;&lt;/li&gt;
-    &lt;li class="item3"&gt;&lt;/li&gt;
-    &lt;li class="item4"&gt;&lt;/li&gt;
-    &lt;li class="item5"&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-<p>可以在 $ 后面增加 @- 来实现倒序排列：</p>
-<pre class="language-st">
-ul&gt;li.item$@-*5
-Press Tab to generate code:
-&lt;ul&gt;
-    &lt;li class="item5"&gt;&lt;/li&gt;
-    &lt;li class="item4"&gt;&lt;/li&gt;
-    &lt;li class="item3"&gt;&lt;/li&gt;
-    &lt;li class="item2"&gt;&lt;/li&gt;
-    &lt;li class="item1"&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-<p>同样，我们也可以使用 @N 指定开始的序号</p>
-<pre class="language-st">
-ul&gt;li.item$@3*5
-Press Tab to generate code:
-&lt;ul&gt;
-    &lt;li class="item3"&gt;&lt;/li&gt;
-    &lt;li class="item4"&gt;&lt;/li&gt;
-    &lt;li class="item5"&gt;&lt;/li&gt;
-    &lt;li class="item6"&gt;&lt;/li&gt;
-    &lt;li class="item7"&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-
-<h3>9.生成自定义属性：<code>[attr]</code> </h3>
-<p>中括号里面的内容是你想添加的属性</p>
-<pre class="language-st">
-td[rowspan=2 colspan=3 title]
-Press Tab to generate code:
-&lt;td rowspan="2" colspan="3" title=""&gt;&lt;/td&gt;
-</pre>
-
-<h3>10.生成文本内容：<code>{}</code> </h3>
-<p>大括号里面是你想添加的文本内容</p>
-<pre class="language-st">
-a{click me}
-Press Tab to generate code:
-&lt;a href=""&gt;click me&lt;/a&gt;
-</pre>
+<h3>属性操作符(Attribute Operators)</h3>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>操作符</th>
+            <th>名称</th>
+            <th>作用</th>
+            <th>举例</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th><code>#</code></th>
+            <td>ID</td>
+            <td>生成ID</td>
+            <td>#container或div#container</td>
+        </tr>
+        <tr>
+            <th><code>.</code></th>
+            <td>CLASS</td>
+            <td>生成类名</td>
+            <td>.container或div.container</td>
+        </tr>
+        <tr>
+            <th><code>[]</code></th>
+            <td>自定义属性(Custom attributes)</td>
+            <td>生成自定义属性</td>
+            <td>td[rowspan=2 colspan=3 title="test"]</td>
+        </tr>
+        <tr>
+            <th><code>$</code></th>
+            <td>项目编号(Item numbering)</td>
+            <td>对生成内容依次编号</td>
+            <td>ul&gt;li.item$*5</td>
+        </tr>
+        <tr>
+            <th><code>@-</code></th>
+            <td>@-修饰符(Modifier)</td>
+            <td>更改编号顺序(倒序)</td>
+            <td>ul&gt;li.item$@-*5</td>
+        </tr>
+        <tr>
+            <th><code>@N</code></th>
+            <td>@N修饰符(Modifier)</td>
+            <td>指定开始的序号</td>
+            <td>ul&gt;li.item$@3*5</td>
+        </tr>
+        <tr>
+            <th><code>{}</code></th>
+            <td>文本操作符(Text)</td>
+            <td>生成文本内容</td>
+            <td>a{click me}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+    <p>1.可以在文本中的任意位置键入和展开缩写
+2.缩写中不能包含空格，因为空格是一个停止符号，Emmet停止缩写解析。如下：
+(header&nbsp;&gt;&nbsp;ul.nav&nbsp;&gt;&nbsp;li*5)&nbsp;+&nbsp;footer
+    </p>
+</div>
 
 <h3>参考</h3>
 <ol class="reference">
-    <li><a target="_blank" href="https">https</a></li>
+    <li><a target="_blank" href="https://docs.emmet.io/abbreviations/syntax/">https://docs.emmet.io/abbreviations/syntax/</a></li>
+    <li><a target="_blank" href="https://www.jianshu.com/p/9e2f55776bc0">https://www.jianshu.com/p/9e2f55776bc0</a></li>
 </ol>
+<script>
+    $("tbody>tr>th").addClass("text-center");
+</script>

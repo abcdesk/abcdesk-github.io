@@ -1,8 +1,8 @@
 <ol class="breadcrumb">
     <li>Git</li>
-    <li class="active">问题及解决方案</li>
+    <li class="active">基本用法</li>
 </ol>
-<h1>Git <span>问题及解决方案</span> </h1>
+<h1>Git <span>基本用法</span> </h1>
 
 <h3>1.创建版本库(repository)</h3>
 <pre class="language-sh">
@@ -46,6 +46,8 @@ $ git restore --staged * #撤销add操作
 $ git reset HEAD         #撤销add操作
 $ git checkout -- readme.txt #把readme.txt文件在工作区的修改全部撤销
 
+$ git reset --soft HEAD^    #撤销commit操作，代码仍然保留
+$ git reset --hard HEAD     #回退到当前版本，把全部更改的文件都恢复
 $ git diff HEAD -- readme.txt #查看工作区和版本库里面最新版本的区别
 </pre>
 

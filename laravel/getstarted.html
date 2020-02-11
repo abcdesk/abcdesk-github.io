@@ -23,7 +23,7 @@ php artisan key:generate
 <pre class="language-php">
 $ composer require barryvdh/laravel-debugbar
 $ composer require barryvdh/laravel-ide-helper
-$ composer require mpociot/laravel-test-factory-helper
+$ composer require mpociot/laravel-test-factory-helper 1.3.0
 </pre>
 <p>然后在config/app.php文件中填上：</p>
 <pre class="language-php">
@@ -47,7 +47,7 @@ php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
 $ php artisan ide-helper:generate   #为 Facades 生成注释
 $ php artisan ide-helper:models     #为数据模型生成注释
 $ php artisan ide-helper:meta       #生成 .phpStorm.meta.php
-$ php artisan test-factory-helper:generate
+$ php artisan generate:model-factory
 #database/factory/ModelFactory.php模型工厂文件会自动生成各个模型对应字段数据
 </pre>
 
@@ -68,8 +68,11 @@ $ php artisan test-factory-helper:generate
 </div>
 
 <h3>3.语言包、时区</h3>
+<p><a target="_blank" href="https://github.com/overtrue/laravel-lang">Laravel-lang</a>是Laravel5语言包，包含68种语言。
+<a target="_blank" href="https://github.com/caouecs/Laravel-lang">Laravel-lang</a>是Laravel 4/5/6语言包，包含73种语言。
+</p>
 <pre class="language-php">
-composer require overtrue/laravel-lang
+$ composer require "overtrue/laravel-lang:~3.0"
 </pre>
 <p>替换config/app.php：
 Illuminate\Translation\TranslationServiceProvider::class,
@@ -86,6 +89,14 @@ php artisan lang:publish zh-CN
 
 -    'timezone' => 'UTC',
 +    'timezone' => 'Asia/Shanghai',
+</pre>
+
+<h3>4.移除插件</h3>
+<pre class="language-php">
+$ composer remove barryvdh/laravel-debugbar
+$ composer remove barryvdh/laravel-ide-helper
+$ composer remove mpociot/laravel-test-factory-helper
+$ composer remove overtrue/laravel-lang
 </pre>
 
 <h3>参考</h3>
