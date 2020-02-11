@@ -182,6 +182,26 @@ $ gulp
 
 <div class="alert alert-danger" role="alert">
     <span class="glyphicon glyphicon-question-sign"></span>
+    class UserTableSeeder does not exist
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>只要修改两个文件
+/vendor/composer/autoload_classmap.php
+</p>
+<pre class="language-php">
+    'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
+    'ArticlesTableSeeder' => $baseDir . '/database/seeds/ArticlesTableSeeder.php',
+</pre>
+<p>/vendor/composer/autoload_static.php</p>
+<pre class="language-php">
+        'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
+        'ArticlesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ArticlesTableSeeder.php',
+</pre>
+
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
     
 </div>
 <h3 class="text-success">

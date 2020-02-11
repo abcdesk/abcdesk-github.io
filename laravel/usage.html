@@ -18,11 +18,11 @@ $ php artisan make:migration create_articles_table --create='articles'
 $ php artisan make:model Article --migration
 $ php artisan make:model Article -m     #生成模型和数据库迁移**
 $ php artisan make:model Article -crm   #生成模型、资源控制器和数据库迁移
-$ php artisan make:model Models/Article -m #生成模型和数据库迁移**
 
+$ php artisan make:model Models/Article -m #生成模型和数据库迁移**
 $table->increments('id');
 $table->string('title');
-$table->text('introduce');
+$table->text('intro');
 $table->text('content');
 $table->timestamp('published_at');
 $table->timestamps();
@@ -72,4 +72,5 @@ $ php artisan make:controller Admin/ArticleController --resource --model=Article
 <ol class="reference">
     <li><a target="_blank" href="https://learnku.com/docs/laravel/5.5">https://learnku.com/docs/laravel/5.5</a></li>
     <li><a target="_blank" href="https://learnku.com/docs/laravel-specification/5.5">https://learnku.com/docs/laravel-specification/5.5</a></li>
+    <li><a target="_blank" href="https://github.com/johnlui/Learn-Laravel-5">https://github.com/johnlui/Learn-Laravel-5</a></li>
 </ol>
