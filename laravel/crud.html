@@ -1,0 +1,267 @@
+<ol class="breadcrumb">
+    <li>Laravel</li>
+    <li class="active">CRUD增删改查</li>
+</ol>
+<h1>Laravel <span>CRUD增删改查</span> </h1>
+
+<h3>快速生成身份验证</h3>
+<pre class="language-php">
+$ php artisan make:auth
+</pre>
+
+<h3>生成模型同时生成数据库迁移</h3>
+<pre class="language-php">
+$ php artisan make:model Article -m
+</pre>
+<p>顺利执行之后，我们会得到一个模型文件：app/Article.php
+还有一个数据库迁移文件database/migrations/2020_02_13_055820_create_articles_table.php
+</p>
+<pre class="language-php">
+    public function up()
+    {
+        Schema::create('articles', function (Blueprint $table) {
+            $table->increments('id')->comment("自增主键");
+            $table->string('title')->comment('文章标题');
+            $table->text('intro')->comment('文章简介');
+            $table->text('content')->comment('文章内容');
+            $table->timestamp('published_at')->comment('文章发表日期');
+            $table->timestamps(); // 自动创建的两个字段：created_at 和 updated_at
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('articles');
+    }
+</pre>
+<p>这里有两个方法：up() 和 down()
+up() 方法是执行 php artisan migrate 时调用，创建一个 articles 数据表；
+down()方法则是在使用 php artisan migrate:rollback 时执行，删除 articles 数据表。
+创建articles表，执行如下命令：
+</p>
+<pre class="language-php">
+php artisan migrate
+</pre>
+
+<h3>填充数据</h3>
+<p>创建模型工厂database/ArticleFactory</p>
+<pre class="language-php">
+$ php artisan generate:model-factory Article
+$ php artisan make:seeder ArticlesTableSeeder #生成 Seeder
+</pre>
+<p>使用模型工厂database/seeds/ArticlesTableSeeder来轻松地生成大量数据库数据。</p>
+<pre class="language-php">
+    public function run()
+    {
+        factory(App\Article::class, 10)->create();
+    }
+</pre>
+<p>填充数据库</p>
+<pre class="language-php">
+$ php artisan db:seed --class=ArticlesTableSeeder
+</pre>
+
+<h3>生成视图</h3>
+<pre class="language-php">
+$ php artisan make:view articles --resource --extends=layouts.app --with-yields
+</pre>
+<p>生成视图文件</p>
+<pre class="language-php">
+resources/views/articles/
+create.blade.php
+edit.blade.php
+show.blade.php
+index.blade.php
+</pre>
+
+<h3>MVC 的基本流程</h3>
+<p>Laravel 中 Model，Controller，Views 的工作流程：</p>
+<pre class="language-php">
+1.注册路由 --> 2.创建控制器 --> 3. 控制器中获取数据库数据 --> 4.在视图中展示数据
+1.register routes --> 2.make a controller --> 3.fetch data from database --> 4.load a view to display data
+</pre>
+
+<h3>注册路由</h3>
+<p>路由文件routes/web.php</p>
+<pre class="language-php">
+Route::get('/', 'ArticleController@index');
+Route::resource('article', 'ArticleController');
+</pre>
+
+<h3>生成控制器</h3>
+<pre class="language-php">
+$ php artisan make:controller ArticleController --resource --model=Article
+</pre>
+<p>生成控制器app/Http/ArticleController.php</p>
+
+<h3>文章列表及删除功能</h3>
+<p>在控制器app/Http/ArticleController.php中，编写index()和destroy()方法</p>
+<pre class="language-php">
+    public function index()
+    {
+        return view('articles.index')->withArticles(Article::all());
+    }
+
+    public function destroy($id)
+    {
+        Article::find($id)->delete();
+        return redirect()->back()->withInput()->withErrors('删除成功！');
+    }
+</pre>
+<p>修改视图resources/views/article/index.blade.php</p>
+<pre class="language-php">
+@if (count($errors) &gt; 0)
+&lt;div class="alert alert-danger"&gt;
+    {!! implode('&lt;br&gt;', $errors-&gt;all()) !!}
+&lt;/div&gt;
+@endif
+&lt;a href="{{ url('article/create') }}" class="btn btn-sm btn-primary" title="新增文章"&gt;
+    &lt;span class="glyphicon glyphicon-plus" aria-hidden="true"&gt;&lt;/span&gt; 新增文章
+&lt;/a&gt;
+&lt;table class="table table-striped table-bordered table-hover table-responsive-sm"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;文章标题&lt;/th&gt;
+            &lt;th&gt;文章简介&lt;/th&gt;
+            &lt;th style="width: 20%"&gt;发表日期&lt;/th&gt;
+            &lt;th style="width: 100px"&gt;操作&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        @foreach ($articles as $article)
+        &lt;tr&gt;
+            &lt;td&gt;{{ $article-&gt;title }}&lt;/td&gt;
+            &lt;td&gt;{{ $article-&gt;intro }}&lt;/td&gt;
+            &lt;td&gt;{{ $article-&gt;published_at }}&lt;/td&gt;
+            &lt;td&gt;
+                &lt;a href="{{ url('article/'.$article-&gt;id.'/edit') }}" class="btn btn-sm btn-success"&gt;
+                    &lt;span class="glyphicon glyphicon-edit" aria-hidden="true"&gt;&lt;/span&gt;
+                &lt;/a&gt;
+                &lt;form action="{{ url('article/'.$article-&gt;id) }}" method="POST" style="display: inline;"&gt;
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                    &lt;button type="submit" class="btn btn-sm btn-danger"&gt;
+                        &lt;span class="glyphicon glyphicon-trash" aria-hidden="true"&gt;&lt;/span&gt;
+                    &lt;/button&gt;
+                &lt;/form&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        @endforeach
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+<p>再次刷新就能看到文章列表，并实现删除功能。</p>
+
+<h3>新增文章功能</h3>
+<p>在控制器app/Http/ArticleController.php中，编写create()和store()方法</p>
+<pre class="language-php">
+    public function create()
+    {
+        return view('article.create');
+    }
+    public function store(Request $request)
+    {
+        $this-&gt;validate($request, [
+            'title' =&gt; 'required|unique:articles|max:255',
+            'intro' =&gt; 'required',
+            'content' =&gt; 'required',
+        ]);
+
+        $article = new Article($request-&gt;all());
+        if ($article-&gt;save()) {
+            return redirect('article');
+        } else {
+            return redirect()-&gt;back()-&gt;withInput()-&gt;withErrors('保存失败！');
+        }
+    }
+</pre>
+<p>修改视图resources/views/article/create.blade.php</p>
+<pre class="language-php">
+@if (count($errors) &gt; 0)
+&lt;div class="alert alert-danger"&gt;
+    &lt;strong&gt;新增失败&lt;/strong&gt; 输入不符合要求&lt;br&gt;&lt;br&gt;
+    {!! implode('&lt;br&gt;', $errors-&gt;all()) !!}
+&lt;/div&gt;
+@endif
+&lt;form action="{{ url('article') }}" method="POST"&gt;
+    {!! csrf_field() !!}
+    &lt;div class="form-group"&gt;
+        &lt;label for="title"&gt;文章标题：&lt;/label&gt;
+        &lt;input type="text" class="form-control" required="required" id="title" name="title" placeholder="请输入标题"&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label for="intro"&gt;文章简介：&lt;/label&gt;
+        &lt;textarea rows="3" class="form-control" required="required" id="intro" name="intro" placeholder="请输入简介"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label for="content"&gt;文章内容：&lt;/label&gt;
+        &lt;textarea rows="10" class="form-control" required="required" id="content" name="content" placeholder="请输入内容"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;button class="btn btn-info"&gt;
+        &lt;span class="glyphicon glyphicon-plus" aria-hidden="true"&gt;&lt;/span&gt;
+        新增文章
+    &lt;/button&gt;
+&lt;/form&gt;
+</pre>
+
+<h3>修改文章功能</h3>
+<p>在控制器app/Http/ArticleController.php中，编写edit()和update()方法</p>
+<pre class="language-php">
+    public function edit($id)
+    {
+        $article = Article::find($id);
+        return view('article.edit')->withArticle($article);
+    }
+    public function update(Request $request, $id)
+    {
+        $this-&gt;validate($request, [
+            'title' =&gt; 'required|unique:articles,title,'.$id.'|max:255',
+            'intro' =&gt; 'required',
+            'content' =&gt; 'required',
+        ]);
+        $article = Article::find($id);
+        $article-&gt;fill($request-&gt;all());
+
+        if ($article-&gt;save()) {
+            return redirect('article');
+        } else {
+            return redirect()-&gt;back()-&gt;withInput()-&gt;withErrors('更新失败！');
+        }
+    }
+</pre>
+<p>修改视图resources/views/article/edit.blade.php</p>
+<pre class="language-php">
+@if (count($errors) &gt; 0)
+&lt;div class="alert alert-danger"&gt;
+    &lt;strong&gt;修改失败&lt;/strong&gt; 输入不符合要求&lt;br&gt;&lt;br&gt;
+    {!! implode('&lt;br&gt;', $errors-&gt;all()) !!}
+&lt;/div&gt;
+@endif
+&lt;form action="{{ url('article/'.$article-&gt;id) }}" method="POST"&gt;
+    {{ method_field('PATCH') }}
+    {!! csrf_field() !!}
+    &lt;div class="form-group"&gt;
+        &lt;label for="title"&gt;文章标题：&lt;/label&gt;
+        &lt;input type="text" class="form-control" required="required" id="title" name="title" placeholder="请输入标题" value="{{ $article-&gt;title }}"&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label for="intro"&gt;文章简介：&lt;/label&gt;
+        &lt;textarea rows="3" class="form-control" required="required" id="intro" name="intro" placeholder="请输入简介"&gt;{{ $article-&gt;intro }}&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label for="content"&gt;文章内容：&lt;/label&gt;
+        &lt;textarea rows="10" class="form-control" required="required" id="content" name="content" placeholder="请输入内容"&gt;{{ $article-&gt;content }}&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;button class="btn btn-info"&gt;
+        &lt;span class="glyphicon glyphicon-edit" aria-hidden="true"&gt;&lt;/span&gt;
+        修改文章
+    &lt;/button&gt;
+&lt;/form&gt;
+</pre>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https://learnku.com/laravel/t/1321/laravel-tutorial-five-the-basic-process-of-mvc">https://learnku.com/laravel/t/1321/laravel-tutorial-five-the-basic-process-of-mvc</a></li>
+    <li><a target="_blank" href="https://github.com/johnlui/Learn-Laravel-5/issues/18">https://github.com/johnlui/Learn-Laravel-5/issues/18</a></li>
+    <li><a target="_blank" href="https">https</a></li>
+</ol>
