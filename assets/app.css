@@ -98,6 +98,93 @@ pre[class*="language-"] {
     -moz-column-gap: 30px;
     column-gap: 30px;
 }
+
+/*navbar*/
+.navbar-united {
+    background-color: #e74c3c;
+    border-color: #c0392b;
+}
+
+.navbar-united .navbar-brand {
+    color: #ecf0f1;
+}
+
+.navbar-united .navbar-brand:hover,
+.navbar-united .navbar-brand:focus {
+    color: #ffbbbc;
+}
+
+.navbar-united .navbar-text {
+    color: #ecf0f1;
+}
+
+.navbar-united .navbar-nav>li>a {
+    color: #ecf0f1;
+}
+
+.navbar-united .navbar-nav>li>a:hover,
+.navbar-united .navbar-nav>li>a:focus {
+    color: #ffbbbc;
+}
+
+.navbar-united .navbar-nav>.active>a,
+.navbar-united .navbar-nav>.active>a:hover,
+.navbar-united .navbar-nav>.active>a:focus {
+    color: #ffbbbc;
+    background-color: #c0392b;
+}
+
+.navbar-united .navbar-nav>.open>a,
+.navbar-united .navbar-nav>.open>a:hover,
+.navbar-united .navbar-nav>.open>a:focus {
+    color: #ffbbbc;
+    background-color: #c0392b;
+}
+
+.navbar-united .navbar-toggle {
+    border-color: #c0392b;
+}
+
+.navbar-united .navbar-toggle:hover,
+.navbar-united .navbar-toggle:focus {
+    background-color: #c0392b;
+}
+
+.navbar-united .navbar-toggle .icon-bar {
+    background-color: #ecf0f1;
+}
+
+.navbar-united .navbar-collapse,
+.navbar-united .navbar-form {
+    border-color: #ecf0f1;
+}
+
+.navbar-united .navbar-link {
+    color: #ecf0f1;
+}
+
+.navbar-united .navbar-link:hover {
+    color: #ffbbbc;
+}
+
+@media (max-width: 767px) {
+    .navbar-united .navbar-nav .open .dropdown-menu>li>a {
+        color: #ecf0f1;
+    }
+
+    .navbar-united .navbar-nav .open .dropdown-menu>li>a:hover,
+    .navbar-united .navbar-nav .open .dropdown-menu>li>a:focus {
+        color: #ffbbbc;
+    }
+
+    .navbar-united .navbar-nav .open .dropdown-menu>.active>a,
+    .navbar-united .navbar-nav .open .dropdown-menu>.active>a:hover,
+    .navbar-united .navbar-nav .open .dropdown-menu>.active>a:focus {
+        color: #ffbbbc;
+        background-color: #c0392b;
+    }
+}
+
 /*
  * Off Canvas
  * --------------------------------------------------

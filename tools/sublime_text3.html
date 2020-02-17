@@ -21,6 +21,7 @@
     "show_line_endings": true,
     "tab_size": 4,
     "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
     "update_check": false,
     "word_wrap": false
 }
@@ -207,14 +208,15 @@ import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe0
     </tbody>
 </table>
 
+<h3>问题及解决方案</h3>
 <div class="alert alert-danger" role="alert">
     <span class="glyphicon glyphicon-question-sign"></span>
-    sublime text无法安装插件
+    Sublime Text 3无法安装插件
 </div>
 <h3 class="text-success">
     解决方案:
 </h3>
-<p>Preferences-&gt;Package Settings-&gt;Package Control-&gt;Settings - User</p>
+<p>菜单<kbd>Preferences</kbd>→<kbd>Package Settings</kbd>→<kbd>Package Control</kbd>→<kbd>Setting - User</kbd></p>
 <pre class="language-st">
 "channels":
 [
@@ -224,9 +226,17 @@ import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe0
 //"https://gist.githubusercontent.com/nick1m/660ed046a096dae0b0ab/raw/e6e9e23a0bb48b44537f61025fbc359f8d586eb4/channel_v3.json"
 ],
 </pre>
-
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign"></span>
+    如何将Windows文件的换行符转换为Unix风格？
+</div>
+<h3 class="text-success">
+    解决方案:
+</h3>
+<p>菜单<kbd>View</kbd>→<kbd>Line Endings</kbd>→<kbd>Unix</kbd> 然后保存文件。
+</p>
 <h3>sublime Text 3 官方版 3114 注册码</h3>
-<p>输入注册码，单击菜单栏<kbd>Help</kbd>→<kbd>Enter license</kbd></p>
+<p>输入注册码，菜单<kbd>Help</kbd>→<kbd>Enter license</kbd></p>
 <pre class="language-st">
 sublime Text 3 官方版 3114 注册码
 
@@ -243,7 +253,7 @@ BAE22DBB D4EC71A1 0EC2E701 C7F9C648
 5CF29CA3 1CB14285 19A46991 E9A98676
 14FD4777 2D8A0AB6 A444EE0D CA009B54
 —— END LICENSE ——
- 
+
 —– BEGIN LICENSE —–
 Alexey Plutalov
 Single User License
