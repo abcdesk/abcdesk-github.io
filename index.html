@@ -112,10 +112,11 @@
                 </ul>
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation">
-                        <a href="#html" class="nav-header collapsed" data-toggle="collapse" aria-expanded="false"><i class="glyphicon glyphicon-folder-open"></i> Html<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
+                        <a href="#html" class="nav-header collapsed" data-toggle="collapse" aria-expanded="false"><i class="glyphicon glyphicon-folder-open"></i> HTML<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
                         <ul id="html" class="nav nav-list collapse" aria-expanded="false" style="height: 0px;">
                             <li><a href="#" data-id="html/getstarted">开工准备</a></li>
                             <li><a href="#" data-id="html/character_entity">常用特殊字符</a></li>
+                            <li><a href="#" data-id="html/resources">优秀开发资源</a></li>
                             <li><a href="#" data-id="html/qa">问题及解决方案</a></li>
                         </ul>
                     </li>
@@ -174,14 +175,16 @@
         });
 
         $(".nav-list").on("click","a",function() {
-            var id = $(this).data("id");
+            var url = $(this).data("id")+".html";
             // var href=$(this).attr('href');
-            console.log(id);
+            console.log(url);
+            $("#content").load(url); //加载相对应的内容
+            $(this).addClass("active").siblings().removeClass("active");
             // if ($.trim(id) != "#") {
-            if ($.trim(id).length > 1) {
-                $("#content").load(id + ".html"); //加载相对应的内容
-                $(this).addClass("active").siblings().removeClass("active");
-            }
+            // if ($.trim(id).length > 1) {
+            //     $("#content").load(id + ".html"); //加载相对应的内容
+            //     $(this).addClass("active").siblings().removeClass("active");
+            // }
             return false;
         });
         $("#content").load("laravel/getstarted.html"); //加载相对应的内容
