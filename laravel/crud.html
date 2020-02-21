@@ -259,6 +259,105 @@ $ php artisan make:controller ArticleController --resource --model=Article
 &lt;/form&gt;
 </pre>
 
+<h3>try...catch</h3>
+<p>首先，引用两个异常处理类：</p>
+<pre class="language-php">
+use Illuminate\Database\QueryException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+</pre>
+<p>然后，增加try...catch</p>
+<pre class="language-php">
+    public function show($id)
+    {
+        try {
+            $article = Article::findOrFail($id);
+            return view('article.show')->withArticle($article);
+            // return view('article.show', ['article' => Article::find($id)]);
+        } catch (QueryException $ex) {
+            $errors = '获取数据失败！';
+            $errors = $ex->getMessage();
+        } catch (ModelNotFoundException $e) {
+            $errors = '查找的对象不存在！';
+            $errors = $e->getMessage();
+        }
+        return redirect()->back()->withInput()->withErrors($errors);
+    }
+</pre>
+
+<h3>软删除</h3>
+<p>要启动模型上的软删除，则必须在模型上使用 Illuminate\Database\Eloquent\SoftDeletes trait 并添加 deleted_at 字段到 $dates 属性上
+</p>
+<pre class="language-php">
+&lt;?php
+namespace App;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Article extends Model
+{
+    protected $table = 'articles';
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+}
+</pre>
+<p>添加 deleted_at 字段到数据表中</p>
+<pre class="language-php">
+$ php artisan make:migration alter_articles_add_deleted_at --table=articles
+</pre>
+<p>修改生成的迁移文件</p>
+<pre class="language-php">
+    public function up()
+    {
+        Schema::table('articles', function (Blueprint $table) {
+            $table->softDeletes(); // 添加一个可空的 deleted_at 字段
+        });
+    }
+
+    public function down()
+    {
+        Schema::table('articles', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
+    }
+</pre>
+<p>执行数据迁移</p>
+<pre class="language-php">
+$ php artisan migrate
+</pre>
+<h4>补充资源控制器</h4>
+<pre class="language-php">
+Route::get('article/trashed', 'ArticleController@trashed')->name('article.trashed');
+Route::post('article/restore', 'ArticleController@restore')->name('article.restore');
+
+Route::resource('article', 'ArticleController');
+</pre>
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+如果你想在默认的资源路由中增加额外的路由，你应该在 Route::resource 之前定义这些路由。否则由 resource 方法定义的路由可能会无意中优先于你补充的路由。
+</div>
+
+<h4>恢复文章功能</h4>
+<p>在控制器app/Http/ArticleController.php中，编写trashed()和restore()方法</p>
+<pre class="language-php">
+    public function trashed()
+    {
+        $articles = Article::onlyTrashed()-&gt;get();
+        return view('article.trashed')-&gt;withArticles($articles);
+    }
+
+    public function restore($id)
+    {
+        Article::onlyTrashed()-&gt;find($id)-&gt;restore();
+        if(!$article-&gt;trashed()) {
+            $errors = '恢复成功！';
+        } else {
+            $errors = '恢复失败！';
+        }
+        return redirect()-&gt;back()-&gt;withInput()-&gt;withErrors($errors);
+    }
+</pre>
+
 <h3>参考</h3>
 <ol class="reference">
     <li><a target="_blank" href="https://learnku.com/laravel/t/1321/laravel-tutorial-five-the-basic-process-of-mvc">https://learnku.com/laravel/t/1321/laravel-tutorial-five-the-basic-process-of-mvc</a></li>

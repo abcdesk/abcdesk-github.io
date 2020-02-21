@@ -1,0 +1,49 @@
+<ol class="breadcrumb">
+    <li>jQuery</li>
+    <li class="active">Select2插件</li>
+</ol>
+<h1>jQuery <span>Select2插件</span> </h1>
+
+<pre class="language-php">
+$('.js-example-placeholder-multiple').select2({
+    minimumResultsForSearch: -1,
+    data:[
+        {id:1,text:"Laravel"},
+        {id:2,text:"PHP"},
+        {id:3,text:"Math"},
+        {id:4,text:"Chinese"},
+        {id:5,text:"English"}
+    ],
+    formatSelection: function(item){
+        return item.text;
+    },
+    formatResult: function(item){
+        return item.text;
+    }
+});
+</pre>
+
+<pre class="language-php">
+function getTopicList(element) {
+    var topicList = ''
+    $.ajax({
+        type:'get',
+        contentType:'application/json;charset=utf-8',
+        url: '/api/topics',
+        dataType:'json',
+        success: function(data) {
+            if(status == 00) {
+                $.each(data, function(i, item){
+                    topicList += '<option value = '+ item.id +'>'+ item.name +'</option>'
+                });
+                element.html(topicList)
+            }
+        }
+    })
+}
+
+$('.js-example-placeholder-multiple').select2({
+    placeholder:'选择相关话题',
+    templateSelection:  getTopicList($('.js-example-placeholder-multiple'))
+})
+</pre>

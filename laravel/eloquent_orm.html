@@ -85,7 +85,7 @@ $articles = $articles->reject(function($article) {
 <h3>使用游标</h3>
 <pre class="language-php">
 foreach (Article::where('title','intro')->cursor() as $article) {
-    
+
 }
 </pre>
 
@@ -259,6 +259,35 @@ class User extends Authenticatable
         'deleted' => UserDeleted::class,
     ];
 }
+</pre>
+
+<h3>模型查询总结</h3>
+<pre class="language-php">
+App\Article::find($id);//查找主键为$id的数据
+App\Article::find([$key1,$key2]);//使用双主键进行查找
+App\Article::findOrFail($id);//查找主键为$id的数据,找不到抛出异常
+App\Article::where('id',$id)->first();//获取id为$id的第一条数据
+App\Article::where('id',$id)->get();//获取id为$id的数据
+App\Article::where('id',$id)->exists();//查询id为$id的数据是否存在
+App\Article::where('id',$id)->pluck('name','id')->first();//查询id为$id的id和name  ，[id=>name]
+App\Article::select('id','name')->first();//只查id和name字段
+App\Article::selectRaw('id , name as 姓名')->first();//查询id,name 作为姓名字段展示,selectRaw()里面可以使用原生sql语句
+App\Article::whereIn('id',[1,2,3])->get();//whereIn查询    where id in (1,2,3)  <==> whereRaw("id in (1,2,3)") <==> whereBetween('id',[1,3])
+App\Article::whereId($id)->get();//动态属性查找id为$id的数据
+App\Article::paginate(10);//分页
+</pre>
+<p>关联查询</p>
+<pre class="language-php">
+App\Article::with('relation')->get();//将关联数据一起查出来
+App\Article::with('relation:relation.id,relation.name')->get();//只查找关联数据的id,name字段
+App\Article::with(['relation'=>function($query){}])->get();//只查找符合条件的关联数据
+App\Article::whereHas('relation',function($query){ ... })->get();//1对多关联，查找关联数据符合条件的数据
+App\Article::whereNotExists(function($query){
+　　　　$query->from('relation_table')->where('');
+　 })->get();//查找不符合条件的数据
+App\Article::withCount(['marks as marks_avg'=>function($query){
+　　$query->select(DB::raw("avg(grade) as makrs_avg"))
+　})->orderBy('marks_avg','desc')->paginate(10);//根据关联数据的平均分排序，将avg()改为max,sum,min,可以实现其他排序
 </pre>
 
 <h3>参考</h3>
