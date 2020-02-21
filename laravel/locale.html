@@ -1,0 +1,115 @@
+<ol class="breadcrumb">
+    <li>Laravel</li>
+    <li class="active">Locale本地化</li>
+</ol>
+<h1>Laravel <span>Locale本地化</span> </h1>
+
+<h3>简介</h3>
+<p>Laravel 的本地化功能为在应用程序中支持多种语言提供方便的方法来检索各种语言的字符串。语言字符串存储在 resources/lang 目录下的文件里。
+</p>
+
+<h3>生成视图</h3>
+<pre class="language-php">
+$ php artisan make:view index
+</pre>
+
+<h3>创建一个新的中间件</h3>
+<p>让中间件去读取 <code>cookie</code> 把页面转成对应的语言。</p>
+<pre class="language-php">
+$ php artisan make:middleware ChangeLanguage
+</pre>
+<p>中间件代码<code>app/Http/Middleware/ChangeLanguage.php</code></p>
+<pre class="language-php">
+    public function handle($request, Closure $next)
+    {
+        if (!empty($request->cookie('lang'))) {
+            \App::setLocale($request->cookie('lang'));
+        }
+
+        return $next($request);
+    }
+</pre>
+<p><code>app/Http/Kernel.php</code> 文件中加入中间件</p>
+<pre class="language-php">
+    'web' => [
+        ...
+        \App\Http\Middleware\ChangeLanguage::class, // 语言中间件
+    ],
+</pre>
+
+<h3>新建翻译文件</h3>
+<p><code>resources/lang/en/index.php</code></p>
+<pre class="language-php">
+&lt;? php
+return [
+    'en' =&gt; 'English',
+    'zh-CN' =&gt; 'Chinese',
+    'zh-TW' =&gt; 'Chinese-TW',
+    'sentence' =&gt; 'spread like a storm',
+];
+</pre>
+<p><code>resources/lang/zh-CN/index.php</code></p>
+<pre class="language-php">
+&lt;?php
+return [
+    'en' =&gt; '英语',
+    'zh-CN' =&gt; '汉语',
+    'zh-TW' =&gt; '繁体',
+    'sentence' =&gt; '风起云涌',
+];
+</pre>
+<p><code>resources/lang/zh-TW/index.php</code></p>
+<pre class="language-php">
+&lt;?php
+return [
+    'en' =&gt; '英語',
+    'zh-CN' =&gt; '漢語',
+    'zh-TW' =&gt; '繁體',
+    'sentence' =&gt; '風起雲湧',
+];
+</pre>
+<p><code>resources/lang/en.json</code></p>
+<pre class="language-php">
+{"laracasts":"laracasts"}
+</pre>
+<p><code>resources/lang/zh-CN.json</code></p>
+<pre class="language-php">
+{"laracasts":"laravel学习网站"}
+</pre>
+<p><code>resources/lang/zh-TW.json</code></p>
+<pre class="language-php">
+{"laracasts":"laravel學習網站"}
+</pre>
+
+<h3>html中使用翻译方法</h3>
+<p>方法有三种 <code>__()</code>、<code>trans()</code>和<code>@lang</code></p>
+<pre class="language-php">
+    &lt;h3&gt;{{ __('index.sentence') }}&lt;/h3&gt;
+    &lt;h3&gt;{{ trans('index.sentence') }}&lt;/h3&gt;
+    &lt;h3&gt;@lang('index.sentence')&lt;/h3&gt;
+    &lt;h3&gt;{{ __('laracasts') }}&lt;/h3&gt;
+</pre>
+
+<h3>创建设置语言路由及方法</h3>
+<pre class="language-php">
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'zh-CN', 'zh-TW'])) {
+        \Cookie::queue(\Cookie::forever('lang', $locale));
+    }
+    return back()->withInput();
+});
+</pre>
+
+<h3>动态切换语言</h3>
+<pre class="language-php">
+    &lt;ul class="nav navbar-nav pull-right"&gt;
+        &lt;li&gt;&lt;a href="{{ url('lang/zh-CN') }}"&gt;中文&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="{{ url('lang/en') }}"&gt;English&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="{{ url('lang/zh-TW') }}"&gt;繁體&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+</pre>
+
+<h3>参考</h3>
+<ol class="reference">
+    <li><a target="_blank" href="https">https</a></li>
+</ol>
