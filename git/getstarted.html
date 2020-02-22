@@ -1,45 +1,38 @@
 <ol class="breadcrumb">
-    <li>Git</li>
-    <li class="active">开工准备</li>
+  <li>Git</li>
+  <li class="active">开工准备</li>
 </ol>
 <h1>Git <span>开工准备</span> </h1>
-
 <h3>安装Git</h3>
 <p><a target="_blank" href="https://git-scm.com/downloads">下载Git</a>
-然后，解压缩到指定目录下，配置好环境变量即可完成安装。
+  然后，解压缩到指定目录下，配置好环境变量即可完成安装。
 </p>
-
 <h3>配置环境变量</h3>
 <p>桌面计算机图标上单击鼠标右键->属性->高级系统设置->高级->环境变量</p>
 <pre class="language-sh">
 GIT_HOME = "C:\sde\PortableGit"
 Path = %GIT_HOME%;...
 </pre>
-
 <h3>安装完成后，还需要最后一步设置，在命令行输入：</h3>
 <pre class="language-sh">
 $ git config --global user.name "Your Name"
 $ git config --global user.email "email@example.com"
 </pre>
-
 <h3>查看配置信息</h3>
 <pre class="language-sh">
 $ git config --system --list    #查看系统config
 $ git config --global --list    #查看当前用户（global）配置
 $ git config --local  --list    #查看当前仓库配置信息
 </pre>
-
-<h3>生成 SSH 公钥<h3>
+<h3>生成 SSH 公钥</h3>
 <p>默认情况下，用户的 SSH 密钥存储在其 ~/.ssh 目录下。</p>
 <pre class="language-sh">
 $ cd ~/.ssh
 $ ssh-keygen
 </pre>
-
 <p>首先 ssh-keygen 会确认密钥的存储位置（默认是 .ssh/id_rsa），然后它会要求你输入两次密钥口令。如果你不想在使用密钥时输入口令，将其留空即可。
-然后我们会看到一对以 id_dsa 或 id_rsa 命名的文件，其中一个带有 .pub 扩展名。 .pub 文件是你的公钥，另一个则是私钥。
+  然后我们会看到一对以 id_dsa 或 id_rsa 命名的文件，其中一个带有 .pub 扩展名。 .pub 文件是你的公钥，另一个则是私钥。
 </p>
-
 <h3>右键添加 Git Bash Here 菜单</h3>
 <p>将下列代码保存为.reg文件，然后双击运行添加到注册表，即可实现。</p>
 <pre class="language-sh">
@@ -75,10 +68,9 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\Directory\Background\shell\bash\command]
 @="\"C:\\sde\\PortableGit\\git-bash.exe\" \"--cd=%v.\""
 </pre>
-
 <h3>参考</h3>
 <ol class="reference">
-    <li><a target="_blank" href="https://git-scm.com/docs">https://git-scm.com/docs</a></li>
-    <li><a target="_blank" href="https://github.github.com/training-kit/">https://github.github.com/training-kit/</a></li>
-    <li><a target="_blank" href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a></li>
+  <li><a target="_blank" href="https://git-scm.com/docs">https://git-scm.com/docs</a></li>
+  <li><a target="_blank" href="https://github.github.com/training-kit/">https://github.github.com/training-kit/</a></li>
+  <li><a target="_blank" href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a></li>
 </ol>

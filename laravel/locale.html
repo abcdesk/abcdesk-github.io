@@ -1,18 +1,15 @@
 <ol class="breadcrumb">
-    <li>Laravel</li>
-    <li class="active">Locale本地化</li>
+  <li>Laravel</li>
+  <li class="active">Locale本地化</li>
 </ol>
 <h1>Laravel <span>Locale本地化</span> </h1>
-
 <h3>简介</h3>
 <p>Laravel 的本地化功能为在应用程序中支持多种语言提供方便的方法来检索各种语言的字符串。语言字符串存储在 resources/lang 目录下的文件里。
 </p>
-
 <h3>生成视图</h3>
 <pre class="language-php">
 $ php artisan make:view index
 </pre>
-
 <h3>创建一个新的中间件</h3>
 <p>让中间件去读取 <code>cookie</code> 把页面转成对应的语言。</p>
 <pre class="language-php">
@@ -36,7 +33,6 @@ $ php artisan make:middleware ChangeLanguage
         \App\Http\Middleware\ChangeLanguage::class, // 语言中间件
     ],
 </pre>
-
 <h3>新建翻译文件</h3>
 <p><code>resources/lang/en/index.php</code></p>
 <pre class="language-php">
@@ -80,7 +76,6 @@ return [
 <pre class="language-php">
 {"laracasts":"laravel學習網站"}
 </pre>
-
 <h3>html中使用翻译方法</h3>
 <p>方法有三种 <code>__()</code>、<code>trans()</code>和<code>@lang</code></p>
 <pre class="language-php">
@@ -89,7 +84,6 @@ return [
     &lt;h3&gt;@lang('index.sentence')&lt;/h3&gt;
     &lt;h3&gt;{{ __('laracasts') }}&lt;/h3&gt;
 </pre>
-
 <h3>创建设置语言路由及方法</h3>
 <pre class="language-php">
 Route::get('/lang/{locale}', function ($locale) {
@@ -99,7 +93,6 @@ Route::get('/lang/{locale}', function ($locale) {
     return back()->withInput();
 });
 </pre>
-
 <h3>动态切换语言</h3>
 <pre class="language-php">
     &lt;ul class="nav navbar-nav pull-right"&gt;
@@ -108,8 +101,7 @@ Route::get('/lang/{locale}', function ($locale) {
         &lt;li&gt;&lt;a href="{{ url('lang/zh-TW') }}"&gt;繁體&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
 </pre>
-
 <h3>参考</h3>
 <ol class="reference">
-    <li><a target="_blank" href="https://www.jianshu.com/p/6894ca566373">https://www.jianshu.com/p/6894ca566373</a></li>
+  <li><a target="_blank" href="https://www.jianshu.com/p/6894ca566373">https://www.jianshu.com/p/6894ca566373</a></li>
 </ol>

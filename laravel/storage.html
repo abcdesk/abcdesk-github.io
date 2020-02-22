@@ -1,33 +1,28 @@
 <ol class="breadcrumb">
-    <li>Laravel</li>
-    <li class="active">Storage文件存储</li>
+  <li>Laravel</li>
+  <li class="active">Storage文件存储</li>
 </ol>
 <h1>Laravel <span>Storage文件存储</span> </h1>
 Laravel 的文件存储 - Storage
-
 <h3>首先需要启动tinker</h3>
 <pre class="language-php">
 $ php artisan tinker
 </pre>
-
 <h3>内容写入磁盘文件</h3>
 <pre class="language-php">
 >>> use Illuminate\Support\Facades\Storage;
 >>> Storage::put('test.txt', 'hello');
 </pre>
 <p>文件默认创建在 /storage/app 目录下</p>
-
 <h3>获取文件存储的本地磁盘全路径</h3>
 <pre class="language-php">
 >>>storage_path()
 >>>storage_path('app/test.txt')
 </pre>
-
 <h3>删除文件</h3>
 <pre class="language-php">
 >>> Storage::delete('test.txt')
 </pre>
-
 <h3>判断一个文件是否存在</h3>
 <pre class="language-php">
 >>> Storage::put('public/test.txt', 'hello');
@@ -37,7 +32,6 @@ $ php artisan tinker
 >>> Storage::exists('public/test1.txt');
 => false
 </pre>
-
 <h3>Storage常用函数</h3>
 <pre class="language-php">
 // 写入文件
@@ -51,9 +45,9 @@ Storage::url('file.jpg');
 Storage::temporaryUrl('file.jpg', now()->addMinutes(5));
 Storage::size('file.jpg');
 Storage::lastModified('file.jpg');
-// 自动为文件名生成唯一的ID...  
+// 自动为文件名生成唯一的ID...
 Storage::putFile('photos',  new  File('/path/to/photo'));
-// 手动指定文件名...  
+// 手动指定文件名...
 Storage::putFileAs('photos', new  File('/path/to/photo'), 'photo.jpg');
 Storage::prepend('file.log', 'Prepended Text');
 Storage::append('file.log', 'Appended Text');
@@ -84,8 +78,7 @@ resource_path()  //resources 目录
 config_path()    //config 目录
 database_path()  //database 目录
 </pre>
-
 <h3>参考</h3>
 <ol class="reference">
-    <li><a target="_blank" href="https://www.cnblogs.com/sgm4231/p/10194826.html">https://www.cnblogs.com/sgm4231/p/10194826.html</a></li>
+  <li><a target="_blank" href="https://www.cnblogs.com/sgm4231/p/10194826.html">https://www.cnblogs.com/sgm4231/p/10194826.html</a></li>
 </ol>

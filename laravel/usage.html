@@ -1,16 +1,14 @@
 <ol class="breadcrumb">
-    <li>Laravel</li>
-    <li class="active">基本用法</li>
+  <li>Laravel</li>
+  <li class="active">基本用法</li>
 </ol>
 <h1>Laravel <span>基本用法</span> </h1>
-
 <h3>创建Auth登录模块</h3>
 <pre class="language-php">
 $ php artisan make:auth
 $ php artisan migrate:install
 $ php artisan migrate
 </pre>
-
 <h3>创建模型Model</h3>
 <pre class="language-php">
 $ php artisan make:model Article
@@ -30,10 +28,9 @@ $table->timestamp('deleted_at');
 
 $ php artisan migrate
 </pre>
-
 <h3>创建视图View</h3>
 <p>安装artisan-view插件
-<a target="_blank" href="https://github.com/svenluijten/artisan-view">Artisan View</a>是创建及删除应用视图文件的利器，强烈推荐。
+  <a target="_blank" href="https://github.com/svenluijten/artisan-view">Artisan View</a>是创建及删除应用视图文件的利器，强烈推荐。
 </p>
 <pre class="language-php">
 $ composer require sven/artisan-view
@@ -52,7 +49,6 @@ $ php artisan scrap:view index  #remove views\index.blade.php
 $ php artisan scrap:view articles.index --force #强制删除
 $ php artisan scrap:view articles --resource
 </pre>
-
 <h3>创建控制器C</h3>
 <pre class="language-php">
 $ php artisan make:controller --help
@@ -60,17 +56,14 @@ $ php artisan make:controller ArticleController
 $ php artisan make:controller Admin/ArticleController
 $ php artisan make:controller Admin/ArticleController --resource --model=Article
 </pre>
-
 <h3>后台管理插件</h3>
 <pre class="language-php">
   composer require encore/laravel-admin
   composer require jeremykenedy/laravel-roles
 </pre>
-
-
 <h3>参考</h3>
 <ol class="reference">
-    <li><a target="_blank" href="https://learnku.com/docs/laravel/5.5">https://learnku.com/docs/laravel/5.5</a></li>
-    <li><a target="_blank" href="https://learnku.com/docs/laravel-specification/5.5">https://learnku.com/docs/laravel-specification/5.5</a></li>
-    <li><a target="_blank" href="https://github.com/johnlui/Learn-Laravel-5">https://github.com/johnlui/Learn-Laravel-5</a></li>
+  <li><a target="_blank" href="https://learnku.com/docs/laravel/5.5">https://learnku.com/docs/laravel/5.5</a></li>
+  <li><a target="_blank" href="https://learnku.com/docs/laravel-specification/5.5">https://learnku.com/docs/laravel-specification/5.5</a></li>
+  <li><a target="_blank" href="https://github.com/johnlui/Learn-Laravel-5">https://github.com/johnlui/Learn-Laravel-5</a></li>
 </ol>

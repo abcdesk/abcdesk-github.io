@@ -1,15 +1,13 @@
 <ol class="breadcrumb">
-    <li>Laravel</li>
-    <li class="active">Exception 异常</li>
+  <li>Laravel</li>
+  <li class="active">Exception 异常</li>
 </ol>
 <h1>Laravel <span>Exception 异常</span> </h1>
-
 <h3>异常</h3>
 <p>在laravel中，如果一个Model找不到或者没有，很容易就抛出一个异常</p>
 <pre class="language-php">
 User::findOrFail(1);
 </pre>
-
 <h3>try...catch</h3>
 <pre class="language-php">
 try {
@@ -28,7 +26,6 @@ if (! User::find(1)) {
     throw new UserNotFoundException('...', 404);
 }
 </pre>
-
 <h3>Eloquent判断数据是否存在</h3>
 <pre class="language-php">
     $users = \DB::table('users')->where('id', $id);
@@ -52,8 +49,7 @@ if (! User::find(1)) {
        echo "users is not" . '<br>';
     }
 </pre>
-
 <h3>参考</h3>
 <ol class="reference">
-    <li><a target="_blank" href="https">https</a></li>
+  <li><a target="_blank" href="https">https</a></li>
 </ol>

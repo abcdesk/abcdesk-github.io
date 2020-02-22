@@ -1,20 +1,18 @@
 <ol class="breadcrumb">
-    <li>Laravel</li>
-    <li class="active">CRUD增删改查</li>
+  <li>Laravel</li>
+  <li class="active">CRUD增删改查</li>
 </ol>
 <h1>Laravel <span>CRUD增删改查</span> </h1>
-
 <h3>快速生成身份验证</h3>
 <pre class="language-php">
 $ php artisan make:auth
 </pre>
-
 <h3>生成模型同时生成数据库迁移</h3>
 <pre class="language-php">
 $ php artisan make:model Article -m
 </pre>
 <p>顺利执行之后，我们会得到一个模型文件：app/Article.php
-还有一个数据库迁移文件database/migrations/2020_02_13_055820_create_articles_table.php
+  还有一个数据库迁移文件database/migrations/2020_02_13_055820_create_articles_table.php
 </p>
 <pre class="language-php">
     public function up()
@@ -35,14 +33,13 @@ $ php artisan make:model Article -m
     }
 </pre>
 <p>这里有两个方法：up() 和 down()
-up() 方法是执行 php artisan migrate 时调用，创建一个 articles 数据表；
-down()方法则是在使用 php artisan migrate:rollback 时执行，删除 articles 数据表。
-创建articles表，执行如下命令：
+  up() 方法是执行 php artisan migrate 时调用，创建一个 articles 数据表；
+  down()方法则是在使用 php artisan migrate:rollback 时执行，删除 articles 数据表。
+  创建articles表，执行如下命令：
 </p>
 <pre class="language-php">
 php artisan migrate
 </pre>
-
 <h3>填充数据</h3>
 <p>创建模型工厂database/ArticleFactory</p>
 <pre class="language-php">
@@ -60,7 +57,6 @@ $ php artisan make:seeder ArticlesTableSeeder #生成 Seeder
 <pre class="language-php">
 $ php artisan db:seed --class=ArticlesTableSeeder
 </pre>
-
 <h3>生成视图</h3>
 <pre class="language-php">
 $ php artisan make:view articles --resource --extends=layouts.app --with-yields
@@ -73,27 +69,23 @@ edit.blade.php
 show.blade.php
 index.blade.php
 </pre>
-
 <h3>MVC 的基本流程</h3>
 <p>Laravel 中 Model，Controller，Views 的工作流程：</p>
 <pre class="language-php">
 1.注册路由 --> 2.创建控制器 --> 3. 控制器中获取数据库数据 --> 4.在视图中展示数据
 1.register routes --> 2.make a controller --> 3.fetch data from database --> 4.load a view to display data
 </pre>
-
 <h3>注册路由</h3>
 <p>路由文件routes/web.php</p>
 <pre class="language-php">
 Route::get('/', 'ArticleController@index');
 Route::resource('article', 'ArticleController');
 </pre>
-
 <h3>生成控制器</h3>
 <pre class="language-php">
 $ php artisan make:controller ArticleController --resource --model=Article
 </pre>
 <p>生成控制器app/Http/ArticleController.php</p>
-
 <h3>文章列表及删除功能</h3>
 <p>在控制器app/Http/ArticleController.php中，编写index()和destroy()方法</p>
 <pre class="language-php">
@@ -151,7 +143,6 @@ $ php artisan make:controller ArticleController --resource --model=Article
 &lt;/table&gt;
 </pre>
 <p>再次刷新就能看到文章列表，并实现删除功能。</p>
-
 <h3>新增文章功能</h3>
 <p>在控制器app/Http/ArticleController.php中，编写create()和store()方法</p>
 <pre class="language-php">
@@ -203,7 +194,6 @@ $ php artisan make:controller ArticleController --resource --model=Article
     &lt;/button&gt;
 &lt;/form&gt;
 </pre>
-
 <h3>修改文章功能</h3>
 <p>在控制器app/Http/ArticleController.php中，编写edit()和update()方法</p>
 <pre class="language-php">
@@ -258,7 +248,6 @@ $ php artisan make:controller ArticleController --resource --model=Article
     &lt;/button&gt;
 &lt;/form&gt;
 </pre>
-
 <h3>try...catch</h3>
 <p>首先，引用两个异常处理类：</p>
 <pre class="language-php">
@@ -283,7 +272,6 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
         return redirect()->back()->withInput()->withErrors($errors);
     }
 </pre>
-
 <h3>软删除</h3>
 <p>要启动模型上的软删除，则必须在模型上使用 Illuminate\Database\Eloquent\SoftDeletes trait 并添加 deleted_at 字段到 $dates 属性上
 </p>
@@ -333,10 +321,9 @@ Route::post('article/restore', 'ArticleController@restore')->name('article.resto
 Route::resource('article', 'ArticleController');
 </pre>
 <div class="alert alert-danger" role="alert">
-    <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
-如果你想在默认的资源路由中增加额外的路由，你应该在 Route::resource 之前定义这些路由。否则由 resource 方法定义的路由可能会无意中优先于你补充的路由。
+  <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+  如果你想在默认的资源路由中增加额外的路由，你应该在 Route::resource 之前定义这些路由。否则由 resource 方法定义的路由可能会无意中优先于你补充的路由。
 </div>
-
 <h4>恢复文章功能</h4>
 <p>在控制器app/Http/ArticleController.php中，编写trashed()和restore()方法</p>
 <pre class="language-php">
@@ -357,9 +344,8 @@ Route::resource('article', 'ArticleController');
         return redirect()-&gt;back()-&gt;withInput()-&gt;withErrors($errors);
     }
 </pre>
-
 <h3>参考</h3>
 <ol class="reference">
-    <li><a target="_blank" href="https://learnku.com/laravel/t/1321/laravel-tutorial-five-the-basic-process-of-mvc">https://learnku.com/laravel/t/1321/laravel-tutorial-five-the-basic-process-of-mvc</a></li>
-    <li><a target="_blank" href="https://github.com/johnlui/Learn-Laravel-5/issues/18">https://github.com/johnlui/Learn-Laravel-5/issues/18</a></li>
+  <li><a target="_blank" href="https://learnku.com/laravel/t/1321/laravel-tutorial-five-the-basic-process-of-mvc">https://learnku.com/laravel/t/1321/laravel-tutorial-five-the-basic-process-of-mvc</a></li>
+  <li><a target="_blank" href="https://github.com/johnlui/Learn-Laravel-5/issues/18">https://github.com/johnlui/Learn-Laravel-5/issues/18</a></li>
 </ol>

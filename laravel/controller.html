@@ -1,21 +1,18 @@
 <ol class="breadcrumb">
-    <li>Laravel</li>
-    <li class="active">Controller控制器</li>
+  <li>Laravel</li>
+  <li class="active">Controller控制器</li>
 </ol>
 <h1>Laravel <span>Controller控制器</span> </h1>
-
 <h3>控制器</h3>
 <p>控制器能够将相关的请求处理逻辑组成一个单独的类。
-控制器被存放在 app/Http/Controllers 目录下
+  控制器被存放在 app/Http/Controllers 目录下
 </p>
-
 <h3>生成控制器</h3>
 <pre class="language-php">
 $ php artisan make:controller --help
 $ php artisan make:controller IndexController
 $ php artisan make:controller Admin\ArticleController --resource
 </pre>
-
 <h3>控制器传值到视图 View 的几种方法</h3>
 <p>with</p>
 <pre class="language-php">
@@ -60,10 +57,7 @@ return view('index',compact('test1','test2' ,'test3' ));
 $test_array = ["测试1","测试2", "测试2"];
 return view('index',compact('test_array'));
 </pre>
-
-
-
 <h3>参考</h3>
 <ol class="reference">
-    <li><a target="_blank" href="https://www.cnblogs.com/cici1989/p/10723131.html">https://www.cnblogs.com/cici1989/p/10723131.html</a></li>
+  <li><a target="_blank" href="https://www.cnblogs.com/cici1989/p/10723131.html">https://www.cnblogs.com/cici1989/p/10723131.html</a></li>
 </ol>

@@ -1,21 +1,19 @@
 <ol class="breadcrumb">
-    <li>Laravel</li>
-    <li class="active">Captcha验证码</li>
+  <li>Laravel</li>
+  <li class="active">Captcha验证码</li>
 </ol>
 <h1>Laravel <span>Captcha验证码</span> </h1>
-
 <h3>1.安装扩展包：</h3>
 <pre class="language-php">
 $ composer require mews/captcha
 </pre>
-
 <h3>2.生成配置文件config/captcha.php</h3>
 <p>方法一：</p>
 <pre class="language-php">
 php artisan vendor:publish --provider="Mews\Captcha\CaptchaServiceProvider"
 </pre>
 <p>方法二：
-配置/config/app.php
+  配置/config/app.php
 </p>
 <pre class="language-php">
 'providers' =&gt; [
@@ -30,10 +28,9 @@ php artisan vendor:publish --provider="Mews\Captcha\CaptchaServiceProvider"
 自定义配置
 $ php artisan vendor:publish
 </pre>
-
 <h3>3.使用captcha为 auth 组件添加验证码功能</h3>
 <p>在登录视图中增加验证码的选项，可以加到密码和 remember me 之间
-/resources/views/auth/login.blade.php
+  /resources/views/auth/login.blade.php
 </p>
 <pre class="language-php">
 &lt;div class="form-group"&gt;
@@ -53,9 +50,7 @@ $ php artisan vendor:publish
     &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-
 <h3>4.重写AuthController 登录验证方法，并自定义提示信息：</h3>
-
 <p>修改 App\Http\Controllers\Auth\LoginController</p>
 <pre class="language-php">
 首先要引入如下代码：

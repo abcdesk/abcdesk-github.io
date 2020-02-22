@@ -1,13 +1,11 @@
 <ol class="breadcrumb">
-    <li>Laravel</li>
-    <li class="active">mail发送邮件</li>
+  <li>Laravel</li>
+  <li class="active">mail发送邮件</li>
 </ol>
 <h1>Laravel <span>mail发送邮件</span> </h1>
-
 <h3>Laravel 5.5 自带SMTP邮件组件实现发送邮件</h3>
 <h3>1.邮箱配置</h3>
 <p>需登录QQ邮箱开启POP3和SMTP服务，以及生成授权密码。</p>
-
 <h3>2.配置env</h3>
 <pre class="language-php">
 MAIL_DRIVER=smtp
@@ -19,18 +17,15 @@ MAIL_ENCRYPTION=ssl
 MAIL_FROM_ADDRESS=abcsmalldesk@qq.com
 MAIL_FROM_NAME="ABCDESK"
 </pre>
-
 <h3>3.开始编码</h3>
 <h4>3.1.生成控制器</h4>
 <pre class="language-php">
 php artisan make::controller MailController
 </pre>
-
 <h4>3.2.配置路由</h4>
 <pre class="language-php">
 Route::any('mail/send','MailController@send');
 </pre>
-
 <h4>3.3.编辑上面控制器，加入以下的逻辑处理：</h4>
 <pre class="language-php">
 use Mail;
@@ -98,8 +93,8 @@ class MailController extends Controller
         Mail::send($view,['content'=>$content],function($message) use($to, $subject){
             $message->to($to)->subject($subject);
             $attachment = storage_path('files/test.xlsx');
-             // 在邮件中上传附件 
-            $message->attach($attachment,['as'=>'中文文档.xlsx']); 
+             // 在邮件中上传附件
+            $message->attach($attachment,['as'=>'中文文档.xlsx']);
         });
         if(count(Mail::failures()) < 1){
             return redirect('/')->with('message','发送附件邮件成功，请查收！');
@@ -109,7 +104,6 @@ class MailController extends Controller
     }
 }
 </pre>
-
 <h4>3.4.创建resources/mail.blade.php模板文件。</h4>
 <pre class="language-php">
     &lt;h1&gt;Laravel测试邮件&lt;/h1&gt;
@@ -120,9 +114,8 @@ class MailController extends Controller
         &lt;img src="{{$message-&gt;embedData($image,'Penguins.jpg')}}"&gt;
     @endisset
 </pre>
-
 <h3>参考</h3>
 <ol class="reference">
-    <li><a target="_blank" href="https://blog.csdn.net/woqianduo/article/details/81024244">https://blog.csdn.net/woqianduo/article/details/81024244</a></li>
-    <li><a target="_blank" href="https://blog.csdn.net/xiaobinqt/article/details/87778830">https://blog.csdn.net/xiaobinqt/article/details/87778830</a></li>
+  <li><a target="_blank" href="https://blog.csdn.net/woqianduo/article/details/81024244">https://blog.csdn.net/woqianduo/article/details/81024244</a></li>
+  <li><a target="_blank" href="https://blog.csdn.net/xiaobinqt/article/details/87778830">https://blog.csdn.net/xiaobinqt/article/details/87778830</a></li>
 </ol>

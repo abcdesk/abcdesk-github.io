@@ -1,13 +1,13 @@
 <ol class="breadcrumb">
-    <li>Laravel</li>
-    <li class="active">php artisan migrate</li>
+  <li>Laravel</li>
+  <li class="active">php artisan migrate</li>
 </ol>
 <h1>Laravel <span>php artisan migrate</span> </h1>
 <h3>Laravel数据库迁移与数据填充</h3>
 <p>数据库迁移实际上就是对数据库库表的结构变化做版本控制，Laravel对数据库的版本管理主要包括两部门:数据库结构的管理和数据的管理.
 </p>
 <div class="alert alert-success" role="alert">
-    数据库结构管理
+  数据库结构管理
 </div>
 <h3>1.创建一个数据库</h3>
 <pre class="language-php">
@@ -79,7 +79,6 @@ $ php artisan make:migration alter_goods_add_deleted_at --table=goods
         });
     }
 </pre>
-
 <h3>6.执行迁移</h3>
 <p>在执行迁移之前,还需要执行一个命令composer dump-autoload,这个命令的主要作用是让 composer 更新 autoload_classmap 的内容,包含到我们新建的文件
 </p>
@@ -93,16 +92,15 @@ $ php artisan migrate:rollback
 $ php artisan migrate:reset
 </pre>
 <div class="alert alert-danger" role="alert">
-    <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
-    rollback命令并不是回滚所有的migrate操作,而是回滚你上一次的操作；如果你想执行所有的回滚,可以使用reset命令,执行后会按照迁移文件的时间排序执行所有文件的down方法。
+  <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+  rollback命令并不是回滚所有的migrate操作,而是回滚你上一次的操作；如果你想执行所有的回滚,可以使用reset命令,执行后会按照迁移文件的时间排序执行所有文件的down方法。
 </div>
 <h3>8.重建整个数据库</h3>
 <pre class="language-php">
 $ php artisan migrate:refresh   #reset + migrate
 </pre>
-
 <div class="alert alert-success" role="alert">
-    数据填充
+  数据填充
 </div>
 <h3>1.生成Seeder文件</h3>
 <pre class="language-php">
@@ -139,7 +137,7 @@ $ php artisan make:factory GoodFactory
 $factory->define(App\Models\Good::class, function (Faker $faker) {
     return [
         'goods_sn' => $faker->numberBetween(10001,20000),
-        'goods_name' =>$faker->name, 
+        'goods_name' =>$faker->name,
         'prize' => $faker->numberBetween(20,50)
     ];
 });
@@ -176,246 +174,245 @@ $ php artisan db:seed
 $ php artisan migrate:refresh --seed
 </pre>
 <p>这个命令主要做了三件事:
-    1)执行所有的回滚,也就是migrations目录下所有文件的down方法,执行的时候按照时间顺序.
-    2)所有回滚执行完毕后,执行所有的迁移,也就是按照时间顺序执行所有的up方法.
-    3)执行所有的数据填充,也就是执行DatabaseSeeder 中的run方法.如果在run方法中没有调用其他的seeder,则这个seeder的run方法不会被执行.
+  1)执行所有的回滚,也就是migrations目录下所有文件的down方法,执行的时候按照时间顺序.
+  2)所有回滚执行完毕后,执行所有的迁移,也就是按照时间顺序执行所有的up方法.
+  3)执行所有的数据填充,也就是执行DatabaseSeeder 中的run方法.如果在run方法中没有调用其他的seeder,则这个seeder的run方法不会被执行.
 </p>
-
 <h4>可用的字段类型</h4>
 <table class="table table-striped table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>命令</th>
-            <th>描述</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>$table-&gt;bigIncrements('id');</code></td>
-            <td>递增 ID（主键），相当于「UNSIGNED BIG INTEGER」</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;bigInteger('votes');</code></td>
-            <td>相当于 BIGINT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;binary('data');</code></td>
-            <td>相当于 BLOB</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;boolean('confirmed');</code></td>
-            <td>相当于 BOOLEAN</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;char('name', 4);</code></td>
-            <td>相当于带有长度的 CHAR</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;date('created_at');</code></td>
-            <td>相当于 DATE</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;dateTime('created_at');</code></td>
-            <td>相当于 DATETIME</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;dateTimeTz('created_at');</code></td>
-            <td>相当于带时区 DATETIME</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;decimal('amount', 8, 2);</code></td>
-            <td>相当于带有精度与基数 DECIMAL</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;double('column', 8, 2);</code></td>
-            <td>相当于带有精度与基数 DOUBLE</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;enum('level', ['easy', 'hard']);</code></td>
-            <td>相当于 ENUM</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;float('amount', 8, 2);</code></td>
-            <td>相当于带有精度与基数 FLOAT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;geometry('positions');</code></td>
-            <td>相当于 GEOMETRY</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;geometryCollection('positions');</code></td>
-            <td>相当于 GEOMETRYCOLLECTION</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;increments('id');</code></td>
-            <td>递增的 ID (主键)，相当于「UNSIGNED INTEGER」</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;integer('votes');</code></td>
-            <td>相当于 INTEGER</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;ipAddress('visitor');</code></td>
-            <td>相当于 IP 地址</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;json('options');</code></td>
-            <td>相当于 JSON</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;jsonb('options');</code></td>
-            <td>相当于 JSONB</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;lineString('positions');</code></td>
-            <td>相当于 LINESTRING</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;longText('description');</code></td>
-            <td>相当于 LONGTEXT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;macAddress('device');</code></td>
-            <td>相当于 MAC 地址</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;mediumIncrements('id');</code></td>
-            <td>递增 ID (主键) ，相当于「UNSIGNED MEDIUM INTEGER」</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;mediumInteger('votes');</code></td>
-            <td>相当于 MEDIUMINT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;mediumText('description');</code></td>
-            <td>相当于 MEDIUMTEXT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;morphs('taggable');</code></td>
-            <td>相当于加入递增的 <code>taggable_id</code> 与字符串 <code>taggable_type</code>
-            </td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;multiLineString('positions');</code></td>
-            <td>相当于 MULTILINESTRING</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;multiPoint('positions');</code></td>
-            <td>相当于 MULTIPOINT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;multiPolygon('positions');</code></td>
-            <td>相当于 MULTIPOLYGON</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;nullableMorphs('taggable');</code></td>
-            <td>相当于可空版本的 <code>morphs()</code> 字段</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;nullableTimestamps();</code></td>
-            <td>相当于可空版本的 <code>timestamps()</code> 字段</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;point('position');</code></td>
-            <td>相当于 POINT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;polygon('positions');</code></td>
-            <td>相当于 POLYGON</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;rememberToken();</code></td>
-            <td>相当于可空版本的 VARCHAR (100) 的 <code>remember_token</code> 字段</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;smallIncrements('id');</code></td>
-            <td>递增 ID (主键) ，相当于「UNSIGNED SMALL INTEGER」</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;smallInteger('votes');</code></td>
-            <td>相当于 SMALLINT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;softDeletes();</code></td>
-            <td>相当于为软删除添加一个可空的 <code>deleted_at</code> 字段</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;softDeletesTz();</code></td>
-            <td>相当于为软删除添加一个可空的 带时区的 <code>deleted_at</code> 字段</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;string('name', 100);</code></td>
-            <td>相当于带长度的 VARCHAR</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;text('description');</code></td>
-            <td>相当于 TEXT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;time('sunrise');</code></td>
-            <td>相当于 TIME</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;timeTz('sunrise');</code></td>
-            <td>相当于带时区的 TIME</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;timestamp('added_on');</code></td>
-            <td>相当于 TIMESTAMP</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;timestampTz('added_on');</code></td>
-            <td>相当于带时区的 TIMESTAMP</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;tinyIncrements('id');</code></td>
-            <td>相当于自动递增 UNSIGNED TINYINT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;tinyInteger('votes');</code></td>
-            <td>相当于 TINYINT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;unsignedBigInteger('votes');</code></td>
-            <td>相当于 Unsigned BIGINT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;unsignedDecimal('amount', 8, 2);</code></td>
-            <td>相当于带有精度和基数的 UNSIGNED DECIMAL</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;unsignedInteger('votes');</code></td>
-            <td>相当于 Unsigned INT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;unsignedMediumInteger('votes');</code></td>
-            <td>相当于 Unsigned MEDIUMINT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;unsignedSmallInteger('votes');</code></td>
-            <td>相当于 Unsigned SMALLINT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;unsignedTinyInteger('votes');</code></td>
-            <td>相当于 Unsigned TINYINT</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;uuid('id');</code></td>
-            <td>相当于 UUID</td>
-        </tr>
-        <tr>
-            <td><code>$table-&gt;year('birth_year');</code></td>
-            <td>相当于 YEAR</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>命令</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>$table-&gt;bigIncrements('id');</code></td>
+      <td>递增 ID（主键），相当于「UNSIGNED BIG INTEGER」</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;bigInteger('votes');</code></td>
+      <td>相当于 BIGINT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;binary('data');</code></td>
+      <td>相当于 BLOB</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;boolean('confirmed');</code></td>
+      <td>相当于 BOOLEAN</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;char('name', 4);</code></td>
+      <td>相当于带有长度的 CHAR</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;date('created_at');</code></td>
+      <td>相当于 DATE</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;dateTime('created_at');</code></td>
+      <td>相当于 DATETIME</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;dateTimeTz('created_at');</code></td>
+      <td>相当于带时区 DATETIME</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;decimal('amount', 8, 2);</code></td>
+      <td>相当于带有精度与基数 DECIMAL</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;double('column', 8, 2);</code></td>
+      <td>相当于带有精度与基数 DOUBLE</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;enum('level', ['easy', 'hard']);</code></td>
+      <td>相当于 ENUM</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;float('amount', 8, 2);</code></td>
+      <td>相当于带有精度与基数 FLOAT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;geometry('positions');</code></td>
+      <td>相当于 GEOMETRY</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;geometryCollection('positions');</code></td>
+      <td>相当于 GEOMETRYCOLLECTION</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;increments('id');</code></td>
+      <td>递增的 ID (主键)，相当于「UNSIGNED INTEGER」</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;integer('votes');</code></td>
+      <td>相当于 INTEGER</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;ipAddress('visitor');</code></td>
+      <td>相当于 IP 地址</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;json('options');</code></td>
+      <td>相当于 JSON</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;jsonb('options');</code></td>
+      <td>相当于 JSONB</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;lineString('positions');</code></td>
+      <td>相当于 LINESTRING</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;longText('description');</code></td>
+      <td>相当于 LONGTEXT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;macAddress('device');</code></td>
+      <td>相当于 MAC 地址</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;mediumIncrements('id');</code></td>
+      <td>递增 ID (主键) ，相当于「UNSIGNED MEDIUM INTEGER」</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;mediumInteger('votes');</code></td>
+      <td>相当于 MEDIUMINT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;mediumText('description');</code></td>
+      <td>相当于 MEDIUMTEXT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;morphs('taggable');</code></td>
+      <td>相当于加入递增的 <code>taggable_id</code> 与字符串 <code>taggable_type</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;multiLineString('positions');</code></td>
+      <td>相当于 MULTILINESTRING</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;multiPoint('positions');</code></td>
+      <td>相当于 MULTIPOINT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;multiPolygon('positions');</code></td>
+      <td>相当于 MULTIPOLYGON</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;nullableMorphs('taggable');</code></td>
+      <td>相当于可空版本的 <code>morphs()</code> 字段</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;nullableTimestamps();</code></td>
+      <td>相当于可空版本的 <code>timestamps()</code> 字段</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;point('position');</code></td>
+      <td>相当于 POINT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;polygon('positions');</code></td>
+      <td>相当于 POLYGON</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;rememberToken();</code></td>
+      <td>相当于可空版本的 VARCHAR (100) 的 <code>remember_token</code> 字段</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;smallIncrements('id');</code></td>
+      <td>递增 ID (主键) ，相当于「UNSIGNED SMALL INTEGER」</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;smallInteger('votes');</code></td>
+      <td>相当于 SMALLINT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;softDeletes();</code></td>
+      <td>相当于为软删除添加一个可空的 <code>deleted_at</code> 字段</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;softDeletesTz();</code></td>
+      <td>相当于为软删除添加一个可空的 带时区的 <code>deleted_at</code> 字段</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;string('name', 100);</code></td>
+      <td>相当于带长度的 VARCHAR</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;text('description');</code></td>
+      <td>相当于 TEXT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;time('sunrise');</code></td>
+      <td>相当于 TIME</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;timeTz('sunrise');</code></td>
+      <td>相当于带时区的 TIME</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;timestamp('added_on');</code></td>
+      <td>相当于 TIMESTAMP</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;timestampTz('added_on');</code></td>
+      <td>相当于带时区的 TIMESTAMP</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;tinyIncrements('id');</code></td>
+      <td>相当于自动递增 UNSIGNED TINYINT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;tinyInteger('votes');</code></td>
+      <td>相当于 TINYINT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;unsignedBigInteger('votes');</code></td>
+      <td>相当于 Unsigned BIGINT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;unsignedDecimal('amount', 8, 2);</code></td>
+      <td>相当于带有精度和基数的 UNSIGNED DECIMAL</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;unsignedInteger('votes');</code></td>
+      <td>相当于 Unsigned INT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;unsignedMediumInteger('votes');</code></td>
+      <td>相当于 Unsigned MEDIUMINT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;unsignedSmallInteger('votes');</code></td>
+      <td>相当于 Unsigned SMALLINT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;unsignedTinyInteger('votes');</code></td>
+      <td>相当于 Unsigned TINYINT</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;uuid('id');</code></td>
+      <td>相当于 UUID</td>
+    </tr>
+    <tr>
+      <td><code>$table-&gt;year('birth_year');</code></td>
+      <td>相当于 YEAR</td>
+    </tr>
+  </tbody>
 </table>
 <h3>参考</h3>
 <ol class="reference">
-    <li><a target="_blank" href="https://segmentfault.com/a/1190000008577865">https://segmentfault.com/a/1190000008577865</a></li>
-    <li><a target="_blank" href="https://segmentfault.com/a/1190000005085328">https://segmentfault.com/a/1190000005085328</a></li>
-    <li><a target="_blank" href="https://segmentfault.com/a/1190000007260633">https://segmentfault.com/a/1190000007260633</a></li>
-    <li><a target="_blank" href="https://www.jianshu.com/p/21114c60d156">https://www.jianshu.com/p/21114c60d156</a></li>
-    <li><a target="_blank" href="https://learnku.com/docs/laravel/5.5/migrations/1329#columns">https://learnku.com/docs/laravel/5.5/migrations/1329#columns</a></li>
-    <li><a target="_blank" href="https://xueyuanjun.com/post/9580.html">https://xueyuanjun.com/post/9580.html</a></li>
-    <li><a target="_blank" href="https://xueyuanjun.com/post/9703">https://xueyuanjun.com/post/9703</a></li>
+  <li><a target="_blank" href="https://segmentfault.com/a/1190000008577865">https://segmentfault.com/a/1190000008577865</a></li>
+  <li><a target="_blank" href="https://segmentfault.com/a/1190000005085328">https://segmentfault.com/a/1190000005085328</a></li>
+  <li><a target="_blank" href="https://segmentfault.com/a/1190000007260633">https://segmentfault.com/a/1190000007260633</a></li>
+  <li><a target="_blank" href="https://www.jianshu.com/p/21114c60d156">https://www.jianshu.com/p/21114c60d156</a></li>
+  <li><a target="_blank" href="https://learnku.com/docs/laravel/5.5/migrations/1329#columns">https://learnku.com/docs/laravel/5.5/migrations/1329#columns</a></li>
+  <li><a target="_blank" href="https://xueyuanjun.com/post/9580.html">https://xueyuanjun.com/post/9580.html</a></li>
+  <li><a target="_blank" href="https://xueyuanjun.com/post/9703">https://xueyuanjun.com/post/9703</a></li>
 </ol>

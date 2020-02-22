@@ -1,0 +1,222 @@
+<ol class="breadcrumb">
+  <li>Bootstrap</li>
+  <li class="active">Usage基本用法</li>
+</ol>
+<h1>Bootstrap <span>Usage基本用法</span> </h1>
+<h3>HTML5 文档类型</h3>
+<pre class="language-php">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h3>Containers布局容器</h3>
+<p><code>.container</code> 类用于固定宽度并支持响应式布局的容器。</p>
+<pre class="language-php">
+&lt;div class="container"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+<p><code>.container-fluid</code> 类用于 100% 宽度，占据全部视口（viewport）的容器。</p>
+<pre class="language-php">
+&lt;div class="container-fluid"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+<h3>Grid栅格系统</h3>
+<p>实例：手机、平板、桌面</p>
+<pre class="language-php">
+&lt;div class="row"&gt;
+  &lt;div class="col-xs-12 col-sm-6 col-md-8"&gt;.col-xs-12 .col-sm-6 .col-md-8&lt;/div&gt;
+  &lt;div class="col-xs-6 col-md-4"&gt;.col-xs-6 .col-md-4&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-xs-6 col-sm-4"&gt;.col-xs-6 .col-sm-4&lt;/div&gt;
+  &lt;div class="col-xs-6 col-sm-4"&gt;.col-xs-6 .col-sm-4&lt;/div&gt;
+  &lt;!-- Optional: clear the XS cols if their content doesn't match in height --&gt;
+  &lt;div class="clearfix visible-xs-block"&gt;&lt;/div&gt;
+  &lt;div class="col-xs-6 col-sm-4"&gt;.col-xs-6 .col-sm-4&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<h3>表格<code>&lt;table&gt;</code></h3>
+<pre class="language-php">
+&lt;table class="table table-striped table-bordered table-hover"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;1&lt;/th&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+<h3>表单<code>&lt;form&gt;</code></h3>
+<pre class="language-php">
+&lt;form class="form-horizontal"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="username" class="col-sm-2 control-label"&gt;Username&lt;/label&gt;
+    &lt;div class="col-sm-10"&gt;
+      &lt;input type="text" class="form-control" id="username" name="username" placeholder="Username"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="password" class="col-sm-2 control-label"&gt;Password&lt;/label&gt;
+    &lt;div class="col-sm-10"&gt;
+      &lt;input type="password" class="form-control" id="password" name="password" placeholder="Password"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;div class="col-sm-offset-2 col-sm-10"&gt;
+      &lt;div class="checkbox"&gt;
+        &lt;label&gt;
+          &lt;input type="checkbox"&gt; Remember me
+        &lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;div class="col-sm-offset-2 col-sm-10"&gt;
+      &lt;button type="submit" class="btn btn-default"&gt;Sign in&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+<h3>被支持的控件</h3>
+<p class="lead">输入框<code>&lt;input&gt;</code></p>
+<p>包括大部分表单控件、文本输入域控件，还支持所有 HTML5 类型的输入控件： <code>text</code>、<code>password</code>、<code>datetime</code>、<code>datetime-local</code>、<code>date</code>、<code>month</code>、<code>time</code>、<code>week</code>、<code>number</code>、<code>email</code>、<code>url</code>、<code>search</code>、<code>tel</code> 和 <code>color</code>。
+</p>
+<pre class="language-php">
+&lt;input type="text" class="form-control" placeholder="Text input"&gt;
+</pre>
+<p class="lead">文本域<code>&lt;textarea&gt;</code></p>
+<p>可根据需要改变 <code>rows</code> 属性。</p>
+<pre class="language-php">
+&lt;textarea class="form-control" rows="3"&gt;&lt;/textarea&gt;
+</pre>
+<h3>排版</h3>
+<p>标题h1-6,在标题内还可以包含 <code>&lt;small&gt;</code> 标签或赋予 <code>.small</code> 类的元素，可以用来标记副标题。
+</p>
+<pre class="language-php">
+&lt;h1&gt;h1. Bootstrap heading &lt;small&gt;Secondary text&lt;/small&gt;&lt;/h1&gt;
+</pre>
+<p>页面主体，通过添加 <code>.lead</code> 类可以让段落突出显示。</p>
+<pre class="language-php">
+&lt;p class="lead"&gt;...&lt;/p&gt;
+</pre>
+<h4>内联文本元素</h4>
+<p>Marked text <code>&lt;mark&gt;</code></p>
+<pre class="language-php">
+You can use the mark tag to &lt;mark&gt;highlight&lt;/mark&gt; text.
+</pre>
+<p>被删除的文本<code>&lt;del&gt;</code>
+  无用文本<code>&lt;s&gt;</code>
+  插入文本<code>&lt;ins&gt;</code>
+  带下划线的文本<code>&lt;u&gt;</code>
+  小号文本<code>&lt;small&gt;</code>
+  着重<code>&lt;strong&gt;</code>
+</p>
+<p>对齐<code>.text-left</code></p>
+<pre class="language-php">
+&lt;p class="text-left"&gt;Left aligned text.&lt;/p
+&lt;p class="text-center"&gt;Center aligned text.&lt;/p&gt;
+&lt;p class="text-right"&gt;Right aligned text.&lt;/p&gt;
+&lt;p class="text-justify"&gt;Justified text.&lt;/p&gt;
+&lt;p class="text-nowrap"&gt;No wrap text.&lt;/p&gt;&gt;
+</pre>
+<p>改变大小写<code>.text-lowercase</code></p>
+<pre class="language-php">
+&lt;p class="text-lowercase"&gt;Lowercased text.&lt;/p&gt;
+&lt;p class="text-uppercase"&gt;Uppercased text.&lt;/p&gt;
+&lt;p class="text-capitalize"&gt;Capitalized text.&lt;/p&gt;
+</pre>
+<p>缩略语<code>&lt;abbr&gt;</code></p>
+<pre class="language-php">
+&lt;abbr title="attribute"&gt;attr&lt;/abbr&gt;
+&lt;abbr title="HyperText Markup Language" class="initialism"&gt;HTML&lt;/abbr&gt;
+</pre>
+<p>地址<code>&lt;address&gt;</code></p>
+<pre class="language-php">
+&lt;address&gt;
+  &lt;strong&gt;Twitter, Inc.&lt;/strong&gt;&lt;br&gt;
+  1355 Market Street, Suite 900&lt;br&gt;
+  San Francisco, CA 94103&lt;br&gt;
+  &lt;abbr title="Phone"&gt;P:&lt;/abbr&gt; (123) 456-7890
+  &lt;a href="mailto:#"&gt;first.last@example.com&lt;/a&gt;
+&lt;/address&gt;
+</pre>
+<p>引用<code>&lt;blockquote&gt;</code></p>
+<pre class="language-php">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+  &lt;footer&gt;Someone famous in &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+</pre>
+<h3>列表</h3>
+<p>无序列表<code>&lt;ul&gt;</code></p>
+<pre class="language-php">
+&lt;ul&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<p>有序列表<code>&lt;ol&gt;</code></p>
+<pre class="language-php">
+&lt;ol&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+<p>无样式列表<code>.list-unstyled</code>
+  内联列表<code>list-inline</code>
+</p>
+<p>描述<code>&lt;dl&gt;</code>
+  <code>.dl-horizontal</code> 可以让<code>&lt;dl&gt;</code>内的短语及其描述排在一行。
+</p>
+<pre class="language-php">
+&lt;dl&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+<h3>代码</h3>
+<p>内联代码<code>&lt;code&gt;</code>
+  用户输入<code>&lt;kbd&gt;</code>
+  代码块<code>&lt;pre&gt;</code>
+  变量<code>&lt;var&gt;</code>
+  程序输出<code>&lt;samp&gt;</code>
+</p>
+<h3></h3>
+<pre class="language-php">
+
+</pre>
+<h3></h3>
+<pre class="language-php">
+
+</pre>
+<h3></h3>
+<pre class="language-php">
+
+</pre>
+<h3></h3>
+<pre class="language-php">
+
+</pre>
+<h3></h3>
+<pre class="language-php">
+
+</pre>
+<h3>参考</h3>
+<ol class="reference">
+  <li><a target="_blank" href="https">https</a></li>
+</ol>
