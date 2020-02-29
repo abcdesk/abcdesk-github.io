@@ -16,6 +16,7 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
+<h3>Navbar导航条</h3>
 <h3>Containers布局容器</h3>
 <p><code>.container</code> 类用于固定宽度并支持响应式布局的容器。</p>
 <pre class="language-php">
@@ -64,6 +65,7 @@
 &lt;/table&gt;
 </pre>
 <h3>表单<code>&lt;form&gt;</code></h3>
+<p>通过 <code>.form-group-lg</code>、<code>.form-group</code>(默认)、<code>.form-group-sm</code> 类可以为一组控件设置高度；通过 <code>.col-lg-*</code> 类似的类可以为控件设置宽度。</p>
 <pre class="language-php">
 &lt;form class="form-horizontal"&gt;
   &lt;div class="form-group"&gt;
@@ -94,129 +96,27 @@
   &lt;/div&gt;
 &lt;/form&gt;
 </pre>
-<h3>被支持的控件</h3>
-<p class="lead">输入框<code>&lt;input&gt;</code></p>
-<p>包括大部分表单控件、文本输入域控件，还支持所有 HTML5 类型的输入控件： <code>text</code>、<code>password</code>、<code>datetime</code>、<code>datetime-local</code>、<code>date</code>、<code>month</code>、<code>time</code>、<code>week</code>、<code>number</code>、<code>email</code>、<code>url</code>、<code>search</code>、<code>tel</code> 和 <code>color</code>。
-</p>
-<pre class="language-php">
-&lt;input type="text" class="form-control" placeholder="Text input"&gt;
-</pre>
-<p class="lead">文本域<code>&lt;textarea&gt;</code></p>
-<p>可根据需要改变 <code>rows</code> 属性。</p>
-<pre class="language-php">
-&lt;textarea class="form-control" rows="3"&gt;&lt;/textarea&gt;
-</pre>
-<h3>排版</h3>
-<p>标题h1-6,在标题内还可以包含 <code>&lt;small&gt;</code> 标签或赋予 <code>.small</code> 类的元素，可以用来标记副标题。
-</p>
-<pre class="language-php">
-&lt;h1&gt;h1. Bootstrap heading &lt;small&gt;Secondary text&lt;/small&gt;&lt;/h1&gt;
-</pre>
-<p>页面主体，通过添加 <code>.lead</code> 类可以让段落突出显示。</p>
-<pre class="language-php">
-&lt;p class="lead"&gt;...&lt;/p&gt;
-</pre>
-<h4>内联文本元素</h4>
-<p>Marked text <code>&lt;mark&gt;</code></p>
-<pre class="language-php">
-You can use the mark tag to &lt;mark&gt;highlight&lt;/mark&gt; text.
-</pre>
-<p>被删除的文本<code>&lt;del&gt;</code>
-  无用文本<code>&lt;s&gt;</code>
-  插入文本<code>&lt;ins&gt;</code>
-  带下划线的文本<code>&lt;u&gt;</code>
-  小号文本<code>&lt;small&gt;</code>
-  着重<code>&lt;strong&gt;</code>
-</p>
-<p>对齐<code>.text-left</code></p>
-<pre class="language-php">
-&lt;p class="text-left"&gt;Left aligned text.&lt;/p
-&lt;p class="text-center"&gt;Center aligned text.&lt;/p&gt;
-&lt;p class="text-right"&gt;Right aligned text.&lt;/p&gt;
-&lt;p class="text-justify"&gt;Justified text.&lt;/p&gt;
-&lt;p class="text-nowrap"&gt;No wrap text.&lt;/p&gt;&gt;
-</pre>
-<p>改变大小写<code>.text-lowercase</code></p>
-<pre class="language-php">
-&lt;p class="text-lowercase"&gt;Lowercased text.&lt;/p&gt;
-&lt;p class="text-uppercase"&gt;Uppercased text.&lt;/p&gt;
-&lt;p class="text-capitalize"&gt;Capitalized text.&lt;/p&gt;
-</pre>
-<p>缩略语<code>&lt;abbr&gt;</code></p>
-<pre class="language-php">
-&lt;abbr title="attribute"&gt;attr&lt;/abbr&gt;
-&lt;abbr title="HyperText Markup Language" class="initialism"&gt;HTML&lt;/abbr&gt;
-</pre>
-<p>地址<code>&lt;address&gt;</code></p>
-<pre class="language-php">
-&lt;address&gt;
-  &lt;strong&gt;Twitter, Inc.&lt;/strong&gt;&lt;br&gt;
-  1355 Market Street, Suite 900&lt;br&gt;
-  San Francisco, CA 94103&lt;br&gt;
-  &lt;abbr title="Phone"&gt;P:&lt;/abbr&gt; (123) 456-7890
-  &lt;a href="mailto:#"&gt;first.last@example.com&lt;/a&gt;
-&lt;/address&gt;
-</pre>
-<p>引用<code>&lt;blockquote&gt;</code></p>
-<pre class="language-php">
-&lt;blockquote&gt;
-  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
-  &lt;footer&gt;Someone famous in &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-</pre>
-<h3>列表</h3>
-<p>无序列表<code>&lt;ul&gt;</code></p>
-<pre class="language-php">
-&lt;ul&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-<p>有序列表<code>&lt;ol&gt;</code></p>
-<pre class="language-php">
-&lt;ol&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ol&gt;
-</pre>
-<p>无样式列表<code>.list-unstyled</code>
-  内联列表<code>list-inline</code>
-</p>
-<p>描述<code>&lt;dl&gt;</code>
-  <code>.dl-horizontal</code> 可以让<code>&lt;dl&gt;</code>内的短语及其描述排在一行。
-</p>
-<pre class="language-php">
-&lt;dl&gt;
-  &lt;dt&gt;...&lt;/dt&gt;
-  &lt;dd&gt;...&lt;/dd&gt;
-&lt;/dl&gt;
-</pre>
-<h3>代码</h3>
-<p>内联代码<code>&lt;code&gt;</code>
-  用户输入<code>&lt;kbd&gt;</code>
-  代码块<code>&lt;pre&gt;</code>
-  变量<code>&lt;var&gt;</code>
-  程序输出<code>&lt;samp&gt;</code>
-</p>
-<h3></h3>
-<pre class="language-php">
-
-</pre>
-<h3></h3>
-<pre class="language-php">
-
-</pre>
-<h3></h3>
-<pre class="language-php">
-
-</pre>
-<h3></h3>
-<pre class="language-php">
-
-</pre>
-<h3></h3>
-<pre class="language-php">
-
-</pre>
+<h3>button与input button区别</h3>
+<ul>
+  <li>
+    <p>如果在普通标签中使用，两者没有区别</p>
+  </li>
+  <li>
+    <p>如果在form表单中使用，&lt;input type="button"&gt;不会提交表单，而&lt;button type="submit"&gt;或者&lt;button&gt;(默认type="submit")会引起表单的提交。</p>
+  </li>
+  <li>
+    <p>&lt;button type="button"&gt; 和 &lt;button type="reset"&gt;不会引起表单提交。</p>
+  </li>
+  <li>
+    <p>input的值需要设置value:&lt;input type="button" value="点击"&gt;，button则在标签中间，&lt;button&gt;点击&lt;/button&gt;</p>
+  </li>
+</ul>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+  <p>input的类型值(type)为submit可以点击按钮提交数据，button的值类型值为submit或是不设定值得情况下，点击按钮则都会提交表单数据。</p>
+  <p>单独的按钮(不提交数据type="button")，在页面对按钮的样式有更高要求时候使用 &lt;button&gt; 元素会更加便利。</p>
+</div>
 <h3>参考</h3>
 <ol class="reference">
-  <li><a target="_blank" href="https">https</a></li>
+  <li><a target="_blank" href="https://www.cnblogs.com/smile6542/p/11968175.html">https://www.cnblogs.com/smile6542/p/11968175.html</a></li>
 </ol>

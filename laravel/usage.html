@@ -42,13 +42,59 @@ $ php artisan make:view articles.index  #views\articles\index.blade.php
 $ php artisan make:view articles --resource #包含index、create、edit、show
 $ php artisan make:view articles --resource --extends=layouts.app --with-yields
 
-$ php artisan make:view index --extends=layout --with-yields
+$ php artisan make:view index --extends=layouts.app --with-yields
 $ php artisan make:view index --sections=title,content
 
 $ php artisan scrap:view index  #remove views\index.blade.php
 $ php artisan scrap:view articles.index --force #强制删除
 $ php artisan scrap:view articles --resource
 </pre>
+<h3>模板继承</h3>
+<h4>定义布局</h4>
+<p>resources/views/layouts/app.blade.php</p>
+<pre class="language-php">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;应用程序名称 - @yield('title')&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  @section('sidebar')
+  这是主布局的侧边栏。
+  @show
+  &lt;div class="container"&gt;
+    @yield('content')
+  &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre>
+<h4>继承布局</h4>
+<p>resources/views/child.blade.php</p>
+<pre class="language-php">
+@extends('layouts.app')
+
+@section('title', 'Page Title')
+
+@section('sidebar')
+  @parent
+  &lt;p&gt;这将追加到主布局的侧边栏。&lt;/p&gt;
+@endsection
+
+@section('content')
+  @include('shared.errors')
+  &lt;p&gt;这是主体内容。&lt;/p&gt;
+@endsection
+</pre>
+<p>使用 <code>@parent</code> 命令在「主」布局的 <code>@section('sidebar')</code> 中增加内容（不是覆盖）。</p>
+<p>使用 Blade 的 <code>@include</code> 指令可以在 Blade 视图中引入另一个视图，父视图可用的所有变量将提供给引入的视图。</p>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+  <p>@yield 类似于 @section/show 的用法，但是其继承者不能使用 @parent。</p>
+</div>
 <h3>创建控制器C</h3>
 <pre class="language-php">
 $ php artisan make:controller --help

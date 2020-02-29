@@ -1,8 +1,8 @@
 <ol class="breadcrumb">
   <li>Laravel</li>
-  <li class="active">问题及解决方案</li>
+  <li class="active">QA问题及解决方案</li>
 </ol>
-<h1>Laravel <span>问题及解决方案</span> </h1>
+<h1>Laravel <span>QA问题及解决方案</span> </h1>
 <div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-question-sign"></span>
   访问首页出现如下提示：Please provide a valid cache path.
@@ -104,7 +104,7 @@ $ composer depends phpunit/phpunit-mock-objects
 <h3 class="text-success">
   解决方案:
 </h3>
-<p>Head to https://github.com/settings/tokens/new?scopes=repo&description=Composer+on+Think+2020-01-11+0840
+<p>Head to https://github.com/settings/tokens/new?scopes=repo&amp;description=Composer+on+Think+2020-01-11+0840
   to retrieve a token. It will be stored in "C:/Users/admin/AppData/Roaming/Composer/auth.json" for future use by Composer.
   只要粘贴上面的URL到浏览器中打开，然后生成一个token，然后复制这个新的token，在命令行中需要token的地方输入该token即可，该token会存储在用户家目录/.composer/auth.json中：
 </p>
@@ -188,10 +188,20 @@ $ gulp
 </pre>
 <div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-question-sign"></span>
+  blade页面中如何验证是否登录？
 </div>
 <h3 class="text-success">
   解决方案:
 </h3>
+<pre class="language-php">
+@auth
+    // 用户已经通过身份认证...
+@endauth
+
+@guest
+    // 用户没有通过身份认证...
+@endguest
+</pre>
 <h3>参考</h3>
 <ol class="reference">
   <li><a target="_blank" href="https://laravel.com/docs/5.5">https://laravel.com/docs/5.5</a></li>

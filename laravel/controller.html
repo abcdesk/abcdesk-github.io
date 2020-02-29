@@ -19,6 +19,7 @@ $ php artisan make:controller Admin\ArticleController --resource
 // 单个值的传递
 $test = "测试";
 return view('index')->with('test',$test);
+return view('index')->withTest($test); // 使用魔术方法
 
 // 多个值的传递
 return view('index')->with(["test1" => "测试1", "test2" => "测试2", "test3" => "测试3"]);
@@ -57,6 +58,38 @@ return view('index',compact('test1','test2' ,'test3' ));
 $test_array = ["测试1","测试2", "测试2"];
 return view('index',compact('test_array'));
 </pre>
+<h3>重定向到上一个页面带参数返回</h3>
+<h4>back()->withErrors()返回错误信息</h4>
+<pre class="language-php">
+return redirect()->back()-&gt;withErrors('删除失败！')-&gt;withInput();
+return redirect('article')-&gt;withErrors(['新增失败！']);
+</pre>
+<p>在视图中展示返回的错误信息</p>
+<pre class="language-php">
+@if (isset($errors)?(count($errors)&gt;0):false)
+&lt;div class="alert alert-danger"&gt;
+  {!! implode('&lt;br&gt;', $errors-&gt;all()) !!}
+&lt;/div&gt;
+@endif
+</pre>
+<h4>back()->with()返回提示信息</h4>
+<pre class="language-php">
+return redirect()-&gt;back()-&gt;with('success', ['删除成功！'])-&gt;withInput();
+return redirect('article')-&gt;with('success', ['新增成功！']);
+return redirect('article')-&gt;withSuccess(['新增成功！']);
+</pre>
+<p>在视图中展示返回的信息</p>
+<pre class="language-php">
+@if(Session::has('success'))
+&lt;div class="alert alert-success"&gt;
+  {!! implode('&lt;br&gt;', session('success')) !!}
+&lt;/div&gt;
+@endif
+</pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+  <p></p>
+</div>
 <h3>参考</h3>
 <ol class="reference">
   <li><a target="_blank" href="https://www.cnblogs.com/cici1989/p/10723131.html">https://www.cnblogs.com/cici1989/p/10723131.html</a></li>

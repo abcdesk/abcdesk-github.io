@@ -57,3 +57,20 @@ App::make('router')->auth();
 static::$app->make('router')->auth();
 实例化路由router调用auth方法
 </pre>
+<h3>登录后跳转回登录前浏览的页面</h3>
+<p>只需在 app/Http/Controllers/Auth/LoginController.php 控制器中重写其继承的 AuthenticatesUsers 这个 Trait 中的 showLoginForm() 方法即可：
+</p>
+<pre class="language-php">
+    // 打开登录页面
+    public function showLoginForm()
+    {
+        session(['url.intended' => url()->previous()]);
+        return view('auth.login');
+    }
+</pre>
+<p>只需在原有的 showLoginForm() 方法中添加一行即可！这个操作的关键就是打开登录页面时，将上一个浏览的页面地址存入 Session 的 url.intended 键。
+</p>
+<h3>参考</h3>
+<ol class="reference">
+  <li><a target="_blank" href="https://www.cnblogs.com/xcxc/p/11219915.html">https://www.cnblogs.com/xcxc/p/11219915.html</a></li>
+</ol>

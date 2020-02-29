@@ -1,8 +1,8 @@
 <ol class="breadcrumb">
   <li>Bootstrap</li>
-  <li class="active">问题及解决方案</li>
+  <li class="active">QA问题及解决方案</li>
 </ol>
-<h1>Bootstrap <span>问题及解决方案</span> </h1>
+<h1>Bootstrap <span>QA问题及解决方案</span> </h1>
 <div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-question-sign"></span>
   如何让pre标签自动换行？
@@ -18,10 +18,35 @@ pre {
 </pre>
 <div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-question-sign"></span>
+  如何去除Bootstrap阴影、边框，并让背景透明？
+</div>
+<h3 class="text-success">
+  解决方案:使用CSS
+</h3>
+<pre class="language-html">
+.glyphicon {
+  /*color: coral;*/
+  font-size: 20px;
+  color: red;
+  background-color:rgba(0,0,0,0);/*背景透明*/
+  background: #000 9;
+  /*CSS Hack,只能对ie9以下浏览器ie6,ie7,ie8有效，否侧ie10,FF,Cherome会失去透明效果*/
+  filter: Alpha(opacity=60);
+  /*只对ie7,ie8有效*/
+}
+
+box-shadow: none; /*去除阴影*/
+border: none; /*去除边框*/
+</pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign"></span>
 </div>
 <h3 class="text-success">
   解决方案:
 </h3>
+<pre class="language-html">
+
+</pre>
 <h3>参考</h3>
 <ol class="reference">
   <li><a target="_blank" href="https://v3.bootcss.com/getting-started/">https://v3.bootcss.com/getting-started/</a></li>

@@ -32,3 +32,16 @@
     $("#content>ul>li").css({"padding":"10px 5px","color":"#7d8688"});
 &lt;/script&gt;
 </pre>
+<h3>标签赋初值</h3>
+<p>自闭合标签赋初值用<code>$().val()</code>，比如：&lt;input type="text" name="text" value="123"&gt;</p>
+<p>闭合标签赋初值用<code>$().text()</code>，比如：&lt;textarea id="id_textarea"&gt;&lt;/textarea&gt;</p>
+<pre class="language-php">
+# 给textarea标签赋初值
+$('#id_textarea').text($('#form_text').attr('my_text'));
+
+// 给单选 赋初值
+$("#id_0").attr("checked", $('#id_radio').attr('gender') == '男' ? true : false);
+$("#id_1").attr("checked", $('#id_radio').attr('gender') == '女' ? true : false);
+$("#id_2").attr("checked", $('#id_radio').attr('gender') == '未知' ? true : false);
+form.render(); //更新全部
+</pre>

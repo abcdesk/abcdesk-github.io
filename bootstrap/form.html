@@ -1,0 +1,211 @@
+<ol class="breadcrumb">
+  <li>Bootstrap</li>
+  <li class="active">Form表单</li>
+</ol>
+<h1>Bootstrap <span>Form表单</span> </h1>
+<h3>基本实例<code>&lt;form&gt;</code></h3>
+<pre class="language-php">
+&lt;form&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="email"&gt;Email address&lt;/label&gt;
+    &lt;input type="email" class="form-control" id="email" name="email" placeholder="Email"&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="password"&gt;Password&lt;/label&gt;
+    &lt;input type="password" class="form-control" id="password" name="password" placeholder="Password"&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="uploadfile"&gt;File input&lt;/label&gt;
+    &lt;input type="file" id="uploadfile" name="uploadfile"&gt;
+    &lt;p class="help-block"&gt;Example block-level help text here.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="checkbox"&gt;
+    &lt;label&gt;
+      &lt;input type="checkbox"&gt; Check me out
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn btn-default"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+<h3>内联表单<code>&lt;form class="form-inline"&gt;</code></h3>
+<pre class="language-php">
+&lt;form class="form-inline"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label class="sr-only" for="amount"&gt;Amount (in dollars)&lt;/label&gt;
+    &lt;div class="input-group"&gt;
+      &lt;div class="input-group-addon"&gt;$&lt;/div&gt;
+      &lt;input type="text" class="form-control" id="amount" name="amount" placeholder="Amount"&gt;
+      &lt;div class="input-group-addon"&gt;.00&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn btn-primary"&gt;Transfer cash&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+<h3>水平排列的表单<code>&lt;form class="form-horizontal"&gt;</code></h3>
+<pre class="language-php">
+&lt;form class="form-horizontal"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="username" class="col-sm-2 control-label"&gt;Username&lt;/label&gt;
+    &lt;div class="col-sm-10"&gt;
+      &lt;input type="text" class="form-control" id="username" name="username" placeholder="Username"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="password" class="col-sm-2 control-label"&gt;Password&lt;/label&gt;
+    &lt;div class="col-sm-10"&gt;
+      &lt;input type="password" class="form-control" id="password" name="password" placeholder="Password"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;div class="col-sm-offset-2 col-sm-10"&gt;
+      &lt;div class="checkbox"&gt;
+        &lt;label&gt;
+          &lt;input type="checkbox"&gt; Remember me
+        &lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;div class="col-sm-offset-2 col-sm-10"&gt;
+      &lt;button type="submit" class="btn btn-default"&gt;Sign in&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+<h3>被支持的控件</h3>
+<h4>输入框<code>&lt;input&gt;</code></h4>
+<p>包括大部分表单控件、文本输入域控件，还支持所有 HTML5 类型的输入控件： <code>text</code>、<code>password</code>、<code>datetime</code>、<code>datetime-local</code>、<code>date</code>、<code>month</code>、<code>time</code>、<code>week</code>、<code>number</code>、<code>email</code>、<code>url</code>、<code>search</code>、<code>tel</code> 和 <code>color</code>。
+</p>
+<pre class="language-php">
+&lt;input type="text" class="form-control" placeholder="Text input"&gt;
+</pre>
+<h4>文本域<code>&lt;textarea&gt;</code></h4>
+<p>可根据需要改变 <code>rows</code> 属性。</p>
+<pre class="language-php">
+&lt;textarea class="form-control" rows="3"&gt;&lt;/textarea&gt;
+</pre>
+<h4>多选和单选框</h4>
+<pre class="language-php">
+&lt;div class="checkbox"&gt;
+  &lt;label&gt;
+    &lt;input type="checkbox" value=""&gt;
+    Option one
+  &lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="radio disabled"&gt;
+  &lt;label&gt;
+    &lt;input type="radio" name="radio" id="radio3" value="option3" disabled=""&gt;
+    Option disabled
+  &lt;/label&gt;
+&lt;/div&gt;
+</pre>
+<h4>下拉列表<code>&lt;select&gt;</code></h4>
+<p>对于标记了 <code>multiple</code> 属性的 &lt;select&gt; 控件来说，默认显示多选项。</p>
+<pre class="language-php">
+&lt;select multiple class="form-control"&gt;
+  &lt;option&gt;1&lt;/option&gt;
+  &lt;option&gt;2&lt;/option&gt;
+  &lt;option&gt;3&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+<h4>静态控件</h4>
+<p>如果需要在表单中将一行纯文本和 <code>label</code> 元素放置于同一行，为 <code>&lt;p&gt;</code> 元素添加 <code>.form-control-static</code> 类即可。</p>
+<pre class="language-php">
+&lt;form class="form-horizontal"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label class="col-sm-2 control-label"&gt;Email&lt;/label&gt;
+    &lt;div class="col-sm-10"&gt;
+      &lt;p class="form-control-static"&gt;email@example.com&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+<h4>控件状态</h4>
+<dl class="dl-horizontal">
+  <dt>焦点状态</dt>
+  <dd><code>:focus</code></dd>
+  <dt>禁用状态</dt>
+  <dd><code>disabled</code></dd>
+  <dt>只读状态</dt>
+  <dd><code>readonly</code></dd>
+</dl>
+<h4>Help text</h4>
+<pre class="language-php">
+&lt;span class="help-block"&gt;A block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
+</pre>
+<h4>校验状态</h4>
+<p>使用时，添加 <code>.has-warning</code>、<code>.has-error</code> 或 <code>.has-success</code> 类到这些控件的父元素即可。</p>
+<pre class="language-php">
+&lt;div class="form-group has-error"&gt;
+  &lt;label class="control-label" for="error"&gt;Input with error&lt;/label&gt;
+  &lt;input type="text" class="form-control" id="error"&gt;
+&lt;/div&gt;
+</pre>
+<h4>添加额外的图标</h4>
+<p>只需设置相应的 <code>.has-feedback</code> 类并添加正确的图标即可。</p>
+<pre class="language-php">
+&lt;div class="form-group has-success has-feedback"&gt;
+  &lt;label class="control-label" for="inputSuccess2"&gt;Input with success&lt;/label&gt;
+  &lt;input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status"&gt;
+  &lt;span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span id="inputSuccess2Status" class="sr-only"&gt;(success)&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+<p>可以使用 <code>.sr-only</code> 类来隐藏表单控件的 <code>&lt;label&gt;</code></p>
+<h4>控件尺寸</h4>
+<p>通过 <code>.input-lg</code> 类似的类可以为控件设置高度，通过 <code>.col-lg-*</code> 类似的类可以为控件设置宽度。</p>
+<p>通过 <code>.form-group-lg</code> 类似的类可以为一组控件设置高度</p>
+<pre class="language-php">
+&lt;input class="form-control input-lg" type="text" placeholder=".input-lg"&gt;
+</pre>
+<h3>按钮</h3>
+<h4>可作为按钮使用的标签或元素</h4>
+<p>为 <code>&lt;a&gt;</code>、<code>&lt;button&gt;</code> 或 <code>&lt;input&gt;</code> 元素添加按钮类（button class）即可使用 Bootstrap 提供的样式。</p>
+<pre class="language-php">
+&lt;a class="btn btn-default" href="#" role="button"&gt;Link&lt;/a&gt;
+&lt;button class="btn btn-default" type="submit"&gt;Button&lt;/button&gt;
+&lt;input class="btn btn-default" type="button" value="Input"&gt;
+&lt;input class="btn btn-default" type="submit" value="Submit"&gt;
+</pre>
+<div class="alert alert-danger" role="alert">
+  <h4>针对组件的注意事项</h4>
+  <p>虽然按钮类可以应用到 &lt;a&gt; 和 &lt;button&gt; 元素上，但是，导航和导航条组件只支持 &lt;button&gt; 元素。</p>
+</div>
+<div class="alert alert-danger" role="alert">
+  <h4>链接被作为按钮使用时的注意事项</h4>
+  <p>如果 &lt;a&gt; 元素被作为按钮使用 -- 并用于在当前页面触发某些功能 -- 而不是用于链接其他页面或链接当前页面中的其他部分，那么，务必为其设置 role="button" 属性。</p>
+</div>
+<h4>预定义样式<code>.btn</code></h4>
+<div class="">
+  <!-- Standard button -->
+  <button type="button" class="btn btn-default">.btn-default</button>
+  <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+  <button type="button" class="btn btn-primary">.btn-primary</button>
+  <!-- Indicates a successful or positive action -->
+  <button type="button" class="btn btn-success">.btn-success</button>
+  <!-- Contextual button for informational alert messages -->
+  <button type="button" class="btn btn-info">.btn-info</button>
+  <!-- Indicates caution should be taken with this action -->
+  <button type="button" class="btn btn-warning">.btn-warning</button>
+  <!-- Indicates a dangerous or potentially negative action -->
+  <button type="button" class="btn btn-danger">.btn-danger</button>
+  <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+  <button type="button" class="btn btn-link">.btn-link</button>
+</div>
+<h4>尺寸</h4>
+<div class="">
+  <button type="button" class="btn btn-primary btn-lg">.btn-lg</button>
+  <button type="button" class="btn btn-default">.btn-default</button>
+  <button type="button" class="btn btn-primary btn-sm">.btn-sm</button>
+  <button type="button" class="btn btn-default btn-xs">.btn-xs</button>
+</div>
+<div><button type="button" class="btn btn-primary btn-lg btn-block">.btn-block</button></div>
+<div class="">
+  <button type="button" class="btn btn-default btn-lg active">active</button>
+  <button type="button" class="btn btn-lg btn-primary" disabled="disabled">disabled</button>
+  <a href="#" class="btn btn-default btn-lg disabled" role="button">disabled Link</a>
+</div>
+<h3>参考</h3>
+<ol class="reference">
+  <li><a target="_blank" href="https">https</a></li>
+</ol>

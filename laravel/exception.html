@@ -4,6 +4,22 @@
 </ol>
 <h1>Laravel <span>Exception 异常</span> </h1>
 <h3>异常</h3>
+<dl>
+  <dt>状态码</dt>
+  <dd>描述</dd>
+  <dt>404</dt>
+  <dd>未找到（请求资源不存在）</dd>
+  <dt>401</dt>
+  <dd>未认证 (需要登录)</dd>
+  <dt>403</dt>
+  <dd>没有权限</dd>
+  <dt>400</dt>
+  <dd>错误的请求（URL 或参数不正确）</dd>
+  <dt>422</dt>
+  <dd>验证失败</dd>
+  <dt>500</dt>
+  <dd>服务器错误</dd>
+</dl>
 <p>在laravel中，如果一个Model找不到或者没有，很容易就抛出一个异常</p>
 <pre class="language-php">
 User::findOrFail(1);
@@ -49,7 +65,29 @@ if (! User::find(1)) {
        echo "users is not" . '<br>';
     }
 </pre>
+<h3>重定向到用户尝试访问的 URL</h3>
+<h4>先在中间件中使用</h4>
+<pre class="language-php">
+if (auth()->guard($guards)->guest()) {
+    return redirect()->guest('login');
+}
+</pre>
+<p class="lead">原理解析</p>
+<p><code>redirect()->guest('login)</code>
+  会在 <code>session</code> 中存储一个值，把用户要访问的地址存到 <code>session</code> 中
+  <code>$this->session->put('url.intended', $this->generator->full());</code>
+</p>
+<h4>再在用户登录验证通过后使用</h4>
+<pre class="language-php">
+return redirect()->intended('home')
+</pre>
+<p class="lead">原理解析</p>
+<p><code>redirect()->intended('home')</code>
+  会把这个值取出来跳转到这个地址，如果没有就跳到默认地址
+  <code>$path = $this->session->pull('url.intended', $default);</code>
+  <code>return $this->to($path, $status, $headers, $secure);</code>
+</p>
 <h3>参考</h3>
 <ol class="reference">
-  <li><a target="_blank" href="https">https</a></li>
+  <li><a target="_blank" href="https://blog.csdn.net/LJFPHP/article/details/84305596">https://blog.csdn.net/LJFPHP/article/details/84305596</a></li>
 </ol>

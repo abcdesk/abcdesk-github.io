@@ -15,8 +15,7 @@ $ php artisan make:model Article -m
   还有一个数据库迁移文件database/migrations/2020_02_13_055820_create_articles_table.php
 </p>
 <pre class="language-php">
-    public function up()
-    {
+    public function up() {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id')->comment("自增主键");
             $table->string('title')->comment('文章标题');
@@ -26,9 +25,7 @@ $ php artisan make:model Article -m
             $table->timestamps(); // 自动创建的两个字段：created_at 和 updated_at
         });
     }
-
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('articles');
     }
 </pre>
@@ -48,8 +45,7 @@ $ php artisan make:seeder ArticlesTableSeeder #生成 Seeder
 </pre>
 <p>使用模型工厂database/seeds/ArticlesTableSeeder来轻松地生成大量数据库数据。</p>
 <pre class="language-php">
-    public function run()
-    {
+    public function run() {
         factory(App\Article::class, 10)->create();
     }
 </pre>
@@ -89,27 +85,22 @@ $ php artisan make:controller ArticleController --resource --model=Article
 <h3>文章列表及删除功能</h3>
 <p>在控制器app/Http/ArticleController.php中，编写index()和destroy()方法</p>
 <pre class="language-php">
-    public function index()
-    {
-        return view('articles.index')->withArticles(Article::all());
+    public function index() {
+        return view('articles.index')-&gt;withArticles(Article::all());
     }
-
-    public function destroy($id)
-    {
-        Article::find($id)->delete();
-        return redirect()->back()->withInput()->withErrors('删除成功！');
+    public function destroy($id) {
+        $article = Article::findOrFail($id);
+        $article-&gt;delete();
+        if ($article-&gt;trashed()) {
+            return redirect()-&gt;back()-&gt;with('success', ['删除成功！'])-&gt;withInput();
+        } else {
+            return redirect()-&gt;back()-&gt;withErrors('删除失败！')-&gt;withInput();
+        }
     }
 </pre>
 <p>修改视图resources/views/article/index.blade.php</p>
 <pre class="language-php">
-@if (count($errors) &gt; 0)
-&lt;div class="alert alert-danger"&gt;
-    {!! implode('&lt;br&gt;', $errors-&gt;all()) !!}
-&lt;/div&gt;
-@endif
-&lt;a href="{{ url('article/create') }}" class="btn btn-sm btn-primary" title="新增文章"&gt;
-    &lt;span class="glyphicon glyphicon-plus" aria-hidden="true"&gt;&lt;/span&gt; 新增文章
-&lt;/a&gt;
+@include('errors.result')
 &lt;table class="table table-striped table-bordered table-hover table-responsive-sm"&gt;
     &lt;thead&gt;
         &lt;tr&gt;
@@ -146,34 +137,24 @@ $ php artisan make:controller ArticleController --resource --model=Article
 <h3>新增文章功能</h3>
 <p>在控制器app/Http/ArticleController.php中，编写create()和store()方法</p>
 <pre class="language-php">
-    public function create()
-    {
+    public function create() {
         return view('article.create');
     }
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+        $request-&gt;flash(); // 闪存数据，若验证失败，页面可恢复数据。
         $this-&gt;validate($request, [
             'title' =&gt; 'required|unique:articles|max:255',
             'intro' =&gt; 'required',
             'content' =&gt; 'required',
         ]);
 
-        $article = new Article($request-&gt;all());
-        if ($article-&gt;save()) {
-            return redirect('article');
-        } else {
-            return redirect()-&gt;back()-&gt;withInput()-&gt;withErrors('保存失败！');
-        }
+        Article::create($request-&gt;all());
+        return redirect('article')-&gt;with('success', ['新增成功！']);
     }
 </pre>
 <p>修改视图resources/views/article/create.blade.php</p>
 <pre class="language-php">
-@if (count($errors) &gt; 0)
-&lt;div class="alert alert-danger"&gt;
-    &lt;strong&gt;新增失败&lt;/strong&gt; 输入不符合要求&lt;br&gt;&lt;br&gt;
-    {!! implode('&lt;br&gt;', $errors-&gt;all()) !!}
-&lt;/div&gt;
-@endif
+@include('errors.result')
 &lt;form action="{{ url('article') }}" method="POST"&gt;
     {!! csrf_field() !!}
     &lt;div class="form-group"&gt;
@@ -197,36 +178,26 @@ $ php artisan make:controller ArticleController --resource --model=Article
 <h3>修改文章功能</h3>
 <p>在控制器app/Http/ArticleController.php中，编写edit()和update()方法</p>
 <pre class="language-php">
-    public function edit($id)
-    {
+    public function edit($id) {
         $article = Article::find($id);
         return view('article.edit')->withArticle($article);
     }
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
+        $request-&gt;flash(); // 闪存数据，若验证失败，页面可恢复数据。
         $this-&gt;validate($request, [
             'title' =&gt; 'required|unique:articles,title,'.$id.'|max:255',
             'intro' =&gt; 'required',
             'content' =&gt; 'required',
         ]);
-        $article = Article::find($id);
+        $article = Article::findOrFail($id);
         $article-&gt;fill($request-&gt;all());
-
-        if ($article-&gt;save()) {
-            return redirect('article');
-        } else {
-            return redirect()-&gt;back()-&gt;withInput()-&gt;withErrors('更新失败！');
-        }
+        $article-&gt;save();
+        return redirect('article')-&gt;with('success', ['修改成功！']);
     }
 </pre>
 <p>修改视图resources/views/article/edit.blade.php</p>
 <pre class="language-php">
-@if (count($errors) &gt; 0)
-&lt;div class="alert alert-danger"&gt;
-    &lt;strong&gt;修改失败&lt;/strong&gt; 输入不符合要求&lt;br&gt;&lt;br&gt;
-    {!! implode('&lt;br&gt;', $errors-&gt;all()) !!}
-&lt;/div&gt;
-@endif
+@include('errors.result')
 &lt;form action="{{ url('article/'.$article-&gt;id) }}" method="POST"&gt;
     {{ method_field('PATCH') }}
     {!! csrf_field() !!}
@@ -256,8 +227,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 </pre>
 <p>然后，增加try...catch</p>
 <pre class="language-php">
-    public function show($id)
-    {
+    public function show($id) {
         try {
             $article = Article::findOrFail($id);
             return view('article.show')->withArticle($article);
@@ -272,6 +242,10 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
         return redirect()->back()->withInput()->withErrors($errors);
     }
 </pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+  <p>try...catch处理异常速度比较慢，尤其是数据库服务器无法访问时，所以舍弃此方式，改为更方便快捷的Laravel框架提供的异常处理方式：<code>app/Exceptions/Handler.php</code></p>
+</div>
 <h3>软删除</h3>
 <p>要启动模型上的软删除，则必须在模型上使用 Illuminate\Database\Eloquent\SoftDeletes trait 并添加 deleted_at 字段到 $dates 属性上
 </p>
@@ -295,15 +269,12 @@ $ php artisan make:migration alter_articles_add_deleted_at --table=articles
 </pre>
 <p>修改生成的迁移文件</p>
 <pre class="language-php">
-    public function up()
-    {
+    public function up() {
         Schema::table('articles', function (Blueprint $table) {
             $table->softDeletes(); // 添加一个可空的 deleted_at 字段
         });
     }
-
-    public function down()
-    {
+    public function down() {
         Schema::table('articles', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
@@ -322,28 +293,39 @@ Route::resource('article', 'ArticleController');
 </pre>
 <div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
-  如果你想在默认的资源路由中增加额外的路由，你应该在 Route::resource 之前定义这些路由。否则由 resource 方法定义的路由可能会无意中优先于你补充的路由。
+  <p>如果你想在默认的资源路由中增加额外的路由，你应该在 Route::resource 之前定义这些路由。否则由 resource 方法定义的路由可能会无意中优先于你补充的路由。</p>
 </div>
 <h4>恢复文章功能</h4>
 <p>在控制器app/Http/ArticleController.php中，编写trashed()和restore()方法</p>
 <pre class="language-php">
-    public function trashed()
-    {
+    public function trashed() {
         $articles = Article::onlyTrashed()-&gt;get();
         return view('article.trashed')-&gt;withArticles($articles);
     }
-
-    public function restore($id)
-    {
-        Article::onlyTrashed()-&gt;find($id)-&gt;restore();
-        if(!$article-&gt;trashed()) {
-            $errors = '恢复成功！';
+    public function restore($id) {
+        $article = Article::onlyTrashed()-&gt;findOrFail($id);
+        $article-&gt;restore();
+        if (!$article-&gt;trashed()) {
+            return redirect()-&gt;back()-&gt;with('success', ['恢复成功！']);
         } else {
-            $errors = '恢复失败！';
+            return redirect()-&gt;back()-&gt;withErrors('恢复失败！');
         }
-        return redirect()-&gt;back()-&gt;withInput()-&gt;withErrors($errors);
     }
 </pre>
+<h4>公共错误模块</h4>
+<pre class="language-php">
+@if (isset($errors)?(count($errors)&gt;0):false)
+&lt;div class="alert alert-danger"&gt;
+  {!! implode('&lt;br&gt;', $errors-&gt;all()) !!}
+&lt;/div&gt;
+@endif
+@if(Session::has('success'))
+&lt;div class="alert alert-success"&gt;
+  {!! implode('&lt;br&gt;', session('success')) !!}
+&lt;/div&gt;
+@endif
+</pre>
+<h3></h3>
 <h3>参考</h3>
 <ol class="reference">
   <li><a target="_blank" href="https://learnku.com/laravel/t/1321/laravel-tutorial-five-the-basic-process-of-mvc">https://learnku.com/laravel/t/1321/laravel-tutorial-five-the-basic-process-of-mvc</a></li>
