@@ -244,7 +244,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 </pre>
 <div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
-  <p>try...catch处理异常速度比较慢，尤其是数据库服务器无法访问时，所以舍弃此方式，改为更方便快捷的Laravel框架提供的异常处理方式：<code>app/Exceptions/Handler.php</code></p>
+  <p>try...catch处理异常速度比较慢，尤其是数据库服务器无法访问时，所以舍弃此方式，改为更方便快捷的Laravel框架提供的异常处理方式：app/Exceptions/Handler.php</p>
 </div>
 <h3>软删除</h3>
 <p>要启动模型上的软删除，则必须在模型上使用 Illuminate\Database\Eloquent\SoftDeletes trait 并添加 deleted_at 字段到 $dates 属性上
@@ -316,11 +316,17 @@ Route::resource('article', 'ArticleController');
 <pre class="language-php">
 @if (isset($errors)?(count($errors)&gt;0):false)
 &lt;div class="alert alert-danger"&gt;
+  &lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;
+    &lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;
+  &lt;/button&gt;
   {!! implode('&lt;br&gt;', $errors-&gt;all()) !!}
 &lt;/div&gt;
 @endif
 @if(Session::has('success'))
 &lt;div class="alert alert-success"&gt;
+  &lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;
+    &lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;
+  &lt;/button&gt;
   {!! implode('&lt;br&gt;', session('success')) !!}
 &lt;/div&gt;
 @endif
