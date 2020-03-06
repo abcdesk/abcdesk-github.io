@@ -2,6 +2,9 @@
  * Style tweaks
  * --------------------------------------------------
  */
+@import url('navbar.css');
+@import url('sidebar.css');
+
 html,
 body {
   overflow-x: hidden;
@@ -20,6 +23,65 @@ footer {
 [class*="col-sm"] {
   padding-left: 0px;
   padding-right: 5px;
+}
+
+#wrapper {
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  padding-left: 0;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 220px;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 220px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  margin-right: -220px;
+  position: absolute;
+}
+
+#sidebar-wrapper {
+  /*background: #1a1a1a;*/
+  background: #414550;
+  height: 100%;
+  /*top: 50px;*/
+  left: 220px;
+  margin-left: -220px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  /* Firefox 4 */
+  -o-transition: all 0.2s ease;
+  /* Opera */
+  -webkit-transition: all 0.2s ease;
+  /* Safari and Chrome */
+  width: 0;
+  z-index: 1000;
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#page-content-wrapper {
+  /*padding-top: 70px;*/
+  width: 100%;
+}
+
+.sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 220px;
 }
 
 #content {
@@ -57,7 +119,8 @@ pre[class*="language-"] {
 
 /*background: #353C48;*/
 
-.article p {
+.article p,
+p {
   display: block;
   /*padding: 9.5px;*/
   /*margin: 0 0 10px;*/
@@ -103,92 +166,6 @@ pre[class*="language-"] {
 .dl-horizontal dd {
   width: auto;
   text-align: left;
-}
-
-/*navbar*/
-.navbar-united {
-  background-color: #e74c3c;
-  border-color: #c0392b;
-}
-
-.navbar-united .navbar-brand {
-  color: #ecf0f1;
-}
-
-.navbar-united .navbar-brand:hover,
-.navbar-united .navbar-brand:focus {
-  color: #ffbbbc;
-}
-
-.navbar-united .navbar-text {
-  color: #ecf0f1;
-}
-
-.navbar-united .navbar-nav>li>a {
-  color: #ecf0f1;
-}
-
-.navbar-united .navbar-nav>li>a:hover,
-.navbar-united .navbar-nav>li>a:focus {
-  color: #ffbbbc;
-}
-
-.navbar-united .navbar-nav>.active>a,
-.navbar-united .navbar-nav>.active>a:hover,
-.navbar-united .navbar-nav>.active>a:focus {
-  color: #ffbbbc;
-  background-color: #c0392b;
-}
-
-.navbar-united .navbar-nav>.open>a,
-.navbar-united .navbar-nav>.open>a:hover,
-.navbar-united .navbar-nav>.open>a:focus {
-  color: #ffbbbc;
-  background-color: #c0392b;
-}
-
-.navbar-united .navbar-toggle {
-  border-color: #c0392b;
-}
-
-.navbar-united .navbar-toggle:hover,
-.navbar-united .navbar-toggle:focus {
-  background-color: #c0392b;
-}
-
-.navbar-united .navbar-toggle .icon-bar {
-  background-color: #ecf0f1;
-}
-
-.navbar-united .navbar-collapse,
-.navbar-united .navbar-form {
-  border-color: #ecf0f1;
-}
-
-.navbar-united .navbar-link {
-  color: #ecf0f1;
-}
-
-.navbar-united .navbar-link:hover {
-  color: #ffbbbc;
-}
-
-@media (max-width: 767px) {
-  .navbar-united .navbar-nav .open .dropdown-menu>li>a {
-    color: #ecf0f1;
-  }
-
-  .navbar-united .navbar-nav .open .dropdown-menu>li>a:hover,
-  .navbar-united .navbar-nav .open .dropdown-menu>li>a:focus {
-    color: #ffbbbc;
-  }
-
-  .navbar-united .navbar-nav .open .dropdown-menu>.active>a,
-  .navbar-united .navbar-nav .open .dropdown-menu>.active>a:hover,
-  .navbar-united .navbar-nav .open .dropdown-menu>.active>a:focus {
-    color: #ffbbbc;
-    background-color: #c0392b;
-  }
 }
 
 /*

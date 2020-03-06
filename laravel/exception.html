@@ -42,6 +42,14 @@ if (! User::find(1)) {
     throw new UserNotFoundException('...', 404);
 }
 </pre>
+<h3>abort方法处理异常</h3>
+<pre class="language-php">
+abort(404);
+abort(403,'对不起，您无权访问该页面！');
+</pre>
+<div class="alert alert-info" role="alert">
+  <p>abort方法底层还是抛出相应异常，404错误抛出NotFoundHttpException，其他HTTP错误抛出HttpException。</p>
+</div>
 <h3>Eloquent判断数据是否存在</h3>
 <pre class="language-php">
     $users = \DB::table('users')->where('id', $id);

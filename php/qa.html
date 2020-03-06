@@ -1,0 +1,59 @@
+<ol class="breadcrumb">
+  <li>PHP</li>
+  <li class="active">QA问题及解决方案</li>
+</ol>
+<h1>PHP <span>QA问题及解决方案</span> </h1>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign"></span>
+  <p>判断变量为空</p>
+</div>
+<h3 class="text-success">
+  解决方案:
+</h3>
+<dl>
+  <dt>isset</dt>
+  <dd>判断变量是否被初始化</dd>
+  <dt>empty</dt>
+  <dd>检测变量是否为"空"(TRUE:"假"、"空"、"0"、"NULL"、"未初始化")</dd>
+  <dt>var == null</dt>
+  <dd>判断变量是否为"空"(TRUE:"假"、"空"、"0"、"NULL")</dd>
+  <dt>is_null</dt>
+  <dd>检测变量是否为"null"(TRUE:"NULL")</dd>
+  <dt>var === null</dt>
+  <dd>检测变量是否为"null"(TRUE:"NULL")</dd>
+</dl>
+<p>以isset为例举例说明：</p>
+<pre class="language-php">
+if (!isset($a)) {
+    echo '未被初始化';
+} else {
+    echo '已初始化';
+}
+</pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign"></span>
+  <p>判断两个字符串是否相等</p>
+</div>
+<h3 class="text-success">
+  解决方案:
+</h3>
+<p>使用函数strcmp</p>
+<pre class="language-php">
+if (strcmp($var1, $var2) !== 0) {
+    echo '$var1 is not equal to $var2 in a case sensitive string comparison';
+}
+</pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign"></span>
+  <p>判断两个字符串是否相等</p>
+</div>
+<h3 class="text-success">
+  解决方案:
+</h3>
+<pre class="language-php">
+
+</pre>
+<h3>参考</h3>
+<ol class="reference">
+  <li><a target="_blank" href="https://www.php.net/manual/zh/ref.strings.php">https://www.php.net/manual/zh/ref.strings.php</a></li>
+</ol>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="Personal Knowledge Base">
+  <meta name="author" content="Johnny.Zhang">
+  <meta name="email" content="szhang7@qq.com">
+  <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
+  <title>ABCDESK</title>
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap theme -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="./assets/app.css" rel="stylesheet">
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-united navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">ABCDESK</a>
+        <div class="navbar-text">Personal Knowledge Base</div>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row row-offcanvas row-offcanvas-left">
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <ul class="nav nav-pills nav-stacked">
+          <li role="presentation">
+            <a href="#laravel" class="nav-header collapsed" data-toggle="collapse"><i class="glyphicon glyphicon-folder-open"></i> Laravel<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+            <ul id="laravel" class="nav nav-list collapse in">
+              <li><a href="#" data-id="laravel/getstarted">开工准备</a></li>
+              <li><a href="#" data-id="laravel/version">版本选择</a></li>
+              <li><a href="#" data-id="laravel/usage">Usage基本用法</a></li>
+              <li><a href="#" data-id="laravel/crud">CRUD增删改查</a></li>
+              <li><a href="#" data-id="laravel/controller">Controller控制器</a></li>
+              <li><a href="#" data-id="laravel/locale">Locale本地化</a></li>
+              <li><a href="#" data-id="laravel/eloquent_orm">Eloquent ORM</a></li>
+              <li><a href="#" data-id="laravel/exception">Exception异常</a></li>
+              <li><a href="#" data-id="laravel/php_artisan">php工具匠</a></li>
+              <li><a href="#" data-id="laravel/php_iseed">php artisan iseed</a></li>
+              <li><a href="#" data-id="laravel/php_tinker">php artisan tinker</a></li>
+              <li><a href="#" data-id="laravel/php_migrate">php artisan migrate</a></li>
+              <li><a href="#" data-id="laravel/make_auth">Auth登录模块</a></li>
+              <li><a href="#" data-id="laravel/captcha">Captcha验证码</a></li>
+              <li><a href="#" data-id="laravel/send_mail">Mail发送邮件</a></li>
+              <li><a href="#" data-id="laravel/storage">Storage文件存储</a></li>
+              <li><a href="#" data-id="laravel/best_practices">Best十八个最佳实践</a></li>
+              <li><a href="#" data-id="laravel/code_practices">Code编码最佳实践</a></li>
+              <li><a href="#" data-id="laravel/resources">优秀开发资源</a></li>
+              <li><a href="#" data-id="laravel/qa">QA问题及解决方案</a></li>
+            </ul>
+          </li>
+          <li role="presentation">
+            <a href="#bootstrap" class="nav-header collapsed" data-toggle="collapse" aria-expanded="false"><i class="glyphicon glyphicon-folder-open"></i> Bootstrap<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
+            <ul id="bootstrap" class="nav nav-list collapse" aria-expanded="false" style="height: 0px;">
+              <li><a href="#" data-id="bootstrap/getstarted">开工准备</a></li>
+              <li><a href="#" data-id="bootstrap/usage">Usage基本用法</a></li>
+              <li><a href="#" data-id="bootstrap/grid">Grid栅格系统</a></li>
+              <li><a href="#" data-id="bootstrap/navbar">Navbar导航条</a></li>
+              <li><a href="#" data-id="bootstrap/form">Form表单</a></li>
+              <li><a href="#" data-id="bootstrap/typography">Typography排版</a></li>
+              <li><a href="#" data-id="bootstrap/float">Float浮动</a></li>
+              <li><a href="#" data-id="bootstrap/admin_template">Admin Template</a></li>
+              <li><a href="#" data-id="bootstrap/qa">QA问题及解决方案</a></li>
+            </ul>
+          </li>
+          <li role="presentation">
+            <a href="#jquery" class="nav-header collapsed" data-toggle="collapse" aria-expanded="false"><i class="glyphicon glyphicon-folder-open"></i> jQuery<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
+            <ul id="jquery" class="nav nav-list collapse" aria-expanded="false" style="height: 0px;">
+              <li><a href="#" data-id="jquery/getstarted">开工准备</a></li>
+              <li><a href="#" data-id="jquery/jquery_html">操作HTML</a></li>
+              <li><a href="#" data-id="jquery/qa">QA问题及解决方案</a></li>
+            </ul>
+          </li>
+          <li role="presentation">
+            <a href="#mysql" class="nav-header collapsed" data-toggle="collapse" aria-expanded="false"><i class="glyphicon glyphicon-folder-open"></i> MySQL<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
+            <ul id="mysql" class="nav nav-list collapse" aria-expanded="false" style="height: 0px;">
+              <li><a href="#" data-id="mysql/getstarted">开工准备</a></li>
+              <li><a href="#" data-id="mysql/qa">QA问题及解决方案</a></li>
+            </ul>
+          </li>
+          <li role="presentation">
+            <a href="#git" class="nav-header collapsed" data-toggle="collapse" aria-expanded="false"><i class="glyphicon glyphicon-folder-open"></i> Git<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
+            <ul id="git" class="nav nav-list collapse" aria-expanded="false" style="height: 0px;">
+              <li><a href="#" data-id="git/getstarted">开工准备</a></li>
+              <li><a href="#" data-id="git/usage">Usage基本用法</a></li>
+              <li><a href="#" data-id="git/branch">Branch分支</a></li>
+              <li><a href="#" data-id="git/reset">Reset回退</a></li>
+              <li><a href="#" data-id="git/pull">Pull获取远程分支</a></li>
+              <li><a href="#" data-id="git/tag">Tag标签</a></li>
+              <li><a href="#" data-id="git/github_pages">Github Pages</a></li>
+              <li><a href="#" data-id="git/qa">QA问题及解决方案</a></li>
+            </ul>
+          </li>
+          <li role="presentation">
+            <a href="#html" class="nav-header collapsed" data-toggle="collapse" aria-expanded="false"><i class="glyphicon glyphicon-folder-open"></i> HTML<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
+            <ul id="html" class="nav nav-list collapse" aria-expanded="false" style="height: 0px;">
+              <li><a href="#" data-id="html/getstarted">开工准备</a></li>
+              <li><a href="#" data-id="html/character_entity">常用特殊字符</a></li>
+              <li><a href="#" data-id="html/rgb_color">RGB颜色参考</a></li>
+              <li><a href="#" data-id="html/getpath">Path获得路径</a></li>
+              <li><a href="#" data-id="html/resources">优秀开发资源</a></li>
+              <li><a href="#" data-id="html/qa">QA问题及解决方案</a></li>
+            </ul>
+          </li>
+          <li role="presentation">
+            <a href="#tools" class="nav-header collapsed" data-toggle="collapse" aria-expanded="false"><i class="glyphicon glyphicon-folder-open"></i> Tools<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
+            <ul id="tools" class="nav nav-list collapse" aria-expanded="false" style="height: 0px;">
+              <li><a href="#" data-id="tools/sublime_text3">Sublime Text 3</a></li>
+              <li><a href="#" data-id="tools/sublime_emmet">Emmet插件的使用</a></li>
+            </ul>
+          </li>
+          <li role="presentation">
+            <a href="#php" class="nav-header collapsed" data-toggle="collapse" aria-expanded="false"><i class="glyphicon glyphicon-folder-open"></i> PHP<span class="pull-right glyphicon glyphicon-chevron-left"></span></a>
+            <ul id="php" class="nav nav-list collapse" aria-expanded="false" style="height: 0px;">
+              <li><a href="#" data-id="php/php_datetime">Datetime日期时间函数</a></li>
+              <li><a href="#" data-id="php/round_fractions">Round取整函数</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/.sidebar-offcanvas-->
+      <div class="col-xs-12 col-sm-9 article" id="content">
+      </div>
+      <!--/.col-xs-12.col-sm-9-->
+    </div>
+    <!--/row-->
+    <hr>
+    <footer>
+      <p>&copy; 2020 All Rights Reserved Johnny.Zhang Email:<a href=mailto:szhang7@qq.com>szhang7@qq.com</a></p>
+    </footer>
+  </div>
+  <!--/.container-fluid-->
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+  <script>
+  window.jQuery || document.write('<script src="./assets/jquery/1.12.4/jquery.min.js"><\/script>')
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('[data-toggle="offcanvas"]').click(function() {
+      $('.row-offcanvas').toggleClass('active')
+    });
+
+    $(".nav-pills").on("click", "a", function() {
+      var element = $(this).find("span");
+      element.toggleClass("glyphicon-chevron-left");
+      element.toggleClass("glyphicon-chevron-down");
+    });
+
+    $(".nav-list").on("click", "a", function() {
+      var url = $(this).data("id") + ".html";
+      // var href=$(this).attr('href');
+      console.log(url);
+      $("#content").load(url); //加载相对应的内容
+      $(this).addClass("active").siblings().removeClass("active");
+      // if ($.trim(id) != "#") {
+      // if ($.trim(id).length > 1) {
+      //     $("#content").load(id + ".html"); //加载相对应的内容
+      //     $(this).addClass("active").siblings().removeClass("active");
+      // }
+      return false;
+    });
+    $("#content").load("laravel/getstarted.html"); //加载相对应的内容
+  });
+  </script>
+</body>
+
+</html>

@@ -45,3 +45,15 @@ $("#id_1").attr("checked", $('#id_radio').attr('gender') == '女' ? true : false
 $("#id_2").attr("checked", $('#id_radio').attr('gender') == '未知' ? true : false);
 form.render(); //更新全部
 </pre>
+<p>input框赋值</p>
+<pre class="language-php">
+&lt;input name="number" id="number" value=""/&gt;
+
+#通过id赋值
+$("#number").val("123");
+$("#number").attr("value","123");
+
+#通过name赋值
+$("input[name='number']").val("123");
+$("input[name='number']").attr("value","123");
+</pre>

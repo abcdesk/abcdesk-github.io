@@ -1,0 +1,127 @@
+.sidebar ul,
+.sidebar li,
+.sidebar a {
+  font-style: normal;
+  list-style: none;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar a {
+  cursor: pointer;
+}
+
+.sidebar {
+  width: 240px;
+  background: #414550;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  line-height: 100%;
+  overflow-y: auto;
+  z-index: 99;
+}
+
+.sidebar-menu li {
+  position: relative;
+}
+
+.header {
+  background: #4D5460;
+  color: #fff;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.sidebar-toggle {
+  display: inline-block;
+  height: 100%;
+  width: 45px;
+  padding: 10px 15px;
+}
+
+.icon-bar {
+  display: block;
+  height: 2px;
+  width: 15px;
+  background: #fff;
+  margin-top: 3px;
+}
+
+.sidebar-menu>li:not(.header) {
+  border-bottom: 1px solid #3F434D;
+  background: #393C42;
+}
+
+.sidebar-menu>li:not(.header)>a {
+  display: inline-block;
+  padding: 15px;
+  color: #b8c7ce;
+  width: 100%;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+}
+
+.treeview-menu {
+  display: none;
+}
+
+.sidebar-menu .treeview-menu {
+  background: #576071;
+}
+
+.treeview-menu>li.active {
+  background: #656f86;
+  border-left: 3px solid #ccc;
+}
+
+.treeview-menu>li {
+  padding: 8px 0;
+  border-bottom: 0.8px solid #42495d;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+}
+
+.treeview-menu a {
+  padding: 4px 3px 0 40px;
+  color: #8aa4af;
+  text-decoration: none;
+}
+
+.treeview-menu a.active {
+  color: #E9EBEB;
+  padding-bottom: 6px;
+}
+
+.treeview-menu a.active {
+  color: #E9EBEB;
+}
+
+.hideTreeView {
+  position: absolute;
+  top: 0;
+  width: 180px;
+  left: 60px;
+}
+
+.open-tree-height {
+  height: 41px;
+}
+
+.treeview-menu-open {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  transform: rotate(90deg);
+  width: 12px;
+}
+
+.sidebar-menu>li:not(.header):hover {
+  background-color: #24AA7A;
+}

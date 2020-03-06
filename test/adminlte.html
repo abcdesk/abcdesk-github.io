@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+  <title>ABCDESK</title>
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap theme -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+  <style>
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /* Layout */
+  .wrapper {
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #222;
+  }
+
+  .wrapper:before,
+  .wrapper:after {
+    content: " ";
+    display: table;
+  }
+
+  .wrapper:after {
+    clear: both;
+  }
+
+  /*
+ * Content Wrapper - contains the main content
+ */
+  .content-wrapper,
+  .main-footer {
+    -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    margin-left: 230px;
+    z-index: 820;
+  }
+
+  @media (max-width: 767px) {
+
+    .content-wrapper,
+    .main-footer {
+      margin-left: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    .sidebar-collapse .content-wrapper,
+    .sidebar-collapse .main-footer {
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+
+    .sidebar-open .content-wrapper,
+    .sidebar-open .main-footer {
+      -webkit-transform: translate(230px, 0);
+      -ms-transform: translate(230px, 0);
+      -o-transform: translate(230px, 0);
+      transform: translate(230px, 0);
+    }
+  }
+
+  .content-wrapper {
+    min-height: calc(100vh - 101px);
+    background-color: #ecf0f5;
+    z-index: 800;
+  }
+
+  @media (max-width: 767px) {
+    .content-wrapper {
+      min-height: calc(100vh - 151px);
+    }
+  }
+
+  .main-footer {
+    background: #fff;
+    padding: 15px;
+    color: #444;
+    border-top: 1px solid #d2d6de;
+  }
+  </style>
+  <link rel="stylesheet" href="/assets/skin-blue.css">
+</head>
+
+<body>
+  <div class="wrapper skin-blue">
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>LT</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Admin</b>LTE</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+      </nav>
+    </header>
+    <!-- =============================================== -->
+    <!-- Left side column. contains the sidebar -->
+    <aside class="main-sidebar">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+    <!-- =============================================== -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+      </section>
+      <!-- Main content -->
+      <section class="content">
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+        <p>由于 HTTP 驱动的应用程序是无状态的，Session 提供了一种在多个请求之间存储有关用户的信息的方法。Laravel 通过同一个可读性强的 API 处理各种自带的 Session 后台驱动程序。支持诸如比较热门的 Memcached、Redis 和开箱即用的数据库等常见的后台驱动程序。</p>
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.18
+      </div>
+      <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+      reserved.
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+  <script>
+  window.jQuery || document.write('<script src="./assets/jquery/1.12.4/jquery.min.js"><\/script>')
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

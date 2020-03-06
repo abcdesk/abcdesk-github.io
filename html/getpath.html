@@ -1,0 +1,57 @@
+<ol class="breadcrumb">
+  <li>HTML</li>
+  <li class="active">Path获得路径</li>
+</ol>
+<h1>HTML <span>Path获得路径</span> </h1>
+<label for="href">获得全路径</label>
+<div class="input-group">
+  <span class="input-group-addon" id="addon1">this.location.href</span>
+  <input type="text" class="form-control" id="href" aria-describedby="addon1">
+</div>
+<label for="search">获得路径中的参数</label>
+<div class="input-group">
+  <span class="input-group-addon" id="addon2">this.location.search</span>
+  <input type="text" class="form-control" id="search" aria-describedby="addon2">
+</div>
+<label for="protocol">获得路径的协议</label>
+<div class="input-group">
+  <span class="input-group-addon" id="addon3">this.location.protocol</span>
+  <input type="text" class="form-control" id="protocol" aria-describedby="addon3">
+</div>
+<label for="host">获得主机及端口号</label>
+<div class="input-group">
+  <span class="input-group-addon" id="addon4">this.location.host</span>
+  <input type="text" class="form-control" id="host" aria-describedby="addon4">
+</div>
+<label for="hostname">获得主机地址</label>
+<div class="input-group">
+  <span class="input-group-addon" id="addon5">this.location.hostname</span>
+  <input type="text" class="form-control" id="hostname" aria-describedby="addon5">
+</div>
+<label for="port">获得端口号</label>
+<div class="input-group">
+  <span class="input-group-addon" id="addon6">this.location.port</span>
+  <input type="text" class="form-control" id="port" aria-describedby="addon6">
+</div>
+<label for="pathname">获得路径部分</label>
+<div class="input-group">
+  <span class="input-group-addon" id="addon7">this.location.pathname</span>
+  <input type="text" class="form-control" id="pathname" aria-describedby="addon7">
+</div>
+<h3>参考</h3>
+<ol class="reference">
+  <li><a target="_blank" href="https://blog.csdn.net/qq_40975034/article/details/79959107">https://blog.csdn.net/qq_40975034/article/details/79959107</a></li>
+</ol>
+<script>
+// this.location.href = this.location.href + "/html/getpath.html";
+// $("#href").val(this.location.href);
+$("#href").attr("value", this.location.href);
+$("#search").val(this.location.search);
+$("#protocol").val(this.location.protocol);
+$("#host").val(this.location.host);
+$("#hostname").val(this.location.hostname);
+$("#port").val(this.location.port);
+$("#pathname").val(this.location.pathname);
+// url = window.location.hash; /* 获取锚点（“#”后面的分段） */
+// alert(url); /* #test?name=test */
+</script>
