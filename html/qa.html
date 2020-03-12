@@ -4,6 +4,19 @@
 </ol>
 <h1>HTML <span>QA问题及解决方案</span> </h1>
 <div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">如何在html页面中引入公共的头部和底部</span>
+</div>
+<h3 class="text-success">
+  解决方案:
+</h3>
+<pre class="language-html">
+$(function(){
+  // $("#header").load("layout/header.html");/*浏览器容易引起跨域问题*/
+  $("#header").load('https://abcdesk.github.io/header.html');
+  $("#footer").load("https://abcdesk.github.io/footer.html");
+});
+</pre>
+<div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-question-sign"></span>
 </div>
 <h3 class="text-success">

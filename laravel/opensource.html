@@ -1,0 +1,142 @@
+<ol class="breadcrumb">
+  <li>Laravel</li>
+  <li class="active">Open Source Projects</li>
+</ol>
+<h1>Laravel <span>Open Source Projects</span> </h1>
+<h3 id="abcdesk-boilerplat">原型项目</h3>
+<ul>
+  <li><a target="_blank" href="https://github.com/rappasoft/laravel-boilerplate">Laravel 5 Boilerplate</a> ——&nbsp;基于当前Laravel最新版本（Laravel 6.0）并集成Boilerplate的项目</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/1359.html">详情</a></p>
+  <div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign">count(): Parameter must be an array or an object that implements Countable</span>
+  </div>
+  <p>分析：查询官方手册发现7.2版本的php有更新，count传入非数组的变量会出现warning；本代码中query->wheres 为 NULL，count(NULL)则报错。</p>
+  <h3 class="text-success">解决方案:</h3>
+  <p>定位到出错文件/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php</p>
+  <pre class="language-php">
+    // 1231行 $originalWhereCount = count($query->wheres);修改如下：
+    if ($query->wheres != null) {
+        $originalWhereCount = count($query->wheres);
+    } else {
+        $originalWhereCount = 0;
+    }
+  </pre>
+  <li><a target="_blank" href="https://github.com/ElementUI/element-in-laravel-starter" target="_blank">Element In Laravel</a> —— 基于 Laravel 5.7 + Vue2 + Element UI 的原型项目（长期未更新）</li>
+  <div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-question-sign">composer install一直报错，无法完成</span>
+  </div>
+  <h3 class="text-success">解决方案:</h3>
+  <ol>
+    <li>修改根目录<code>composer.json</code>文件：</li>
+    <p>"laravel/framework": "5.7.*",=>"laravel/framework": "5.5.*",</p>
+    <li>删除根目录composer.lock文件，重新运行composer install</li>
+  </ol>
+</ul>
+<h3 id="abcdesk-cms">CMS</h3>
+<ul>
+  <li><a target="_blank" href="">October</a> —— 基于Laravel 5，致力于让开发工作变得简单的CMS（最高支持版本：5.5）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/1132.html">详情</a></p>
+  <li><a target="_blank" href="">PyroCMS</a> ——&nbsp;MVC架构的PHP内容管理系统，3.0以前基于CodeIgniter，目前基于Laravel（最高支持版本：5.8）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/1391.html">详情</a></p>
+  <li><a target="_blank" href="">LavaLite</a> ——&nbsp;基于Laravel &amp; Bootstrap 3的内容管理系统（最高支持版本：5.8）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/1227.html">详情</a></p>
+  <li><a target="_blank" href="">TypiCMS</a> ——&nbsp;基于 Laravel 构建的、支持多语言的内容管理系统（最高支持版本：6.0）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/1508.html">详情</a></p>
+  <li><a target="_blank" href="">AsgardCMS</a> —— 基于 Laravel 构建的、支持模块化和多语言的CMS（最高支持版本：5.5）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/6417.html">详情</a></p>
+  <li><a target="_blank" href="">BorgertCMS</a> —— 基于 Laravel 开发的开源模块化 CMS（最高支持版本：5.6）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/7541.html">详情</a></p>
+  <li><a target="_blank" href="">WebEdCMS</a> —— 基于 Laravel 开发的开源CMS系统（最高支持版本：5.5，已停止更新）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/7557.html">详情</a></p>
+</ul>
+<h3 id="abcdesk-crm">CRM</h3>
+<ul>
+  <li><a target="_blank" href="">Monica</a> —— 基于 Laravel 构建的开源个人关系管理应用（最高支持版本：5.8，个人 CRM）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/19997.html">详情</a></p>
+</ul>
+<h3 id="abcdesk-forum">论坛</h3>
+<ul>
+  <li><a target="_blank" href="">Laravel.io</a> —— Laravel.io 开发者社区源码（最高支持版本：5.7）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/666.html">详情</a></p>
+  <li><a target="_blank" href="">Flarum</a> ——&nbsp;免费的、开源的、专注于简约的论坛系统，esoTalk和FluexBB的联合继承者（最高支持版本：5.7）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/1090.html">详情</a></p>
+</ul>
+<h3 id="abcdesk-social-networks">社交网站</h3>
+<ul>
+  <li><a target="_blank" href="">ThinkSNS+</a> —— 基于 Laravel + Vue.js 开发的全新社交系统（最高支持版本：5.7）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/7288.html">详情</a></p>
+  <li><a target="_blank" href="">Voten</a> —— 基于 Laravel + Vue.js&nbsp; 构建的类似 Reddit 的实时社交书签系统（最高支持版本：5.8）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/7341.html">详情</a></p>
+  <li><a target="_blank" href="">Pixelfed</a> —— 基于 Laravel 构建开源照片分享平台（最高支持版本：5.8）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/19994.html">详情</a></p>
+</ul>
+<h3 id="abcdesk-e-commerce">电商</h3>
+<ul>
+  <li><a target="_blank" href="">Antvel</a> ——&nbsp;基于 Laravel 5.* 开发的开源电子商务项目（最高支持版本：5.6，长期未更新）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/3793.html">详情</a></p>
+  <li><a target="_blank" href="">Bagisto</a> —— 基于 Laravel + Vue 构建的开源电商系统（最高支持版本：5.6）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/19446.html">详情</a></p>
+  <li><a target="_blank" href="">Laracom</a> —— 基于 Laravel 构建的开源在线商城系统（最高支持版本：5.7）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/20000.html">详情</a></p>
+</ul>
+<h3 id="abcdesk-online-education">在线教育</h3>
+<ul>
+  <li><a target="_blank" href="https://github.com/Qsnh/meedu">MeEdu</a> —— 基于Laravel开发的在线教育点播收费系统（最高支持版本：5.7，知识付费）</li>
+  <li><a target="_blank" href="https://github.com/BookStackApp/BookStack">BookStack</a> —— 基于 Laravel 开发的知识管理与服务平台（最高支持版本：6.0）</li>
+  <p>详情：<a target="_blank" href="https://xueyuanjun.com/post/19996.html">BookStack 构建知识管理与服务平台</a></p>
+</ul>
+<h3 id="abcdesk-project-management">项目管理</h3>
+<ul>
+  <li><a target="_blank" href="">Goodwork</a> —— 基于 Laravel + Vue.js 开发的开源项目管理和团队协作项目（最高支持版本：6.0）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/20009.html">详情</a></p>
+</ul>
+<h3 id="abcdesk-blog">博客</h3>
+<ul>
+  <li><a target="_blank" href="">Canvas</a> —— 基于Laravel 开发的轻量级博客系统（最高支持版本：6.0）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/5136.html">详情</a></p>
+  <li><a target="_blank" href="">Wardrobe</a> ——&nbsp;专注于写作的最小化博客平台（最高支持版本：5.7，长期未更新）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/1203.html">详情</a></p>
+</ul>
+<h3 id="abcdesk-entertainment">娱乐</h3>
+<ul>
+  <li><a target="_blank" href="">Koel</a>&nbsp;—— 基于 Laravel &amp; Vue.js 开发的酷炫音乐流媒体应用（最高支持版本：5.8）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/2624.html">详情</a></p>
+</ul>
+<h3 id="abcdesk-others">其他</h3>
+<ul>
+  <li><a target="_blank" href="">Laravel.com</a> —— Laravel官网源码（最高支持版本：5.6）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/788.html">详情</a></p>
+  <li><a target="_blank" href="">Invoice Ninja</a> ——&nbsp;基于Laravel构建的开源发票及时间跟踪应用（最高支持版本：5.5）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/1117.html">详情</a></p>
+  <li><a target="_blank" href="">Cachet</a> —— 基于Laravel 5的开源的状态页系统（最高支持版本：5.7）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/824.html">详情</a></p>
+  <li><a target="_blank" href="">Deployer</a> ——&nbsp;基于Laravel 开发的免费开源 PHP 应用部署工具（最高支持版本：5.5）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/1681.html">详情</a></p>
+  <li><a target="_blank" href="">RSS Monster</a> —— 基于 Lumen 开发的 RSS 聚合器和阅读器（已改用 Vue + Express 实现）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/2555.html">详情</a></p>
+  <li><a target="_blank" href="">Attendize</a> ——&nbsp;基于 Laravel 框架开发的开源门票及活动管理应用（最高支持版本：5.6）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/3615.html">详情</a></p>
+  <li><a target="_blank" href="">Notadd</a> ——&nbsp;基于 Laravel 的下一代 PHP 开发框架（API+SPA 单页应用 ）（已调整为 Next.js 微服务框架）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/7092.html">详情</a></p>
+  <li><a target="_blank" href="">Blockscloud</a> &nbsp;—— 基于 Laravel + Vue 实现的 Web OS 系统（长期未更新）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/7310.html">详情</a></p>
+  <li><a target="_blank" href="">Unifiedtransform</a> —— 基于 Laravel 开发的开源校园管理系统（最高支持版本：5.5）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/19581.html">详情</a></p>
+  <li><a target="_blank" href="" target="_blank">Pterodactyl Panel </a>—— 基于 Laravel + Node.js + Go 构建的开源游戏服务器管理系统（最高支持版本：6.0）</li>
+  <p><a target="_blank" href="https://github.com/pterodactyl/panel">详情</a></p>
+  <li><a target="_blank" href="">WebStack</a> —— 基于 Laravel 开发的开源网址导航项目（最高支持版本：5.5）</li>
+  <p><a target="_blank" href="https://xueyuanjun.com/post/20008.html">详情</a></p>
+  <li><a target="_blank" href="" target="_blank">Crater</a> —— 基于 Laravel 开发的免费开源发票应用（最高支持版本：6.0）</li>
+  <p><a target="_blank" href="https://github.com/bytefury/crater">详情</a></p>
+</ul>
+<h3 id="abcdesk-installation-tutorial">安装教程</h3>
+<ul>
+  <li><a target="_blank" href="https://xueyuanjun.com/post/1150.html">在 Windows 上快速安装 Flarum 指南</a></li>
+  <p><a target="_blank" href="">详情</a></p>
+  <li><a target="_blank" href="https://xueyuanjun.com/post/1659.html">在Windows上快速安装配置PyroCMS</a></li>
+  <p><a target="_blank" href="">详情</a></p>
+</ul>
+<h3>参考</h3>
+<ol class="reference">
+  <li><a target="_blank" href="https://xueyuanjun.com/books/laravel-project">https://xueyuanjun.com/books/laravel-project</a></li>
+</ol>

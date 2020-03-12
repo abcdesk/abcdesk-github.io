@@ -4,40 +4,30 @@
 </ol>
 <h1>Laravel <span>QA问题及解决方案</span> </h1>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  访问首页出现如下提示：Please provide a valid cache path.
+  <span class="glyphicon glyphicon-question-sign">访问首页出现如下提示：Please provide a valid cache path</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
-<p>1.确保storage目录下有如app，framework，logs三个目录。
-  2.确保storage/framework目录下也有cache，sessions，views三个目录。
-</p>
+<h3 class="text-success">解决方案:</h3>
+<p>1.确保storage目录下有如app，framework，logs三个目录。</p>
+<p>2.确保storage/framework目录下也有cache，sessions，views三个目录。</p>
+<pre class="language-php">
+mkdir -p {app,framework/{cache,sessions,views},logs}
+</pre>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  Dotenv values containing spaces must be surrounded by quotes.
+  <span class="glyphicon glyphicon-question-sign">Dotenv values containing spaces must be surrounded by quotes</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <p>.env文件中的语法问题，中文或者空格必须加引号。</p>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  The only supported ciphers are AES-128-CBC and AES-256-CBC with the correct key lengths.
+  <span class="glyphicon glyphicon-question-sign">The only supported ciphers are AES-128-CBC and AES-256-CBC with the correct key lengths</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <pre class="language-php">
 php artisan key:generate
 </pre>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  访问域名报 500 的错误
+  <span class="glyphicon glyphicon-question-sign">访问域名报 500 的错误</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <p>确保启用了 mod_rewrite 模块，这样 .htaccess 文件才能被服务器解析。
   /public/.htaccess
 </p>
@@ -53,21 +43,15 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
 </pre>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  [BadMethodCallException]
+  <span class="glyphicon glyphicon-question-sign">[BadMethodCallException]</span>
   This cache store does not support tagging.
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <p>把.env 里的 CACHE_DRIVER=file 改成 CACHE_DRIVER=array</p>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  laravel 5.5 composer update: Carbon 1 is deprecated, see how to migrate to Carbon 2.
+  <span class="glyphicon glyphicon-question-sign">laravel 5.5 composer update: Carbon 1 is deprecated, see how to migrate to Carbon 2</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <p>在 composer.json 文件 require 部分，添加以下两行：</p>
 <pre class="language-php">
 "kylekatarnls/laravel-carbon-2": "^1.0.0",
@@ -75,12 +59,9 @@ RewriteRule ^ index.php [L]
 </pre>
 <p>修改完之后，再次执行composer update就可以了。</p>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  Package phpunit/phpunit-mock-objects is abandoned, you should avoid using it. No replacement was suggested.
+  <span class="glyphicon glyphicon-question-sign">Package phpunit/phpunit-mock-objects is abandoned, you should avoid using it. No replacement was suggested.</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <p>phpunit/phpunit-mock-objects 弃用。在composer.json中没有直接使用phpunit/phpunit-mock-objects组件，于是查找依赖它的组件：
 </p>
 <pre class="language-php">
@@ -98,12 +79,9 @@ $ composer depends phpunit/phpunit-mock-objects
 </pre>
 <p>然后执行升级即可解决问题。</p>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  could not fetch https://api.github.com/graphql. Create a GitHub OAuth token to go over the API rate limit.
+  <span class="glyphicon glyphicon-question-sign">could not fetch https://api.github.com/graphql. Create a GitHub OAuth token to go over the API rate limit.</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <p>Head to https://github.com/settings/tokens/new?scopes=repo&amp;description=Composer+on+Think+2020-01-11+0840
   to retrieve a token. It will be stored in "C:/Users/admin/AppData/Roaming/Composer/auth.json" for future use by Composer.
   只要粘贴上面的URL到浏览器中打开，然后生成一个token，然后复制这个新的token，在命令行中需要token的地方输入该token即可，该token会存储在用户家目录/.composer/auth.json中：
@@ -114,12 +92,9 @@ $ composer depends phpunit/phpunit-mock-objects
     },
 </pre>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  laravel 中出现SQLSTATE[HY000] [2002] 如何解决?
+  <span class="glyphicon glyphicon-question-sign">laravel 中出现SQLSTATE[HY000] [2002] 如何解决?</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <p>1.检查数据库配置信息(端口号、用户名、密码等信息是否配置正确)
   2.尝试在本地用数据库软件能否连接
   情况一:无法连接! 则修改mysql远程连接权限
@@ -128,23 +103,18 @@ $ composer depends phpunit/phpunit-mock-objects
   将数据库连接更改问本地127.0.0.1
 </p>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  php artisan 时有乱码
+  <span class="glyphicon glyphicon-question-sign">php artisan 时有乱码</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <p>这些类似于 [37;41m 的玩意是 Unix Console Color Codes，用于在控制台里显示颜色的代码
   然而你用的是不支持这种颜色代码的 cmd，自然就会这样。
   推荐使用 git bash 或者 babun 等终端替换 cmd。
 </p>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  在使用laravel5.1进行项目开发的时候，出现了“No supported encrypter found. The cipher and / or key length are invalid.”的报错信息，导致页面无法显示。
+  <span class="glyphicon glyphicon-question-sign">在使用laravel5.1进行项目开发的时候，出现了“No supported encrypter found.</span>
+  The cipher and / or key length are invalid.”的报错信息，导致页面无法显示。
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <p>网上的绝大多数答案都是直接执行php artisan key:generate即可。有些人发现可行，也有些并没有解决。
   首先解决这个问题的第一步是要看config/app.php中的cipher值：
   1. 如果cipher的值是AES-256-CBC，那么通过生成新的key，然后再重启nginx和php-fpm就可以解决。这时生成的新key就会直接写入到.env文件内。
@@ -154,12 +124,9 @@ $ composer depends phpunit/phpunit-mock-objects
   最后重启nginx和php-fpm即可
 </p>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  Cannot find module 'laravel-elixir'
+  <span class="glyphicon glyphicon-question-sign"> Cannot find module 'laravel-elixir'</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <p>原因是在用npm安装扩展包的时候，有些module没有安装上，一些被墙，这里需要开启VPN重新安装npm扩展包：
 </p>
 <pre class="language-php">
@@ -168,12 +135,9 @@ $ npm install
 $ gulp
 </pre>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  class UserTableSeeder does not exist
+  <span class="glyphicon glyphicon-question-sign">class UserTableSeeder does not exist</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <p>只要修改两个文件
   /vendor/composer/autoload_classmap.php
 </p>
@@ -187,12 +151,9 @@ $ gulp
         'ArticlesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ArticlesTableSeeder.php',
 </pre>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  blade页面中如何验证是否登录？
+  <span class="glyphicon glyphicon-question-sign">blade页面中如何验证是否登录？</span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
 <pre class="language-php">
 @auth
     // 用户已经通过身份认证...
@@ -201,6 +162,22 @@ $ gulp
 @guest
     // 用户没有通过身份认证...
 @endguest
+</pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">laravel/horizon v1.2.3 requires ext-pcntl * -> the requested PHP extension pcntl is missing from your system.</span>
+</div>
+<h3 class="text-success">解决方案:</h3>
+<p>在 composer.json 中增加</p>
+<pre class="language-php">
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "platform": {
+            "ext-pcntl": "7.2",
+            "ext-posix": "7.2"
+        }
+    },
 </pre>
 <h3>参考</h3>
 <ol class="reference">

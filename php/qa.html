@@ -4,8 +4,7 @@
 </ol>
 <h1>PHP <span>QA问题及解决方案</span> </h1>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  <p>判断变量为空</p>
+  <span class="glyphicon glyphicon-question-sign">判断变量为空</span>
 </div>
 <h3 class="text-success">
   解决方案:
@@ -31,8 +30,7 @@ if (!isset($a)) {
 }
 </pre>
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-question-sign"></span>
-  <p>判断两个字符串是否相等</p>
+  <span class="glyphicon glyphicon-question-sign">判断两个字符串是否相等</span>
 </div>
 <h3 class="text-success">
   解决方案:
@@ -44,8 +42,30 @@ if (strcmp($var1, $var2) !== 0) {
 }
 </pre>
 <div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">Memory limit errors</span>
+  <p>PHP Fatal error: Allowed memory size of XXXXXX bytes exhausted <...>
+  </p>
+</div>
+<p class="lead">分析</p>
+<p>memory_limit设置太大会影响系统速度，因为系统和数据库及其他程序同样需要内存空间，一般系统和数据库内存空间是自己分配的。</p>
+<h3 class="text-success">
+  解决方案:
+</h3>
+<p>修改PHP的memory_limit限制3种方法</p>
+<ol>
+  <li>在php.ini中，找到“memory_limit”这一项，如果没有，你可以在文件的尾部自己增加这个参数。</li>
+  <p>memory_limit = 128M;</p>
+  <li>网站的根目录下“.htaccess”文件</li>
+  <p>php_value memory_limit 128M;</p>
+  <li>在你的php代码中增加以下命令行</li>
+  <p>ini_set('memory_limit','128M');</p>
+</ol>
+<p class="lead">附注：查看php内存设置</p>
+<pre class="language-php">
+php -r "echo ini_get('memory_limit').PHP_EOL;"
+</pre>
+<div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-question-sign"></span>
-  <p>判断两个字符串是否相等</p>
 </div>
 <h3 class="text-success">
   解决方案:
