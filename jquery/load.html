@@ -1,0 +1,96 @@
+<ol class="breadcrumb">
+  <li>jQuery</li>
+  <li class="active">load()方法</li>
+</ol>
+<h1>jQuery <span>load()方法</span> </h1>
+<h3>jQuery load() 方法</h3>
+<p>load() 方法从服务器加载数据，并把返回的数据放入被选元素中。</p>
+<p>常用：load() 一个页面（.html/ .jsp/ php/ ....）</p>
+<h3>语法</h3>
+<pre class="language-html">
+$(selector).load(url,data,function(response,status,xhr))
+</pre>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th align="left" width="20%">参数</th>
+      <th align="left" width="80%">描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>url</em></td>
+      <td>必需。规定您需要加载的 URL。</td>
+    </tr>
+    <tr>
+      <td><em>data</em></td>
+      <td>可选。规定连同请求发送到服务器的数据。</td>
+    </tr>
+    <tr>
+      <td><em>function(response,status,xhr)</em></td>
+      <td>
+        可选。规定 load() 方法完成时运行的回调函数。<br><br>
+        额外的参数：<br>
+        <ul>
+          <li>
+            <em>response</em> - 包含来自请求的结果数据</li>
+          <li>
+            <em>status</em> - 包含请求的状态（"success"、"notmodified"、"error"、"timeout"、"parsererror"）</li>
+          <li>
+            <em>xhr</em> - 包含 XMLHttpRequest 对象</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3>加载一个php文件，该php文件不含传递参数</h3>
+<pre class="language-html">
+$("#myID").load("/test.php"); //在id为#myID的元素里导入test.php运行后的结果
+</pre>
+<h3>加载一个php文件，该php文件含有一个传递参数</h3>
+<pre class="language-html">
+$("#myID").load("/test.php",{"name":"abcdesk"}); //导入的php文件含有一个传递参数，类似于请求url：/test.php?name=abcdesk
+</pre>
+<h3>加载一个php文件，该php文件含有多个传递参数</h3>
+<pre class="language-html">
+$("#myID").load("/test.php",{"name":"abcdesk","pass":"password"}); //导入的php文件含有一个传递参数，类似于请求url：/test.php?name=abcdesk&amp;pass=password
+</pre>
+<p>注：参数间用逗号分隔</p>
+<h3>加载一个php文件，该php文件以数组作为传递参数</h3>
+<pre class="language-html">
+$("#myID").load("/test.php",{'user[]', ["abcdesk", "password"]}); //导入的php文件含有一个数组传递参数。
+</pre>
+<p>注意：使用load，这些参数是以POST的方式传递的，因此在/test.php里，不能用GET来获取参数。</p>
+<h3> 如何使用 callback，比如我们要在load方法得到服务器响应后，慢慢地显示加载的内容，就可以使用callback函数。</h3>
+<pre class="language-html">
+$("#go").click(function(){
+    $("#myID").load("welcome.php", {"surname":"Zhang", "firstname":"abcdesk"}, function(){
+        $("#myID").fadeIn('slow');
+    });
+});
+</pre>
+<div class="alert alert-warning" role="alert">
+  <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+  <p>load() 传参方式是 post 方式</p>
+</div>
+<h3>加载页面片段</h3>
+<pre class="language-html">
+$("#result").load("/test.html #container");
+</pre>
+<h3>防止jquery load使用缓存的方法</h3>
+<pre class="language-html">
+$.ajaxSetup({
+    cache: false //关闭AJAX相应的缓存
+});
+</pre>
+<h3>使用 jquery load 的注意事项</h3>
+<ol>
+  <li>如果绑定给window对象，则会在所有内容加载后触发，包括窗口，框架，对象和图像。如果绑定在元素上，则当元素的内容加载完毕后触发。</li>
+  <li>只有当在这个元素完全加载完之前绑定load的处理函数,才会在他加载完后触发。如果之后再绑定就永远不会触发了。所以不要在$(document).ready()里绑定load事件，因为jQuery会在所有DOM加载完成后再绑定load事件。</li>
+  <li>jQuery 使用浏览器的 .innerHTML 属性来解析被取回的文档，并把它插入当前文档。在此过程中，浏览器常会从文档中过滤掉元素，比如 <code>&lt;html&gt;</code>, <code>&lt;title&gt;</code> 或<code>&lt;head&gt;</code>元素。结果是，由 .load() 取回的元素可能与由浏览器直接取回的文档不完全相同。</li>
+</ol>
+<h3>参考</h3>
+<ol class="reference">
+  <li><a target="_blank" href="https://api.jquery.com/load/">https://api.jquery.com/load/</a></li>
+  <li><a target="_blank" href="https://www.cnblogs.com/ostrich-sunshine/p/8026957.html">https://www.cnblogs.com/ostrich-sunshine/p/8026957.html</a></li>
+</ol>

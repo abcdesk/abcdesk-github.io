@@ -3,6 +3,24 @@
   <li class="active">Composer</li>
 </ol>
 <h1>Laravel <span>Composer</span> </h1>
+<h3>composer常用命令</h3>
+<pre class="language-php">
+  composer install
+  composer update
+  composer config -l -g   #查看所有全局配置
+  composer dump-autoload  #重新生成框架的自动加载文件./vendor/autoload.php
+</pre>
+<h3>修改镜像,推荐阿里云(实时同步，5秒更新)</h3>
+<pre class="language-php">
+  composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+  composer config -g repos.packagist composer https://mirrors.cloud.tencent.com/composer/
+  composer config -g repos.packagist composer https://repo.huaweicloud.com/repository/php/
+  composer config -g repo.packagist composer https://packagist.phpcomposer.com
+  composer config -g --unset repos.packagist #解除镜像
+</pre>
+<div class="alert alert-success" role="alert">
+  <p>建议：在更改配置源之前，推荐先执行 composer clearcache 清除缓存</p>
+</div>
 <h3>安装yarn</h3>
 <pre class="language-php">
 npm install -g yarn

@@ -59,7 +59,13 @@
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script>
   $(document).ready(function() {
-    $("#main-navbar").load("navbar.html");
+    $("#main-navbar").load("navbar.html", function(response, status) {
+      if (status == "success") {
+        // alert("ok");
+        // $('ul.navbar-nav').attr("class", "sidebar-menu").data("widget", "tree");
+        // $('li.dropdown').attr("class", "treeview");
+      }
+    });
   });
   </script>
 </body>

@@ -179,6 +179,44 @@ $ gulp
         }
     },
 </pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">Class 'swoole_server' not found</span>
+</div>
+<h3 class="text-success">解决方案:</h3>
+<ol>
+  <li>看下cli模式是否可以正常工作,命令行下运行</li>
+  <p>php -r "echo php_sapi_name();"</p>
+  <li>查看当前cli已支持的扩展</li>
+  <p>php -m</p>
+  <li>查看命令行的ini路径,命令行下运行</li>
+  <p>php --ini</p>
+  <p>extension=swoole.so</p>
+  <li>启动server.php</li>
+  <p>php server.php</p>
+  <p>网页访问 IP:9501</p>
+</ol>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">No hint path defined for [sudosu]</span>
+</div>
+<p>分析：没有定义sudosu的提示路径</p>
+<h3 class="text-success">解决方案:</h3>
+<p>打开配置文件config/sudosu.php</p>
+<pre class="language-php">
+    // 允许使用的顶级域名
+    'allowed_tlds' => ['dev', 'local', 'test', 'localhost'],
+</pre>
+<p>说明：如果在本地服务器搭建项目，运行的是localhost:8000,那么同样在allowed_tld数组后面添加localhost,才可以正常运行。</p>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">Non-static method Redis::hSet() cannot be called statically</span>
+</div>
+<p>分析：可能是PHP自带了redis拓展和predis冲突了。</p>
+<h3 class="text-success">解决方案:</h3>
+<p>修改配置文件php.ini</p>
+<pre class="languange-php">
+; Enable redis extension module
+; extension = redis.so
+</pre>
+<p>另一个解决方法是把use Redis改为use Illuminate\Support\Facades\Redis</p>
 <h3>参考</h3>
 <ol class="reference">
   <li><a target="_blank" href="https://laravel.com/docs/5.5">https://laravel.com/docs/5.5</a></li>

@@ -1,0 +1,308 @@
+<ol class="breadcrumb">
+  <li>PHP</li>
+  <li class="active">Operators运算符</li>
+</ol>
+<h1>PHP <span>Operators运算符</span> </h1>
+<h3>PHP 算数运算符</h3>
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th style="width:20%;">运算符</th>
+      <th style="width:20%;">名称</th>
+      <th>例子</th>
+      <th>结果</th>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>加法</td>
+      <td>$x + $y</td>
+      <td>$x 与 $y 求和</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>减法</td>
+      <td>$x - $y</td>
+      <td>$x 与 $y 的差数</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>乘法</td>
+      <td>$x * $y</td>
+      <td>$x 与 $y 的乘积</td>
+    </tr>
+    <tr>
+      <td>/</td>
+      <td>除法</td>
+      <td>$x / $y</td>
+      <td>$x 与 $y 的商数</td>
+    </tr>
+    <tr>
+      <td>%</td>
+      <td>取模</td>
+      <td>$x % $y</td>
+      <td>$x 除 $y 的余数</td>
+    </tr>
+  </tbody>
+</table>
+<h3>PHP 赋值运算符</h3>
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th style="width:20%;">赋值</th>
+      <th style="width:20%;">等同于</th>
+      <th>描述</th>
+    </tr>
+    <tr>
+      <td>x = y</td>
+      <td>x = y</td>
+      <td>右侧表达式为左侧运算数设置值。</td>
+    </tr>
+    <tr>
+      <td>x += y</td>
+      <td>x = x + y</td>
+      <td>加</td>
+    </tr>
+    <tr>
+      <td>x -= y</td>
+      <td>x = x - y</td>
+      <td>减</td>
+    </tr>
+    <tr>
+      <td>x *= y</td>
+      <td>x = x * y</td>
+      <td>乘</td>
+    </tr>
+    <tr>
+      <td>x /= y</td>
+      <td>x = x / y</td>
+      <td>除</td>
+    </tr>
+    <tr>
+      <td>x %= y</td>
+      <td>x = x % y</td>
+      <td>模数</td>
+    </tr>
+  </tbody>
+</table>
+<h3>PHP 字符串运算符</h3>
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th>运算符</th>
+      <th>名称</th>
+      <th>例子</th>
+      <th>结果</th>
+    </tr>
+    <tr>
+      <td>.</td>
+      <td>串接</td>
+      <td>
+        $txt1 = "Hello"
+        $txt2 = $txt1 . " world!"
+      </td>
+      <td>现在 $txt2 包含 "Hello world!"</td>
+    </tr>
+    <tr>
+      <td>.=</td>
+      <td>串接赋值</td>
+      <td>
+        $txt1 = "Hello"
+        $txt1 .= " world!"
+      </td>
+      <td>现在 $txt1 包含 "Hello world!"</td>
+    </tr>
+  </tbody>
+</table>
+<h3>PHP 递增/递减运算符</h3>
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th style="width:20%;">运算符</th>
+      <th style="width:20%;">名称</th>
+      <th>描述</th>
+    </tr>
+    <tr>
+      <td>++$x</td>
+      <td>前递增</td>
+      <td>$x 加一递增，然后返回 $x</td>
+    </tr>
+    <tr>
+      <td>$x++</td>
+      <td>后递增</td>
+      <td>返回 $x，然后 $x 加一递增</td>
+    </tr>
+    <tr>
+      <td>--$x</td>
+      <td>前递减</td>
+      <td>$x 减一递减，然后返回 $x</td>
+    </tr>
+    <tr>
+      <td>$x--</td>
+      <td>后递减</td>
+      <td>返回 $x，然后 $x 减一递减</td>
+    </tr>
+  </tbody>
+</table>
+<h3>PHP 比较运算符</h3>
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th style="width:10%;">运算符</th>
+      <th style="width:19%;">名称</th>
+      <th style="width:15%;">例子</th>
+      <th style="width:46%;">结果</th>
+    </tr>
+    <tr>
+      <td>==</td>
+      <td>等于</td>
+      <td>$x == $y</td>
+      <td>如果 $x 等于 $y，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>===</td>
+      <td>全等（完全相同）</td>
+      <td>$x === $y</td>
+      <td>如果 $x 等于 $y，且它们类型相同，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>!=</td>
+      <td>不等于</td>
+      <td>$x != $y</td>
+      <td>如果 $x 不等于 $y，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>&lt;&gt;</td>
+      <td>不等于</td>
+      <td>$x &lt;&gt; $y</td>
+      <td>如果 $x 不等于 $y，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>!==</td>
+      <td>不全等（完全不同）</td>
+      <td>$x !== $y</td>
+      <td>如果 $x 不等于 $y，或它们类型不相同，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>&gt;</td>
+      <td>大于</td>
+      <td>$x &gt; $y</td>
+      <td>如果 $x 大于 $y，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>&lt;</td>
+      <td>小于</td>
+      <td>$x &lt; $y</td>
+      <td>如果 $x 小于 $y，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>&gt;=</td>
+      <td>大于或等于</td>
+      <td>$x &gt;= $y</td>
+      <td>如果 $x 大于或者等于 $y，则返回 true.</td>
+    </tr>
+    <tr>
+      <td>&lt;=</td>
+      <td>小于或等于</td>
+      <td>$x &lt;= $y</td>
+      <td>如果 $x 小于或者等于 $y，则返回 true。</td>
+    </tr>
+  </tbody>
+</table>
+<h3>PHP 逻辑运算符</h3>
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th style="width:10%;">运算符</th>
+      <th style="width:15%;">名称</th>
+      <th style="width:15%;">例子</th>
+      <th style="width:50%;">结果</th>
+    </tr>
+    <tr>
+      <td>and</td>
+      <td>与</td>
+      <td>$x and $y</td>
+      <td>如果 $x 和 $y 都为 true，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>or</td>
+      <td>或</td>
+      <td>$x or $y</td>
+      <td>如果 $x 和 $y 至少有一个为 true，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>xor</td>
+      <td>异或</td>
+      <td>$x xor $y</td>
+      <td>如果 $x 和 $y 有且仅有一个为 true，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>&amp;&amp;</td>
+      <td>与</td>
+      <td>$x &amp;&amp; $y</td>
+      <td>如果 $x 和 $y 都为 true，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>||</td>
+      <td>或</td>
+      <td>$x || $y</td>
+      <td>如果 $x 和 $y 至少有一个为 true，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>!</td>
+      <td>非</td>
+      <td>!$x</td>
+      <td>如果 $x 不为 true，则返回 true。</td>
+    </tr>
+  </tbody>
+</table>
+<h3>PHP 数组运算符</h3>
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th style="width:10%;">运算符</th>
+      <th style="width:15%;">名称</th>
+      <th style="width:15%;">例子</th>
+      <th style="width:50%;">结果</th>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>联合</td>
+      <td>$x + $y</td>
+      <td>$x 和 $y 的联合（但不覆盖重复的键）</td>
+    </tr>
+    <tr>
+      <td>==</td>
+      <td>相等</td>
+      <td>$x == $y</td>
+      <td>如果 $x 和 $y 拥有相同的键/值对，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>===</td>
+      <td>全等</td>
+      <td>$x === $y</td>
+      <td>如果 $x 和 $y 拥有相同的键/值对，且顺序相同类型相同，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>!=</td>
+      <td>不相等</td>
+      <td>$x != $y</td>
+      <td>如果 $x 不等于 $y，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>&lt;&gt;</td>
+      <td>不相等</td>
+      <td>$x &lt;&gt; $y</td>
+      <td>如果 $x 不等于 $y，则返回 true。</td>
+    </tr>
+    <tr>
+      <td>!==</td>
+      <td>不全等</td>
+      <td>$x !== $y</td>
+      <td>如果 $x 与 $y 完全不同，则返回 true。</td>
+    </tr>
+  </tbody>
+</table>
+<h3>参考</h3>
+<ol class="reference">
+  <li><a target="_blank" href="https://www.w3school.com.cn/php/php_operators.asp">https://www.w3school.com.cn/php/php_operators.asp</a></li>
+</ol>

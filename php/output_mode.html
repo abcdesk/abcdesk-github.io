@@ -1,0 +1,28 @@
+<ol class="breadcrumb">
+  <li>PHP</li>
+  <li class="active">Output几种输出方式</li>
+</ol>
+<h1>PHP <span>Output几种输出方式</span> </h1>
+<h3><code>echo</code></h3>
+<p>只能输出字符串等单一数据,不能输出数据类型,不能输出数组等多种数据</p>
+<h3><code>print()</code></h3>
+<p>只能输出字符串等单一数据,不能输出数据类型,不能输出数组等多种数据有返回值true/false</p>
+<h3><code>print_r()</code></h3>
+<p>既能输出字符串等单一数据,又能输出数组等多种数据,但是不能输出数据类型</p>
+<h3><code>var_dump()</code></h3>
+<p>既能输出字符串等单一数据,又能输出数组等多种数据,又能输出数据类型</p>
+<pre class="language-php">
+&lt;?php
+$a = array(1, 2, array("a", "b", "c"));
+var_dump($a);
+?&gt;
+</pre>
+<h3><code>die()</code></h3>
+<p>有两个功能：先输出内容，然后退出程序。（常用在链接服务器，数据库）</p>
+<pre class="language-php">
+mysql_connect("locahost","root","root") or die("链接服务器失败！");
+</pre>
+<h3>参考</h3>
+<ol class="reference">
+  <li><a target="_blank" href="https">https</a></li>
+</ol>

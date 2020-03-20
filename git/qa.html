@@ -4,14 +4,80 @@
 </ol>
 <h1>Git <span>QA问题及解决方案</span> </h1>
 <div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">github error: RPC failed; curl 56 OpenSSL SSL_read: Connection was reset</span>
+</div>
+<p><strong>分析：</strong>这是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错。</p>
+<h3 class="text-success">解决方案:</h3>
+<p>修改git安全设置</p>
+<pre class="language-html">
+git config --globle http.sslverify "false"
+</pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">githubHttp协议错误(被墙)怎么办？</span>
+</div>
+<h3 class="text-success">解决方案:</h3>
+<p class="lead">获取github地址</p>
+<ul>
+  <li>
+    <p>访问 <a href="http://github.global.ssl.fastly.net.ipaddress.com/#ipinfo">http://github.global.ssl.fastly...</a>获取cdn域名以及IP地址<br></p>
+  </li>
+  <li>
+    <p>访问 <a href="https://github.com.ipaddress.com/#ipinfo">http://github.com.ipaddress...</a> 获取cdn域名以及IP地址<br></p>
+  </li>
+</ul>
+<p class="lead">修改hosts文件</p>
+<p>Mac在/etc/hosts中；</p>
+<p>windows在C:\Windows\System32\drivers\etc\hosts中；</p>
+<pre class="language-html">
+# fix git clone github project failed
+140.82.113.3  github.com
+199.232.5.194 github.global.ssl.fastly.net
+</pre>
+<p class="lead">刷新DNS缓存</p>
+<p>Mac刷新DNS缓存</p>
+<pre class="language-html">
+sudo killall -HUP mDNSResponder
+sudo dscacheutil -flushcache
+</pre>
+<p>Windows更新DNS缓存</p>
+<pre class="language-html">
+ipconfig /flushdns
+</pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">Failed to connect to github.com port 443: Timed out</span>
+</div>
+<h3 class="text-success">解决方案:</h3>
+<pre class="language-html">
+$ git config --global --unset http.proxy
+</pre>
+<div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-question-sign"></span>
 </div>
-<h3 class="text-success">
-  解决方案:
-</h3>
+<h3 class="text-success">解决方案:</h3>
+<p class="lead">生成密钥，然后复制到github中</p>
 <pre class="language-html">
-
+$ ssh-keygen -t rsa -C "youremail@example.com"
 </pre>
+<p class="lead">测试git是否成功连接github</p>
+<pre class="language-html">
+ssh -T git@github.com
+</pre>
+<p>如果出现You've successfully authenticated那么恭喜你，连接成功可以使用了。</p>
+<p class="text-danger">如果出现ssh: connect to host github.com port 22: Connection timed out很遗憾连接超时</p>
+<p class="lead">首先找到git的安装目录，找到/etc/ssh/ssh_config文件</p>
+<p>把如下内容复制到ssh_config文件的末尾处：</p>
+<pre class="language-html">
+Host github.com
+User git
+Hostname ssh.github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa
+Port 443
+</pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign"></span>
+</div>
+<h3 class="text-success">解决方案:</h3>
 <h3>参考</h3>
 <ol class="reference">
   <li><a target="_blank" href="https://git-scm.com/docs">https://git-scm.com/docs</a></li>
