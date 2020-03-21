@@ -1,0 +1,100 @@
+<ol class="breadcrumb">
+  <li>jQuery</li>
+  <li class="active">Attribute属性值</li>
+</ol>
+<h1>jQuery <span>Attribute属性值</span> </h1>
+<h3>addClass向被选元素添加一个或多个类</h3>
+<pre class="language-html">
+&lt;script&gt;
+  $("th,td").addClass("text-center");
+&lt;/script&gt;
+</pre>
+<h3>attr() 方法设置或返回被选元素的属性值</h3>
+<pre class="language-html">
+&lt;a href="aaaaaa" id='hh'&gt;&lt;/a&gt;
+
+&lt;script&gt;
+  var p = $('#hh').attr('href');
+  console.log(p);
+&lt;/script&gt;
+</pre>
+<h3>hasClass() 方法检查被选元素是否包含指定的 class</h3>
+<pre class="language-html">
+$(selector).hasClass(class);
+alert($("p:first").hasClass("intro"));
+</pre>
+<h3>removeAttr() 方法从被选元素中移除属性</h3>
+<pre class="language-html">
+$(selector).removeAttr(attribute)
+</pre>
+<h3>removeClass() 方法从被选元素移除一个或多个类</h3>
+<pre class="language-html">
+$(selector).removeClass(class);
+</pre>
+<h3>toggleClass对被选元素进行添加/删除类的切换操作</h3>
+<pre class="language-html">
+&lt;script&gt;
+  $('[data-toggle="offcanvas"]').click(function() {
+    $('.row-offcanvas').toggleClass('active')
+  });
+&lt;/script&gt;
+</pre>
+<h3>css设置CSS属性</h3>
+<pre class="language-html">
+&lt;script&gt;
+  $("#content>ul>li").css({"padding":"10px 5px","color":"#7d8688"});
+&lt;/script&gt;
+</pre>
+<h3>html() 方法返回或设置被选元素的内容 (inner HTML)</h3>
+<pre class="language-html">
+$(selector).html();         //返回元素内容
+$(selector).html(content);  //设置元素内容
+$("p").html("Hello <b>world</b>!");
+</pre>
+<h3>标签赋初值</h3>
+<p>自闭合标签赋初值用<code>$().val()</code>，比如：&lt;input type="text" name="text" value="123"&gt;</p>
+<p>闭合标签赋初值用<code>$().text()</code>，比如：&lt;textarea id="id_textarea"&gt;&lt;/textarea&gt;</p>
+<pre class="language-php">
+# 给textarea标签赋初值
+$('#id_textarea').text($('#form_text').attr('my_text'));
+
+// 给单选 赋初值
+$("#id_0").attr("checked", $('#id_radio').attr('gender') == '男' ? true : false);
+$("#id_1").attr("checked", $('#id_radio').attr('gender') == '女' ? true : false);
+$("#id_2").attr("checked", $('#id_radio').attr('gender') == '未知' ? true : false);
+form.render(); //更新全部
+</pre>
+<p>input框赋值</p>
+<pre class="language-php">
+&lt;input type="text" name="number" id="number" value=""/&gt;
+#通过type赋值
+$(":text").val("100");
+
+#通过id赋值
+$("#number").val("123");
+$("#number").attr("value","123");
+
+#通过name赋值
+$("input[name='number']").val("123");
+$("input[name='number']").attr("value","123");
+</pre>
+<h3>获取data-*属性值</h3>
+<p>&lt;li id="myId" data-id="122" data-vice-id="11"&gt;获取id&lt;/li&gt;</p>
+<p>使用data()方法</p>
+<pre class="language-html">
+var id = $("#myId").data("id"); //122
+var viceId = $("#myId").data("vice-id"); //11
+//赋值
+$("#myId").data("id","100");//100
+</pre>
+<p>使用attr()方法</p>
+<pre class="language-html">
+var id = $("#myId").attr("data-id"); //122
+var viceId = $("#myId").attr("data-vice-id"); //11
+//赋值
+$("#myId").attr("data-id","100");//100
+</pre>
+<div class="alert alert-warning" role="alert">
+  <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+  <p>data()的值进行修改并不会影响到DOM元素上的data-*属性的改变。</p>
+</div>

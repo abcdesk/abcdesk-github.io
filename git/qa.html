@@ -10,7 +10,7 @@
 <h3 class="text-success">解决方案:</h3>
 <p>修改git安全设置</p>
 <pre class="language-html">
-git config --globle http.sslverify "false"
+git config --global http.sslverify "false"
 </pre>
 <div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-question-sign">githubHttp协议错误(被墙)怎么办？</span>
@@ -19,10 +19,16 @@ git config --globle http.sslverify "false"
 <p class="lead">获取github地址</p>
 <ul>
   <li>
-    <p>访问 <a href="http://github.global.ssl.fastly.net.ipaddress.com/#ipinfo">http://github.global.ssl.fastly...</a>获取cdn域名以及IP地址<br></p>
+    <p>访问 <a target="_blank" href="http://github.global.ssl.fastly.net.ipaddress.com/#ipinfo">http://github.global.ssl.fastly...</a>获取cdn域名以及IP地址<br></p>
   </li>
   <li>
-    <p>访问 <a href="https://github.com.ipaddress.com/#ipinfo">http://github.com.ipaddress...</a> 获取cdn域名以及IP地址<br></p>
+    <p>访问 <a target="_blank" href="https://github.com.ipaddress.com/#ipinfo">http://github.com.ipaddress...</a> 获取cdn域名以及IP地址<br></p>
+  </li>
+  <li>
+    <p>访问 <a target="_blank" href="https://site.ip138.com/github.com/">https://site.ip138.com...</a> 获取github.com服务器IP<br></p>
+  </li>
+  <li>
+    <p>访问 <a target="_blank" href="http://tool.chinaz.com/dns/?type=1&amp;host=github.com&amp;ip=">http://tool.chinaz.com/dns...</a> 获取github.com服务器IP<br></p>
   </li>
 </ul>
 <p class="lead">修改hosts文件</p>
@@ -74,6 +80,29 @@ PreferredAuthentications publickey
 IdentityFile ~/.ssh/id_rsa
 Port 443
 </pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">fatal: the remote end hung up unexpectedly</span>
+</div>
+<p><strong>分析：</strong>推送的文件太大。</p>
+<h3 class="text-success">解决方案1:</h3>
+<p>修改.git/config文件</p>
+<pre class="language-html">
+[http]
+postBuffer = 524288000
+</pre>
+<p>或者设置缓存</p>
+<pre class="language-html">
+$ git config --global http.postBuffer 524288000
+</pre>
+<h3 class="text-success">解决方案2:</h3>
+<p>此问题可能由网络原因引起。配置git的最低速度和最低速度时间：</p>
+<pre class="language-html">
+$ git config --global http.lowSpeedLimit 0
+$ git config --global http.lowSpeedTime 86400  //(24小时)单位 秒
+</pre>
+<h3 class="text-success">解决方案3:</h3>
+<p>fatal: The remote end hung up unexpectedly | 7.00 KiB/s这句显示 远程结束挂起 |7kb/s</p>
+<p>应该是墙的原因导致网速太慢，且项目有点大上传不上。解决办法：<code>翻墙</code> 或者等等重新在push一遍 就没问题了</p>
 <div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-question-sign"></span>
 </div>
