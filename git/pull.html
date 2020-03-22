@@ -6,17 +6,18 @@
 <h3>远程仓库的默认名称是origin</h3>
 <pre class="language-sh">
 $ git pull <远程主机> <远程分支>:<本地分支>
-$ git pull origin master:my_test #将origin仓库的master分支拉取并合并到本地的my_test分支上
-$ git pull origin master #如果省略本地分支，则将自动合并到当前所在分支上
+$ git pull origin master:master #将origin仓库的master分支拉取并合并到本地的master分支上
+$ git pull origin master        #如果省略本地分支，则将自动合并到当前所在分支上
 </pre>
 <h3>****git 从远程仓库获取所有分支***</h3>
 <p>方法一：</p>
 <pre class="language-she">
 $ git clone https://github.com/laravel/laravel.git
-$ cd project
+$ cd laravel
 $ git branch -a  #列出所有分支名称如下：
 </pre>
-<p>* master
+<p>
+  * master
   remotes/origin/3.0
   remotes/origin/5.0
   remotes/origin/5.1
@@ -41,7 +42,7 @@ $ git checkout dev  #切换回dev分支，并开始开发。
 </pre>
 <p>方法二：</p>
 <pre class="language-sh">
-$ git branch -r | grep -v '\-&gt;' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+$ git branch -r |grep -v '\-&gt;' |while read remote; do git branch --track "${remote#origin/}" "$remote"; done
 $ git fetch --all
 $ git pull --all
 

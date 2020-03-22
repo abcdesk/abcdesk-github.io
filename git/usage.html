@@ -82,13 +82,22 @@ $ git clean -df #删除当前工作目录及子目录下未跟踪的文件及文
 <pre class="language-sh">
 $ find . -name ".git" | xargs rm -Rf
 </pre>
-<h3>5.推送最新修改</h3>
+<h3>5.添加远程仓库</h3>
 <pre class="language-sh">
-git push origin master
+# 添加https的origin
+$ git remote add origin https://github.com/abcdesk/abcdesk.github.io.git
+
+# 删除旧的origin
+$ git remote remove origin
 </pre>
-<h3>6.获取远程分支</h3>
+<h3>6.推送最新修改</h3>
 <pre class="language-sh">
-git pull origin master
+$ git push origin master    #提交本地仓储分支(master) 给远程仓储(origin)分支(master)
+$ git push origin master -f #强制提交
+</pre>
+<h3>7.获取远程分支</h3>
+<pre class="language-sh">
+$ git pull origin master
 </pre>
 <h3>参考</h3>
 <ol class="reference">
