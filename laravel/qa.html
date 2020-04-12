@@ -13,6 +13,21 @@
 mkdir -p {app,framework/{cache,sessions,views},logs}
 </pre>
 <div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">在执行迁移时发生「class not found」错误</span>
+</div>
+<h3 class="text-success">解决方案:</h3>
+<pre class="language-php">
+$ composer dump-autoload
+</pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">Failed to clear cache. Make sure you have the appropriate permissions.</span>
+</div>
+<p><strong>分析：</strong>may be caused by the missing folder storage/framework/cache/data</p>
+<h3 class="text-success">解决方案:</h3>
+<pre class="language-php">
+$ mkdir -p storage/framework/cache/data
+</pre>
+<div class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-question-sign">Dotenv values containing spaces must be surrounded by quotes</span>
 </div>
 <h3 class="text-success">解决方案:</h3>
@@ -217,6 +232,33 @@ $ gulp
 ; extension = redis.so
 </pre>
 <p>另一个解决方法是把use Redis改为use Illuminate\Support\Facades\Redis</p>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">It is unsafe to run Dusk in production</span>
+</div>
+<h3 class="text-success">解决方案:</h3>
+<p>在composer.json文件中添加</p>
+<pre class="language-php">
+"extra": {
+    "laravel": {
+        "dont-discover": [
+            "laravel/dusk"
+        ]
+    }
+},
+</pre>
+<p>再执行<code>composer update</code></p>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">Function mcrypt_get_iv_size() is deprecated</span>
+</div>
+<h3 class="text-success">解决方案:</h3>
+<p>配置<code>config/app.php</code></p>
+<pre class="language-php">
+'cipher' => 'AES-256-CBC',
+</pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign"></span>
+</div>
+<h3 class="text-success">解决方案:</h3>
 <h3>参考</h3>
 <ol class="reference">
   <li><a target="_blank" href="https://laravel.com/docs/5.5">https://laravel.com/docs/5.5</a></li>

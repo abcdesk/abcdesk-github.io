@@ -1,0 +1,139 @@
+<ol class="breadcrumb">
+  <li>Tools</li>
+  <li class="active">Composer</li>
+</ol>
+<h1>Tools <span>Composer</span> </h1>
+<h3>Windows上安装composer</h3>
+<p class="lead">方法一：Command-line installation</p>
+<pre class="language-php">
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+</pre>
+<p class="lead">方法二：使用安装程序安装</p>
+<p>Download and run <a target="_blank" href="https://getcomposer.org/Composer-Setup.exe">Composer</a></p>
+<div class="alert alert-warning" role="alert">
+  <span class="glyphicon glyphicon-warning-sign"> 注意！！</span>
+  <p>Windows环境下可以将composer目录添加到环境变量，就可以在任意目录执行composer了。</p>
+</div>
+<h3>composer常用命令</h3>
+<pre class="language-php">
+$ composer install        #安装
+$ composer self-update    #更新自身
+$ composer list           #列出所有命令
+</pre>
+<p>下载的第三方类库存放在vendor目录</p>
+<div class="alert alert-info" role="alert">
+  <p><strong>说明：</strong>当我们运行composer install 将会读取composer.lock文件，进行更新依赖。如果composer.lock不存在或者里面没内容，会执行composer.json，会将最新版本的文件下载到vendor目录里，然后再去更新composer.lock文件。</p>
+</div>
+<h3>update命令</h3>
+<p>通过update命令，可以更新项目里所有的包，或者指定的某些包。</p>
+<pre class="language-php">
+$ composer update         #更新所有依赖
+</pre>
+<div class="alert alert-danger" role="alert">
+  <p><strong>注意：</strong>不要轻易使用update命令，因为update命令将更新所有的依赖到最新，这个动作是危险的，这样很有可能导致，最新类库和你以前写的东西冲突，你以前的代码不可用！！！</p>
+</div>
+<h3>查看配置</h3>
+<pre class="language-php">
+$ composer config -l -g   #查看所有全局配置
+$ composer config -l      #查看当前项目镜像配置
+</pre>
+<h3>清除缓存</h3>
+<p>缓存在<code>C:\Users\username\AppData\Local\Composer</code>目录下。</p>
+<pre class="language-php">
+$ composer clear-cache
+</pre>
+<h3>只更新自动加载而不去更新依赖</h3>
+<pre class="language-php">
+$ composer dump-autoload  #重新生成框架的自动加载文件./vendor/autoload.php
+</pre>
+<h3>设置镜像,推荐阿里云(实时同步，5秒更新)</h3>
+<pre class="language-php">
+$ composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+$ composer config -g repos.packagist composer https://mirrors.cloud.tencent.com/composer/
+$ composer config -g repos.packagist composer https://repo.huaweicloud.com/repository/php/
+$ composer config -g repo.packagist composer https://packagist.phpcomposer.com
+</pre>
+<div class="alert alert-success" role="alert">
+  <p><strong>建议：</strong>在更改配置源之前，推荐先执行 <strong>composer clearcache</strong> 清除缓存</p>
+</div>
+<h3>设置单个项目源</h3>
+<pre class="language-php">
+$ composer config repo.packagist composer https://packagist.org/
+$ composer config repo.packagist composer https://packagist.phpcomposer.com
+</pre>
+<h3>解除镜像<code>--unset</code></h3>
+<pre class="language-php">
+$ composer config -g repo.packagist composer https://packagist.org/
+$ composer config -g --unset repos.packagist
+$ composer config --unset repos.packagist
+</pre>
+<h3>github 生成<code>token</code></h3>
+<p>点击你的GitHub头像，选择下拉框中的<kbd>settings</kbd>→<kbd>Developer settings</kbd>→<kbd>Personal access tokens</kbd>→<kbd>Generate new token</kbd></p>
+<p>也可以直接点击链接<a target="_blank" href="https://github.com/settings/tokens">https://github.com/settings/tokens</a>，直接进入<code>token</code>设置页。</p>
+<p>把选项全部勾选，然后点击下方绿色按钮<kbd>Generate token</kbd>，便可生成一个<code>token</code>，一定要拷贝并保存好以备后用。</p>
+<p>最后用新生成的<code>token</code>配置composer</p>
+<pre class="language-php">
+$ composer config --global --auth github-oauth.github.com &lt;token&gt;
+</pre>
+<h3>npm常用命令</h3>
+<pre class="language-php">
+$ npm -v                  #查看版本
+$ npm config list         #查看npm配置
+$ npm config set registry http://registry.npm.taobao.org/ #设置淘宝镜像源
+$ npm config rm registry  #删除镜像
+</pre>
+<p>npm安装位置：<code>C:\Users\admin\AppData\Roaming\npm</code></p>
+<h3>安装yarn</h3>
+<pre class="language-php">
+$ npm install -g yarn
+</pre>
+<h3>bower - A package manager for the web</h3>
+<pre class="language-php">
+$ npm install -g bower
+</pre>
+<h3>node-gyp - Node.js native addon build tool</h3>
+<pre class="language-php">
+$ npm install -g node-gyp
+</pre>
+<h3>gulp is a toolkit for automating painful or time-consuming tasks in your development workflow</h3>
+<pre class="language-php">
+$ npm install --global gulp-cli
+</pre>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">composer 安装依赖缓慢</span>
+</div>
+<p><strong>分析：</strong>发现执行异常缓慢，怀疑没有走国内的镜像，而是直接访问的 github。</p>
+<h3 class="text-success">解决方案:</h3>
+<pre class="language-php">
+$ composer -vvv install
+</pre>
+<p>果然，都是走的 github。原来是 composer.lock 的问题，删除 composer.lock，再运行 composer install 重新生成。</p>
+<p class="text-warning">原因是 composer.lock 缓存了之前的配置信息，从而导致新的镜像配置无效。</p>
+<p><strong>说明：</strong>-v|vv|vvv, --verbose Increase the verbosity of messages:
+  1 for normal output,
+  2 for more verbose output,
+  3 for debug
+</p>
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-question-sign">npm ERR! errno -4048</span>
+</div>
+<p><strong>分析：</strong>因为要下载的依赖存在于缓存中，但是不够完整或者有效，所以导致了报错。</p>
+<h3 class="text-success">解决方案:</h3>
+<p>校验npm缓存依赖的完整和有效性</p>
+<pre class="language-php">
+$ npm cache verify
+</pre>
+<h3>参考</h3>
+<ol class="reference">
+  <li><a target="_blank" href="https://getcomposer.org/">https://getcomposer.org/</a></li>
+  <li><a target="_blank" href="https://packagist.org/">https://packagist.org/</a></li>
+  <li><a target="_blank" href="https://www.gulpjs.com.cn/docs/getting-started/quick-start/">https://www.gulpjs.com.cn/docs/getting-started/quick-start/</a></li>
+  <li><a target="_blank" href="https://mirrors.aliyun.com/composer/">https://mirrors.aliyun.com/composer/</a></li>
+  <li><a target="_blank" href="https://mirrors.cloud.tencent.com/composer/">https://mirrors.cloud.tencent.com/composer/</a></li>
+  <li><a target="_blank" href="https://repo.huaweicloud.com/repository/php/">https://repo.huaweicloud.com/repository/php/</a></li>
+  <li><a target="_blank" href="https://packagist.phpcomposer.com">https://packagist.phpcomposer.com</a></li>
+  <li><a target="_blank" href="https">https</a></li>
+</ol>
